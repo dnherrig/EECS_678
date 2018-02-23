@@ -13,6 +13,39 @@
 
 #include "quash.h"
 
+//additional libraries
+#include <unistd.h>
+#include "deque.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+
+
+
+int numJob = 0;
+bool isInitialized = false;
+static int pipes[2][2];
+
+IMPLEMENT_DEQUE_STRUCT(pidQueueStruct, pid_t);
+IMPLEMENT_DEQUE(pidQueueStruct, pid_t);
+
+pidQueueStruct pidQueue;
+
+typedef struct jobType {
+  int id;
+  char* cmd;
+  pidQueueStruct myQueue;
+  pid_t pid;
+}jobType;
+
+IMPLEMENT_DEQUE_STRUCT(jobQueueStruct, jobType);
+IMPLEMENT_DEQUE(jobQueueStruct, jobType);
+
+jobQueueStruct jobQueue;
+
 // Remove this and all expansion calls to it
 /**
  * @brief Note calls to any function that requires implementation
@@ -26,28 +59,15 @@
 
 // Return a string containing the current working directory.
 char* get_current_directory(bool* should_free) {
-  // TODO: Get the current working directory. This will fix the prompt path.
-  // HINT: This should be pretty simple
-  IMPLEMENT_ME();
-
+  char* cwd[1024];
   // Change this to true if necessary
   *should_free = false;
-
-  return "get_current_directory()";
+  return getcwd(cwd, sizeof(cwd));
 }
 
 // Returns the value of an environment variable env_var
 const char* lookup_env(const char* env_var) {
-  // TODO: Lookup environment variables. This is required for parser to be able
-  // to interpret variables from the command line and display the prompt
-  // correctly
-  // HINT: This should be pretty simple
-  IMPLEMENT_ME();
-
-  // TODO: Remove warning silencers
-  (void) env_var; // Silence unused variable warning
-
-  return "???";
+  return getenv(env_var);
 }
 
 // Check the status of background jobs
@@ -86,35 +106,23 @@ void print_job_bg_complete(int job_id, pid_t pid, const char* cmd) {
 // Run a program reachable by the path environment variable, relative path, or
 // absolute path
 void run_generic(GenericCommand cmd) {
-  // Execute a program with a list of arguments. The `args` array is a NULL
-  // terminated (last string is always NULL) list of strings. The first element
-  // in the array is the executable
   char* exec = cmd.args[0];
   char** args = cmd.args;
-
-  // TODO: Remove warning silencers
-  (void) exec; // Silence unused variable warning
-  (void) args; // Silence unused variable warning
-
-  // TODO: Implement run generic
-  IMPLEMENT_ME();
-
-  perror("ERROR: Failed to execute program");
+  execvp(exec, args);
+  fprintf(stderr, "ERROR: Failed to execute the program: %s", exec);
+  exit(EXIT_FAILURE);
+  //perror("ERROR: Failed to execute program");
 }
 
 // Print strings
 void run_echo(EchoCommand cmd) {
-  // Print an array of strings. The args array is a NULL terminated (last
-  // string is always NULL) list of strings.
   char** str = cmd.args;
 
-  // TODO: Remove warning silencers
-  (void) str; // Silence unused variable warning
-
-  // TODO: Implement echo
-  IMPLEMENT_ME();
-
-  // Flush the buffer before returning
+  while(*str != '\0') {
+    printf("%s ", *str);
+    ++str;
+  }
+  printf("\n");
   fflush(stdout);
 }
 
@@ -124,32 +132,34 @@ void run_export(ExportCommand cmd) {
   const char* env_var = cmd.env_var;
   const char* val = cmd.val;
 
-  // TODO: Remove warning silencers
-  (void) env_var; // Silence unused variable warning
-  (void) val;     // Silence unused variable warning
-
-  // TODO: Implement export.
-  // HINT: This should be quite simple.
-  IMPLEMENT_ME();
+  if(setenv(env_var, val, 1) == -1) {
+    fprintf(stderr, "ERROR: Failed to update environment variable, %s, to value, %s\n", env_var, val);
+    exit(EXIT_FAILURE);
+  }
 }
 
 // Changes the current working directory
 void run_cd(CDCommand cmd) {
-  // Get the directory name
   const char* dir = cmd.dir;
 
-  // Check if the directory is valid
-  if (dir == NULL) {
+  if(dir == NULL) {
     perror("ERROR: Failed to resolve path");
-    return;
+    exit(EXIT_FAILURE);
   }
 
-  // TODO: Change directory
-
-  // TODO: Update the PWD environment variable to be the new current working
-  // directory and optionally update OLD_PWD environment variable to be the old
-  // working directory.
-  IMPLEMENT_ME();
+  char* cwd = get_current_directory(NULL);
+  setenv("PREV_PWD", cwd, 1);
+  if(chdir(dir) == -1) {
+    fprintf("ERROR: Failed to go to directory, %s\n", dir);
+    exit(EXIT_FAILURE);
+  }
+  free(cwd);
+  cwd = get_current_directory(NULL);
+  if(setenv("PWD", cwd, 1) == -1) {
+    fprintf("ERROR: Failed to update PWD variable, %s\n", cwd);
+    exit(EXIT_FAILURE);
+  }
+  free(cwd);
 }
 
 // Sends a signal to all processes contained in a job
@@ -157,12 +167,11 @@ void run_kill(KillCommand cmd) {
   int signal = cmd.sig;
   int job_id = cmd.job;
 
-  // TODO: Remove warning silencers
-  (void) signal; // Silence unused variable warning
-  (void) job_id; // Silence unused variable warning
+  struct jobType myJob;
+  /*for(int i = 0; i < length; i++) {
 
-  // TODO: Kill all processes associated with a background job
-  IMPLEMENT_ME();
+  }*/
+
 }
 
 
@@ -292,49 +301,65 @@ void create_process(CommandHolder holder) {
   bool p_out = holder.flags & PIPE_OUT;
   bool r_in  = holder.flags & REDIRECT_IN;
   bool r_out = holder.flags & REDIRECT_OUT;
-  bool r_app = holder.flags & REDIRECT_APPEND; // This can only be true if r_out
-                                               // is true
+  bool r_app = holder.flags & REDIRECT_APPEND;
 
-  // TODO: Remove warning silencers
-  (void) p_in;  // Silence unused variable warning
-  (void) p_out; // Silence unused variable warning
-  (void) r_in;  // Silence unused variable warning
-  (void) r_out; // Silence unused variable warning
-  (void) r_app; // Silence unused variable warning
+  if(p_out) {
+    pipe(pipes[1]);
+  }
 
-  // TODO: Setup pipes, redirects, and new process
-  IMPLEMENT_ME();
+  pid_t pid = fork();
 
-  // pipe(p_in);
-  // pipe(p_out);
-  // pipe(r_in);
-  // pipe(r_out);
-  // pipe(r_app);
-  //
-  // close(p_in[0]);
-  // close(p_in[1]);
-  // close(r_in[0]);
-  // close(r_in[1]);
-  // close(r_out[0]);
-  // close(r_out[1]);
-  // close(r_app[0]);
-  // close(r_app[1]);
+  push_back_pidQueueStruct(&pidQueue, pid);
 
+  if(pid != 0) {
+    if(p_out) {
+      close(pipes[1][1]);
+    }
+  }
+  else {
+    if(p_in) {
+      dup2 (pipes[0][0], STDIN_FILENO);
+      close (pipes[0][0]);
+    }
+    if(p_out) {
+      dup2 (pipes[1][1], STDIN_FILENO);
+      close (pipes[1][1]);
+    }
+    if(r_in) {
+      FILE* myFile = fopen(holder.REDIRECT_IN, "r");
+      dup2(fileno(myFile), STDIN_FILENO);
+    }
+    if(r_out) {
+      FILE* myFile;
+      if(r_app) {
+        myFile = fopen(holder.REDIRECT_OUT, "a");
+      }
+      else {
+        myFile = fopen(holder.REDIRECT_OUT, "w");
+      }
+      dup2(fileno(myFile), STDIN_FILENO);
+    }
+  }
 
-  //parent_run_command(holder.cmd); // This should be done in the parent branch of
-                                  // a fork
-  //child_run_command(holder.cmd); // This should be done in the child branch of a fork
+  parent_run_command(holder.cmd);
+
 }
 
 // Run a list of commands
 void run_script(CommandHolder* holders) {
-  if (holders == NULL)
+  //pidQueue = new pidQueueStruct;
+
+  if(!isInitialized) {
+    //jobQueue = new jobQueueStruct;
+  }
+
+  if (holders == NULL) {
     return;
+  }
 
   check_jobs_bg_status();
 
-  if (get_command_holder_type(holders[0]) == EXIT &&
-      get_command_holder_type(holders[1]) == EOC) {
+  if (get_command_holder_type(holders[0]) == EXIT && get_command_holder_type(holders[1]) == EOC) {
     end_main_loop();
     return;
   }
@@ -342,20 +367,26 @@ void run_script(CommandHolder* holders) {
   CommandType type;
 
   // Run all commands in the `holder` array
-  for (int i = 0; (type = get_command_holder_type(holders[i])) != EOC; ++i)
+  for (int i = 0; (type = get_command_holder_type(holders[i])) != EOC; ++i) {
     create_process(holders[i]);
+  }
 
   if (!(holders[0].flags & BACKGROUND)) {
-    // Not a background Job
-    // TODO: Wait for all processes under the job to complete
-    IMPLEMENT_ME();
+    while(!is_empty_pidQueueStruct(&pidQueue)) {
+      int status;
+      pid_t pidCurrent = pop_front_pidQueueStruct(&pidQueue);
+      waitpid(pidCurrent, &status, 0);
+    }
+    destroy_pidQueueStruct(&pidQueue);
   }
   else {
-    // A background job.
-    // TODO: Push the new job to the job queue
-    IMPLEMENT_ME();
+    struct jobType newJob;
+    newJob.id = numJob;
+    numJob++;
+    newJob.cmd = get_command_string();
+    newJob.pid = peek_back_pidQueueStruct(&pidQueue);
 
-    // TODO: Once jobs are implemented, uncomment and fill the following line
-    // print_job_bg_start(job_id, pid, cmd);
+    push_back_jobQueueStruct(&jobQueue, newJob);
+    print_job_bg_start(newJob.id, newJob.pid, newJob.cmd);
   }
 }
