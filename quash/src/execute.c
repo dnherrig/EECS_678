@@ -57,17 +57,19 @@ jobQueueStruct jobQueue;
  * Interface Functions
  ***************************************************************************/
 
-// Return a string containing the current working directory.
+// Return a string containing the current working directory. *****
 char* get_current_directory(bool* should_free) {
   char* cwd[1024];
   // Change this to true if necessary
   *should_free = false;
   return getcwd(cwd, sizeof(cwd));
+  IMPLEMENT_ME();
 }
 
-// Returns the value of an environment variable env_var
+// Returns the value of an environment variable env_var *****
 const char* lookup_env(const char* env_var) {
   return getenv(env_var);
+  IMPLEMENT_ME();
 }
 
 // Check the status of background jobs
@@ -75,6 +77,54 @@ void check_jobs_bg_status() {
   // TODO: Check on the statuses of all processes belonging to all background
   // jobs. This function should remove jobs from the jobs queue once all
   // processes belonging to a job have completed.
+  //IMPLEMENT_ME();
+  int i =0;
+  int j =0;
+  int status;
+
+
+  while(i < length_jobQueueStruct(&jobQueue))
+  {
+    jobType current;
+    current = peek_front_jobQueueStruct(&jobQueue);
+
+    //pidLength = length_pidQueueStruct(&pid);
+
+  //  if (current.myQueue
+      while(j < length_pidQueueStruct(&current.myQueue))
+      {
+        // current.waitpid
+        pid_t current2 = peek_front_pidQueueStruct(&current.myQueue);
+        pid_t check = waitpid(current2, &status, 0);
+        if(check == -1)
+        {
+          //error
+        }
+        else if( current2 == check )
+        {
+          //done
+          pop_front_pidQueueStruct(&current.myQueue);
+        }
+        else
+        {
+          //leave alone
+        }
+        j++;
+      }
+
+    i++;
+  }
+
+
+  // while(i < length_jobQueueStruct(&jobQueue))
+  // {
+  //   struct jobType current = peek_front_jobQueueStruct(&jobQueue);
+  //   print_job(current.id, current.pid, current.cmd);
+  // }
+  //printf("CHECK JOBS STATUS FLAG\n");
+
+
+
   IMPLEMENT_ME();
 
   // TODO: Once jobs are implemented, uncomment and fill the following line
@@ -104,41 +154,45 @@ void print_job_bg_complete(int job_id, pid_t pid, const char* cmd) {
  * Functions to process commands
  ***************************************************************************/
 // Run a program reachable by the path environment variable, relative path, or
-// absolute path
+// absolute path *****
 void run_generic(GenericCommand cmd) {
   char* exec = cmd.args[0];
   char** args = cmd.args;
   execvp(exec, args);
-  fprintf(stderr, "ERROR: Failed to execute the program: %s", exec);
+  //fprintf(stderr, "ERROR: Failed to execute the program: %s", exec);
   exit(EXIT_FAILURE);
   //perror("ERROR: Failed to execute program");
+  IMPLEMENT_ME();
 }
 
-// Print strings
+// Print strings *****
 void run_echo(EchoCommand cmd) {
   char** str = cmd.args;
 
+  //printf("ECHO CHECK\n");
   while(*str != '\0') {
     printf("%s ", *str);
     ++str;
   }
   printf("\n");
+  IMPLEMENT_ME();
   fflush(stdout);
 }
 
-// Sets an environment variable
+// Sets an environment variable *****
 void run_export(ExportCommand cmd) {
   // Write an environment variable
   const char* env_var = cmd.env_var;
   const char* val = cmd.val;
 
   if(setenv(env_var, val, 1) == -1) {
-    fprintf(stderr, "ERROR: Failed to update environment variable, %s, to value, %s\n", env_var, val);
+    //fprintf(stderr, "ERROR: Failed to update environment variable, %s, to value, %s\n", env_var, val);
     exit(EXIT_FAILURE);
   }
+  IMPLEMENT_ME();
 }
 
-// Changes the current working directory
+// Changes the current working directory *****
 void run_cd(CDCommand cmd) {
   const char* dir = cmd.dir;
 
@@ -150,19 +204,20 @@ void run_cd(CDCommand cmd) {
   char* cwd = get_current_directory(NULL);
   setenv("PREV_PWD", cwd, 1);
   if(chdir(dir) == -1) {
-    fprintf("ERROR: Failed to go to directory, %s\n", dir);
+  //  fprintf("ERROR: Failed to go to directory, %s\n", dir);
     exit(EXIT_FAILURE);
   }
   free(cwd);
   cwd = get_current_directory(NULL);
   if(setenv("PWD", cwd, 1) == -1) {
-    fprintf("ERROR: Failed to update PWD variable, %s\n", cwd);
+    //fprintf("ERROR: Failed to update PWD variable, %s\n", cwd);
     exit(EXIT_FAILURE);
   }
+  IMPLEMENT_ME();
   free(cwd);
 }
 
-// Sends a signal to all processes contained in a job
+// Sends a signal to all processes contained in a job *****
 void run_kill(KillCommand cmd) {
   int signal = cmd.sig;
   int job_id = cmd.job;
@@ -171,6 +226,7 @@ void run_kill(KillCommand cmd) {
   /*for(int i = 0; i < length; i++) {
 
   }*/
+  IMPLEMENT_ME();
 
 }
 
@@ -179,6 +235,7 @@ void run_kill(KillCommand cmd) {
 void run_pwd() {
   // TODO: Print the current working directory
   IMPLEMENT_ME();
+
 
   // Flush the buffer before returning
   fflush(stdout);
@@ -296,20 +353,29 @@ void parent_run_command(Command cmd) {
  * @sa Command CommandHolder
  */
 void create_process(CommandHolder holder) {
-  // Read the flags field from the parser
+  // Read the flags field from the parser *****
+  //printf("CHECK CREATE PROCESS 1\n");
   bool p_in  = holder.flags & PIPE_IN;
   bool p_out = holder.flags & PIPE_OUT;
   bool r_in  = holder.flags & REDIRECT_IN;
   bool r_out = holder.flags & REDIRECT_OUT;
   bool r_app = holder.flags & REDIRECT_APPEND;
 
+  IMPLEMENT_ME();
+  //printf("CHECK CREATE PROCESS 2\n");
+
   if(p_out) {
     pipe(pipes[1]);
   }
+  //printf("CHECK CREATE PROCESS 3\n");
 
   pid_t pid = fork();
 
+  //printf("CHECK CREATE PROCESS 4\n");
+
   push_back_pidQueueStruct(&pidQueue, pid);
+
+  //printf("CHECK CREATE PROCESS 5\n");
 
   if(pid != 0) {
     if(p_out) {
@@ -322,35 +388,35 @@ void create_process(CommandHolder holder) {
       close (pipes[0][0]);
     }
     if(p_out) {
-      dup2 (pipes[1][1], STDIN_FILENO);
+      dup2 (pipes[1][1], STDOUT_FILENO);
       close (pipes[1][1]);
     }
     if(r_in) {
-      FILE* myFile = fopen(holder.REDIRECT_IN, "r");
+      FILE* myFile = fopen(holder.redirect_in, "r");
       dup2(fileno(myFile), STDIN_FILENO);
     }
     if(r_out) {
       FILE* myFile;
       if(r_app) {
-        myFile = fopen(holder.REDIRECT_OUT, "a");
+        myFile = fopen(holder.redirect_out, "a");
       }
       else {
-        myFile = fopen(holder.REDIRECT_OUT, "w");
+        myFile = fopen(holder.redirect_out, "w");
       }
-      dup2(fileno(myFile), STDIN_FILENO);
+      dup2(fileno(myFile), STDOUT_FILENO);
     }
+    child_run_command(holder.cmd);
   }
-
+  //printf("CHECK CREATE PROCESS 6\n");
   parent_run_command(holder.cmd);
-
 }
 
-// Run a list of commands
+// Run a list of commands *****jobQueue
 void run_script(CommandHolder* holders) {
-  //pidQueue = new pidQueueStruct;
+  pidQueue = new_pidQueueStruct(1);
 
   if(!isInitialized) {
-    //jobQueue = new jobQueueStruct;
+    jobQueue = new_jobQueueStruct(1);
   }
 
   if (holders == NULL) {
@@ -364,28 +430,42 @@ void run_script(CommandHolder* holders) {
     return;
   }
 
+  //printf("CHECK 1\n");
+
   CommandType type;
+
+  //printf("CHECK 2\n");
 
   // Run all commands in the `holder` array
   for (int i = 0; (type = get_command_holder_type(holders[i])) != EOC; ++i) {
     create_process(holders[i]);
   }
 
+  //printf("CHECK 3\n");
+
   if (!(holders[0].flags & BACKGROUND)) {
+    //printf("CHECK 4\n");
     while(!is_empty_pidQueueStruct(&pidQueue)) {
+      //printf("CHECK 5\n");
       int status;
       pid_t pidCurrent = pop_front_pidQueueStruct(&pidQueue);
       waitpid(pidCurrent, &status, 0);
+      //printf("CHECK 6\n");
     }
+    //printf("CHECK 7\n");
     destroy_pidQueueStruct(&pidQueue);
+    IMPLEMENT_ME();
   }
   else {
+  //  printf("CHECK 8\n");
     struct jobType newJob;
     newJob.id = numJob;
     numJob++;
     newJob.cmd = get_command_string();
     newJob.pid = peek_back_pidQueueStruct(&pidQueue);
 
+    IMPLEMENT_ME();
+    //printf("CHECK 9\n");
     push_back_jobQueueStruct(&jobQueue, newJob);
     print_job_bg_start(newJob.id, newJob.pid, newJob.cmd);
   }

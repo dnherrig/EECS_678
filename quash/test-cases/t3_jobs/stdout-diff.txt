@@ -1,13 +1,17 @@
-0a1,12
+1,2c1,4
+< Background job started: [0]	#PID#	delayed_echo Hello World 1 & 
+< Background job started: [1]	#PID#	sleep 1 & 
+---
 > Background job started: [1]	#PID#	delayed_echo Hello World 1 & 
 > Background job started: [2]	#PID#	sleep 1 & 
 > [1]	#PID#	delayed_echo Hello World 1 & 
 > [2]	#PID#	sleep 1 & 
-> Hello World
+4,8c6,7
+< dir1
+< dir2
+< dir3
+< lorem_ipsum.txt
+< valgrind_expected.txt
+---
 > Completed: 	[1]	#PID#	delayed_echo Hello World 1 & 
 > Completed: 	[2]	#PID#	sleep 1 & 
-> dir1
-> dir2
-> dir3
-> lorem_ipsum.txt
-> valgrind_expected.txt

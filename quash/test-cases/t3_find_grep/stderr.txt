@@ -1,18 +1,26 @@
-==11471== Memcheck, a memory error detector
-==11471== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==11471== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==11471== Command: /home/j234g594/EECS678/quash/quash
-==11471== 
-IMPLEMENT ME: src/execute.c(line 72): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 309): create_process()
-IMPLEMENT ME: src/execute.c(line 309): create_process()
-IMPLEMENT ME: src/execute.c(line 339): run_script()
-==11471== 
-==11471== HEAP SUMMARY:
-==11471==     in use at exit: 0 bytes in 0 blocks
-==11471==   total heap usage: 9 allocs, 9 frees, 1,068,450 bytes allocated
-==11471== 
-==11471== All heap blocks were freed -- no leaks are possible
-==11471== 
-==11471== For counts of detected and suppressed errors, rerun with: -v
-==11471== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==21634== Memcheck, a memory error detector
+==21634== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==21634== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==21634== Command: /home/d643h874/EECS678/EECS_678/quash/quash
+==21634== 
+IMPLEMENT ME: src/execute.c(line 128): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 364): create_process()
+IMPLEMENT ME: src/execute.c(line 364): create_process()
+grep: (standard input): Bad file descriptor
+IMPLEMENT ME: src/execute.c(line 457): run_script()
+==21634== 
+==21634== HEAP SUMMARY:
+==21634==     in use at exit: 64 bytes in 1 blocks
+==21634==   total heap usage: 13 allocs, 12 frees, 1,068,542 bytes allocated
+==21634== 
+==21634== LEAK SUMMARY:
+==21634==    definitely lost: 0 bytes in 0 blocks
+==21634==    indirectly lost: 0 bytes in 0 blocks
+==21634==      possibly lost: 0 bytes in 0 blocks
+==21634==    still reachable: 64 bytes in 1 blocks
+==21634==         suppressed: 0 bytes in 0 blocks
+==21634== Reachable blocks (those to which a pointer was found) are not shown.
+==21634== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==21634== 
+==21634== For counts of detected and suppressed errors, rerun with: -v
+==21634== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
