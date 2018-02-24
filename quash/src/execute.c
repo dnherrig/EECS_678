@@ -92,8 +92,9 @@ void check_jobs_bg_status() {
 
         pid_t current2 = peek_front_pidQueueStruct(&current.myQueue);
         pid_t check = waitpid(current2, &status, 0);
-
-        if(check == -1) {
+        if(check == -1)
+        {
+          exit(EXIT_FAILURE);
           //error
         }
         else if( current2 == check ) {
@@ -168,8 +169,15 @@ void run_export(ExportCommand cmd) {
   const char* env_var = cmd.env_var;
   const char* val = cmd.val;
 
-  if(setenv(env_var, val, 1) == -1) {
-    //fprintf(stderr, "ERROR: Failed to update environment variable, %s, to value, %s\n", env_var, val);
+  // TODO: Remove warning silencers
+  // (void) env_var; // Silence unused variable warning
+  // (void) val;     // Silence unused variable warning
+
+  // TODO: Implement export.
+  // HINT: This should be quite simple.
+
+  if(setenv(env_var, val, 1)) {
+    fprintf(stderr, "ERROR: Failed to update environment variable, %s, to value, %s\n", env_var, val);
     exit(EXIT_FAILURE);
   }
   IMPLEMENT_ME();
@@ -203,25 +211,30 @@ void run_kill(KillCommand cmd) {
   int signal = cmd.sig;
   int job_id = cmd.job;
 
-  struct jobType myJob;
-  /*for(int i = 0; i < length; i++) {
+  // TODO: Remove warning silencers
+  (void) signal; // Silence unused variable warning
+  (void) job_id; // Silence unused variable warning
 
-  }*/
+  // TODO: Kill all processes associated with a background job
   IMPLEMENT_ME();
 
-}
+  // struct jobType myJob;
+  // /*for(int i = 0; i < length; i++) {
+  //
+  // }*/
 
+}
 
 // Prints the current working directory to stdout
 void run_pwd() {
   // TODO: Print the current working directory
-  //IMPLEMENT_ME();
-  bool should_free = false;
-  char* cwd = get_current_directory(&should_free);
-  fprintf(stdout, "%s\n", cwd);
-  //if(should_free) {
-    free(cwd);
-  //}
+  //printf("check\n" );
+    char currentWorkingDirectory[1024];
+     if (getcwd(currentWorkingDirectory, sizeof(currentWorkingDirectory)) != NULL)
+         fprintf(stdout, "%s\n", currentWorkingDirectory);
+     else
+         printf("pwd error");
+  // IMPLEMENT_ME();
   // Flush the buffer before returning
   fflush(stdout);
 }
@@ -459,10 +472,6 @@ void run_script(CommandHolder* holders) {
     //IMPLEMENT_ME();
   }
   else {
-    //  printf("CHECK 8\n");
-    //struct jobType newJob;
-    //IMPLEMENT_ME();
-    //printf("CHECK 9\n");
     print_job_bg_start(newJob.id, newJob.pid, newJob.cmd);
   }
 }

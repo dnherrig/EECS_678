@@ -1,929 +1,929 @@
-==11563== Memcheck, a memory error detector
-==11563== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==11563== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==11563== Command: /home/j234g594/EECS_678/quash/quash
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E87B83: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Use of uninitialised value of size 8
-==11563==    at 0x4E8476B: _itoa_word (_itoa.c:179)
-==11563==    by 0x4E8812C: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E84775: _itoa_word (_itoa.c:179)
-==11563==    by 0x4E8812C: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E881AF: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E87C59: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E8841A: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EA8F9A: _IO_padn (iopadn.c:54)
-==11563==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EA8FDA: _IO_padn (iopadn.c:62)
-==11563==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB31E5: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1286)
-==11563==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
-==11563==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FA3: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
-==11563==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FCB: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
-==11563==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Use of uninitialised value of size 8
-==11563==    at 0x4C35030: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
-==11563==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Use of uninitialised value of size 8
-==11563==    at 0x4C35035: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
-==11563==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C35040: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
-==11563==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Use of uninitialised value of size 8
-==11563==    at 0x4C35040: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
-==11563==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB3255: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1327)
-==11563==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
-==11563==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E88460: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E88490: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E87CAB: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E87CE2: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E87DD1: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB321F: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1310)
-==11563==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB322A: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1314)
-==11563==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FA3: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FB3: is_overlap (vg_replace_strmem.c:137)
-==11563==    by 0x4C34FB3: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FBD: is_overlap (vg_replace_strmem.c:140)
-==11563==    by 0x4C34FBD: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FCB: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C35018: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C35070: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Use of uninitialised value of size 8
-==11563==    at 0x4C3507C: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C35086: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB3255: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1327)
-==11563==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E87E11: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E87E2B: vfprintf (vfprintf.c:1631)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E87903: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB321F: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1310)
-==11563==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB322A: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1314)
-==11563==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FA3: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FB3: is_overlap (vg_replace_strmem.c:137)
-==11563==    by 0x4C34FB3: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FCB: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C35018: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Use of uninitialised value of size 8
-==11563==    at 0x4C35030: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Use of uninitialised value of size 8
-==11563==    at 0x4C35035: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C35040: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB3255: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1327)
-==11563==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E87944: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E8795B: vfprintf (vfprintf.c:1663)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E884EB: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB321F: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1310)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB322A: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1314)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FA3: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FB3: is_overlap (vg_replace_strmem.c:137)
-==11563==    by 0x4C34FB3: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FCB: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C35018: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Use of uninitialised value of size 8
-==11563==    at 0x4C35030: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Use of uninitialised value of size 8
-==11563==    at 0x4C35035: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C35040: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Use of uninitialised value of size 8
-==11563==    at 0x4C35040: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB3255: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1327)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E8851C: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4E88536: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB237F: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:873)
-==11563==    by 0x4EA781E: fflush (iofflush.c:40)
-==11563==    by 0x403B03: print_job (execute.c:121)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB4395: _IO_do_write@@GLIBC_2.2.5 (fileops.c:494)
-==11563==    by 0x4EB23FF: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:874)
-==11563==    by 0x4EA781E: fflush (iofflush.c:40)
-==11563==    by 0x403B03: print_job (execute.c:121)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB2B7E: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1258)
-==11563==    by 0x4EB4408: new_do_write (fileops.c:518)
-==11563==    by 0x4EB4408: _IO_do_write@@GLIBC_2.2.5 (fileops.c:494)
-==11563==    by 0x4EB23FF: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:874)
-==11563==    by 0x4EA781E: fflush (iofflush.c:40)
-==11563==    by 0x403B03: print_job (execute.c:121)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Syscall param write(count) contains uninitialised byte(s)
-==11563==    at 0x4F312C0: __write_nocancel (syscall-template.S:84)
-==11563==    by 0x4EB2BFE: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1263)
-==11563==    by 0x4EB4408: new_do_write (fileops.c:518)
-==11563==    by 0x4EB4408: _IO_do_write@@GLIBC_2.2.5 (fileops.c:494)
-==11563==    by 0x4EB23FF: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:874)
-==11563==    by 0x4EA781E: fflush (iofflush.c:40)
-==11563==    by 0x403B03: print_job (execute.c:121)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB2C0D: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1258)
-==11563==    by 0x4EB4408: new_do_write (fileops.c:518)
-==11563==    by 0x4EB4408: _IO_do_write@@GLIBC_2.2.5 (fileops.c:494)
-==11563==    by 0x4EB23FF: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:874)
-==11563==    by 0x4EA781E: fflush (iofflush.c:40)
-==11563==    by 0x403B03: print_job (execute.c:121)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB4416: new_do_write (fileops.c:519)
-==11563==    by 0x4EB4416: _IO_do_write@@GLIBC_2.2.5 (fileops.c:494)
-==11563==    by 0x4EB23FF: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:874)
-==11563==    by 0x4EA781E: fflush (iofflush.c:40)
-==11563==    by 0x403B03: print_job (execute.c:121)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4EB23AD: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:874)
-==11563==    by 0x4EA781E: fflush (iofflush.c:40)
-==11563==    by 0x403B03: print_job (execute.c:121)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C34FBD: is_overlap (vg_replace_strmem.c:140)
-==11563==    by 0x4C34FBD: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C35070: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Use of uninitialised value of size 8
-==11563==    at 0x4C3507C: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11563== Conditional jump or move depends on uninitialised value(s)
-==11563==    at 0x4C35086: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11563==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11563==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11563==    by 0x4E8F898: printf (printf.c:33)
-==11563==    by 0x403AF4: print_job (execute.c:120)
-==11563==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11563==    by 0x404421: run_script (execute.c:466)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563==  Uninitialised value was created by a stack allocation
-==11563==    at 0x404152: run_script (execute.c:410)
-==11563== 
-==11703== Conditional jump or move depends on uninitialised value(s)
-==11703==    at 0x4C34FBD: is_overlap (vg_replace_strmem.c:140)
-==11703==    by 0x4C34FBD: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11703==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11703==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11703==    by 0x4E8F898: printf (printf.c:33)
-==11703==    by 0x403AF4: print_job (execute.c:120)
-==11703==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11703==    by 0x404421: run_script (execute.c:466)
-==11703==    by 0x4014E0: main (quash.c:132)
-==11703==  Uninitialised value was created by a stack allocation
-==11703==    at 0x404152: run_script (execute.c:410)
-==11703== 
-==11703== Conditional jump or move depends on uninitialised value(s)
-==11703==    at 0x4C35070: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11703==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11703==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11703==    by 0x4E8F898: printf (printf.c:33)
-==11703==    by 0x403AF4: print_job (execute.c:120)
-==11703==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11703==    by 0x404421: run_script (execute.c:466)
-==11703==    by 0x4014E0: main (quash.c:132)
-==11703==  Uninitialised value was created by a stack allocation
-==11703==    at 0x404152: run_script (execute.c:410)
-==11703== 
-==11703== Use of uninitialised value of size 8
-==11703==    at 0x4C3507C: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11703==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11703==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11703==    by 0x4E8F898: printf (printf.c:33)
-==11703==    by 0x403AF4: print_job (execute.c:120)
-==11703==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11703==    by 0x404421: run_script (execute.c:466)
-==11703==    by 0x4014E0: main (quash.c:132)
-==11703==  Uninitialised value was created by a stack allocation
-==11703==    at 0x404152: run_script (execute.c:410)
-==11703== 
-==11703== Conditional jump or move depends on uninitialised value(s)
-==11703==    at 0x4C35086: __GI_mempcpy (vg_replace_strmem.c:1508)
-==11703==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
-==11703==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
-==11703==    by 0x4E8F898: printf (printf.c:33)
-==11703==    by 0x403AF4: print_job (execute.c:120)
-==11703==    by 0x403B3A: print_job_bg_start (execute.c:127)
-==11703==    by 0x404421: run_script (execute.c:466)
-==11703==    by 0x4014E0: main (quash.c:132)
-==11703==  Uninitialised value was created by a stack allocation
-==11703==    at 0x404152: run_script (execute.c:410)
-==11703== 
-==11703== 
-==11703== HEAP SUMMARY:
-==11703==     in use at exit: 588 bytes in 8 blocks
-==11703==   total heap usage: 57 allocs, 49 frees, 2,132,786 bytes allocated
-==11703== 
-==11563== 
-==11563== HEAP SUMMARY:
-==11563==     in use at exit: 588 bytes in 8 blocks
-==11563==   total heap usage: 57 allocs, 49 frees, 2,132,786 bytes allocated
-==11563== 
-==11703== 16 bytes in 2 blocks are definitely lost in loss record 1 of 3
-==11703==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==11703==    by 0x401EE1: __on_push_pidQueueStruct (execute.c:33)
-==11703==    by 0x4020F1: push_back_pidQueueStruct (execute.c:33)
-==11703==    by 0x404035: create_process (execute.c:371)
-==11703==    by 0x404369: run_script (execute.c:443)
-==11703==    by 0x4014E0: main (quash.c:132)
-==11703== 
-==11703== LEAK SUMMARY:
-==11703==    definitely lost: 16 bytes in 2 blocks
-==11703==    indirectly lost: 0 bytes in 0 blocks
-==11703==      possibly lost: 0 bytes in 0 blocks
-==11703==    still reachable: 572 bytes in 6 blocks
-==11703==         suppressed: 0 bytes in 0 blocks
-==11703== Reachable blocks (those to which a pointer was found) are not shown.
-==11703== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==11703== 
-==11703== For counts of detected and suppressed errors, rerun with: -v
-==11703== ERROR SUMMARY: 286 errors from 73 contexts (suppressed: 0 from 0)
-==11563== 16 bytes in 2 blocks are definitely lost in loss record 1 of 3
-==11563==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==11563==    by 0x401EE1: __on_push_pidQueueStruct (execute.c:33)
-==11563==    by 0x4020F1: push_back_pidQueueStruct (execute.c:33)
-==11563==    by 0x404035: create_process (execute.c:371)
-==11563==    by 0x404369: run_script (execute.c:443)
-==11563==    by 0x4014E0: main (quash.c:132)
-==11563== 
-==11563== LEAK SUMMARY:
-==11563==    definitely lost: 16 bytes in 2 blocks
-==11563==    indirectly lost: 0 bytes in 0 blocks
-==11563==      possibly lost: 0 bytes in 0 blocks
-==11563==    still reachable: 572 bytes in 6 blocks
-==11563==         suppressed: 0 bytes in 0 blocks
-==11563== Reachable blocks (those to which a pointer was found) are not shown.
-==11563== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==11563== 
-==11563== For counts of detected and suppressed errors, rerun with: -v
-==11563== ERROR SUMMARY: 286 errors from 73 contexts (suppressed: 0 from 0)
+==13216== Memcheck, a memory error detector
+==13216== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==13216== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==13216== Command: /home/j234g594/EECS_678/quash/quash
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E87B83: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Use of uninitialised value of size 8
+==13216==    at 0x4E8476B: _itoa_word (_itoa.c:179)
+==13216==    by 0x4E8812C: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E84775: _itoa_word (_itoa.c:179)
+==13216==    by 0x4E8812C: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E881AF: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E87C59: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E8841A: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EA8F9A: _IO_padn (iopadn.c:54)
+==13216==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EA8FDA: _IO_padn (iopadn.c:62)
+==13216==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB31E5: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1286)
+==13216==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
+==13216==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FA3: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
+==13216==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FCB: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
+==13216==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Use of uninitialised value of size 8
+==13216==    at 0x4C35030: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
+==13216==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Use of uninitialised value of size 8
+==13216==    at 0x4C35035: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
+==13216==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C35040: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
+==13216==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Use of uninitialised value of size 8
+==13216==    at 0x4C35040: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
+==13216==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB3255: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1327)
+==13216==    by 0x4EA8FEF: _IO_padn (iopadn.c:64)
+==13216==    by 0x4E8844E: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E88460: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E88490: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E87CAB: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E87CE2: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E87DD1: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB321F: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1310)
+==13216==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB322A: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1314)
+==13216==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FA3: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FB3: is_overlap (vg_replace_strmem.c:137)
+==13216==    by 0x4C34FB3: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FBD: is_overlap (vg_replace_strmem.c:140)
+==13216==    by 0x4C34FBD: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FCB: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C35018: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C35070: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Use of uninitialised value of size 8
+==13216==    at 0x4C3507C: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C35086: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB3255: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1327)
+==13216==    by 0x4E87DFF: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E87E11: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E87E2B: vfprintf (vfprintf.c:1631)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E87903: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB321F: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1310)
+==13216==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB322A: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1314)
+==13216==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FA3: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FB3: is_overlap (vg_replace_strmem.c:137)
+==13216==    by 0x4C34FB3: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FCB: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C35018: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Use of uninitialised value of size 8
+==13216==    at 0x4C35030: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Use of uninitialised value of size 8
+==13216==    at 0x4C35035: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C35040: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB3255: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1327)
+==13216==    by 0x4E8792C: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E87944: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E8795B: vfprintf (vfprintf.c:1663)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E884EB: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB321F: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1310)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB322A: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1314)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FA3: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FB3: is_overlap (vg_replace_strmem.c:137)
+==13216==    by 0x4C34FB3: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FCB: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C35018: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Use of uninitialised value of size 8
+==13216==    at 0x4C35030: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Use of uninitialised value of size 8
+==13216==    at 0x4C35035: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C35040: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Use of uninitialised value of size 8
+==13216==    at 0x4C35040: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB3255: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1327)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E8851C: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4E88536: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB237F: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:873)
+==13216==    by 0x4EA781E: fflush (iofflush.c:40)
+==13216==    by 0x403B0D: print_job (execute.c:122)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB4395: _IO_do_write@@GLIBC_2.2.5 (fileops.c:494)
+==13216==    by 0x4EB23FF: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:874)
+==13216==    by 0x4EA781E: fflush (iofflush.c:40)
+==13216==    by 0x403B0D: print_job (execute.c:122)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB2B7E: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1258)
+==13216==    by 0x4EB4408: new_do_write (fileops.c:518)
+==13216==    by 0x4EB4408: _IO_do_write@@GLIBC_2.2.5 (fileops.c:494)
+==13216==    by 0x4EB23FF: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:874)
+==13216==    by 0x4EA781E: fflush (iofflush.c:40)
+==13216==    by 0x403B0D: print_job (execute.c:122)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Syscall param write(count) contains uninitialised byte(s)
+==13216==    at 0x4F312C0: __write_nocancel (syscall-template.S:84)
+==13216==    by 0x4EB2BFE: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1263)
+==13216==    by 0x4EB4408: new_do_write (fileops.c:518)
+==13216==    by 0x4EB4408: _IO_do_write@@GLIBC_2.2.5 (fileops.c:494)
+==13216==    by 0x4EB23FF: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:874)
+==13216==    by 0x4EA781E: fflush (iofflush.c:40)
+==13216==    by 0x403B0D: print_job (execute.c:122)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB2C0D: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1258)
+==13216==    by 0x4EB4408: new_do_write (fileops.c:518)
+==13216==    by 0x4EB4408: _IO_do_write@@GLIBC_2.2.5 (fileops.c:494)
+==13216==    by 0x4EB23FF: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:874)
+==13216==    by 0x4EA781E: fflush (iofflush.c:40)
+==13216==    by 0x403B0D: print_job (execute.c:122)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB4416: new_do_write (fileops.c:519)
+==13216==    by 0x4EB4416: _IO_do_write@@GLIBC_2.2.5 (fileops.c:494)
+==13216==    by 0x4EB23FF: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:874)
+==13216==    by 0x4EA781E: fflush (iofflush.c:40)
+==13216==    by 0x403B0D: print_job (execute.c:122)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4EB23AD: _IO_file_sync@@GLIBC_2.2.5 (fileops.c:874)
+==13216==    by 0x4EA781E: fflush (iofflush.c:40)
+==13216==    by 0x403B0D: print_job (execute.c:122)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C34FBD: is_overlap (vg_replace_strmem.c:140)
+==13216==    by 0x4C34FBD: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C35070: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Use of uninitialised value of size 8
+==13216==    at 0x4C3507C: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13216== Conditional jump or move depends on uninitialised value(s)
+==13216==    at 0x4C35086: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13216==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13216==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13216==    by 0x4E8F898: printf (printf.c:33)
+==13216==    by 0x403AFE: print_job (execute.c:121)
+==13216==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13216==    by 0x40445B: run_script (execute.c:475)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216==  Uninitialised value was created by a stack allocation
+==13216==    at 0x40418C: run_script (execute.c:423)
+==13216== 
+==13377== Conditional jump or move depends on uninitialised value(s)
+==13377==    at 0x4C34FBD: is_overlap (vg_replace_strmem.c:140)
+==13377==    by 0x4C34FBD: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13377==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13377==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13377==    by 0x4E8F898: printf (printf.c:33)
+==13377==    by 0x403AFE: print_job (execute.c:121)
+==13377==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13377==    by 0x40445B: run_script (execute.c:475)
+==13377==    by 0x4014E0: main (quash.c:132)
+==13377==  Uninitialised value was created by a stack allocation
+==13377==    at 0x40418C: run_script (execute.c:423)
+==13377== 
+==13377== Conditional jump or move depends on uninitialised value(s)
+==13377==    at 0x4C35070: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13377==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13377==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13377==    by 0x4E8F898: printf (printf.c:33)
+==13377==    by 0x403AFE: print_job (execute.c:121)
+==13377==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13377==    by 0x40445B: run_script (execute.c:475)
+==13377==    by 0x4014E0: main (quash.c:132)
+==13377==  Uninitialised value was created by a stack allocation
+==13377==    at 0x40418C: run_script (execute.c:423)
+==13377== 
+==13377== Use of uninitialised value of size 8
+==13377==    at 0x4C3507C: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13377==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13377==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13377==    by 0x4E8F898: printf (printf.c:33)
+==13377==    by 0x403AFE: print_job (execute.c:121)
+==13377==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13377==    by 0x40445B: run_script (execute.c:475)
+==13377==    by 0x4014E0: main (quash.c:132)
+==13377==  Uninitialised value was created by a stack allocation
+==13377==    at 0x40418C: run_script (execute.c:423)
+==13377== 
+==13377== Conditional jump or move depends on uninitialised value(s)
+==13377==    at 0x4C35086: __GI_mempcpy (vg_replace_strmem.c:1508)
+==13377==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==13377==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==13377==    by 0x4E8F898: printf (printf.c:33)
+==13377==    by 0x403AFE: print_job (execute.c:121)
+==13377==    by 0x403B44: print_job_bg_start (execute.c:128)
+==13377==    by 0x40445B: run_script (execute.c:475)
+==13377==    by 0x4014E0: main (quash.c:132)
+==13377==  Uninitialised value was created by a stack allocation
+==13377==    at 0x40418C: run_script (execute.c:423)
+==13377== 
+==13377== 
+==13377== HEAP SUMMARY:
+==13377==     in use at exit: 588 bytes in 8 blocks
+==13377==   total heap usage: 57 allocs, 49 frees, 2,132,786 bytes allocated
+==13377== 
+==13377== 16 bytes in 2 blocks are definitely lost in loss record 1 of 3
+==13377==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==13377==    by 0x401EE1: __on_push_pidQueueStruct (execute.c:33)
+==13377==    by 0x4020F1: push_back_pidQueueStruct (execute.c:33)
+==13377==    by 0x40406F: create_process (execute.c:384)
+==13377==    by 0x4043A3: run_script (execute.c:456)
+==13377==    by 0x4014E0: main (quash.c:132)
+==13377== 
+==13377== LEAK SUMMARY:
+==13377==    definitely lost: 16 bytes in 2 blocks
+==13377==    indirectly lost: 0 bytes in 0 blocks
+==13377==      possibly lost: 0 bytes in 0 blocks
+==13377==    still reachable: 572 bytes in 6 blocks
+==13377==         suppressed: 0 bytes in 0 blocks
+==13377== Reachable blocks (those to which a pointer was found) are not shown.
+==13377== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==13377== 
+==13377== For counts of detected and suppressed errors, rerun with: -v
+==13377== ERROR SUMMARY: 286 errors from 73 contexts (suppressed: 0 from 0)
+==13216== 
+==13216== HEAP SUMMARY:
+==13216==     in use at exit: 588 bytes in 8 blocks
+==13216==   total heap usage: 57 allocs, 49 frees, 2,132,786 bytes allocated
+==13216== 
+==13216== 16 bytes in 2 blocks are definitely lost in loss record 1 of 3
+==13216==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==13216==    by 0x401EE1: __on_push_pidQueueStruct (execute.c:33)
+==13216==    by 0x4020F1: push_back_pidQueueStruct (execute.c:33)
+==13216==    by 0x40406F: create_process (execute.c:384)
+==13216==    by 0x4043A3: run_script (execute.c:456)
+==13216==    by 0x4014E0: main (quash.c:132)
+==13216== 
+==13216== LEAK SUMMARY:
+==13216==    definitely lost: 16 bytes in 2 blocks
+==13216==    indirectly lost: 0 bytes in 0 blocks
+==13216==      possibly lost: 0 bytes in 0 blocks
+==13216==    still reachable: 572 bytes in 6 blocks
+==13216==         suppressed: 0 bytes in 0 blocks
+==13216== Reachable blocks (those to which a pointer was found) are not shown.
+==13216== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==13216== 
+==13216== For counts of detected and suppressed errors, rerun with: -v
+==13216== ERROR SUMMARY: 286 errors from 73 contexts (suppressed: 0 from 0)

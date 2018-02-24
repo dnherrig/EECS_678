@@ -1,147 +1,147 @@
-==11546== Memcheck, a memory error detector
-==11546== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==11546== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==11546== Command: /home/j234g594/EECS_678/quash/quash
-==11546== 
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-==11716== 
-==11716== HEAP SUMMARY:
-==11716==     in use at exit: 741 bytes in 8 blocks
-==11716==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
-==11716== 
-==11716== LEAK SUMMARY:
-==11716==    definitely lost: 0 bytes in 0 blocks
-==11716==    indirectly lost: 0 bytes in 0 blocks
-==11716==      possibly lost: 0 bytes in 0 blocks
-==11716==    still reachable: 741 bytes in 8 blocks
-==11716==         suppressed: 0 bytes in 0 blocks
-==11716== Reachable blocks (those to which a pointer was found) are not shown.
-==11716== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==11716== 
-==11716== For counts of detected and suppressed errors, rerun with: -v
-==11716== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==11700== 
-==11700== HEAP SUMMARY:
-==11700==     in use at exit: 741 bytes in 8 blocks
-==11700==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
-==11700== 
-==11700== LEAK SUMMARY:
-==11700==    definitely lost: 0 bytes in 0 blocks
-==11700==    indirectly lost: 0 bytes in 0 blocks
-==11700==      possibly lost: 0 bytes in 0 blocks
-==11700==    still reachable: 741 bytes in 8 blocks
-==11700==         suppressed: 0 bytes in 0 blocks
-==11700== Reachable blocks (those to which a pointer was found) are not shown.
-==11700== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==11700== 
-==11700== For counts of detected and suppressed errors, rerun with: -v
-==11700== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-==11972== 
-==11972== HEAP SUMMARY:
-==11972==     in use at exit: 741 bytes in 8 blocks
-==11972==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
-==11972== 
-==11972== LEAK SUMMARY:
-==11972==    definitely lost: 0 bytes in 0 blocks
-==11972==    indirectly lost: 0 bytes in 0 blocks
-==11972==      possibly lost: 0 bytes in 0 blocks
-==11972==    still reachable: 741 bytes in 8 blocks
-==11972==         suppressed: 0 bytes in 0 blocks
-==11972== Reachable blocks (those to which a pointer was found) are not shown.
-==11972== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==11972== 
-==11972== For counts of detected and suppressed errors, rerun with: -v
-==11972== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==11675== 
-==11675== HEAP SUMMARY:
-==11675==     in use at exit: 741 bytes in 8 blocks
-==11675==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
-==11675== 
-==11675== LEAK SUMMARY:
-==11675==    definitely lost: 0 bytes in 0 blocks
-==11675==    indirectly lost: 0 bytes in 0 blocks
-==11675==      possibly lost: 0 bytes in 0 blocks
-==11675==    still reachable: 741 bytes in 8 blocks
-==11675==         suppressed: 0 bytes in 0 blocks
-==11675== Reachable blocks (those to which a pointer was found) are not shown.
-==11675== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==11675== 
-==11675== For counts of detected and suppressed errors, rerun with: -v
-==11675== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-==12109== 
-==12109== HEAP SUMMARY:
-==12109==     in use at exit: 741 bytes in 8 blocks
-==12109==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
-==12109== 
-==12109== LEAK SUMMARY:
-==12109==    definitely lost: 0 bytes in 0 blocks
-==12109==    indirectly lost: 0 bytes in 0 blocks
-==12109==      possibly lost: 0 bytes in 0 blocks
-==12109==    still reachable: 741 bytes in 8 blocks
-==12109==         suppressed: 0 bytes in 0 blocks
-==12109== Reachable blocks (those to which a pointer was found) are not shown.
-==12109== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==12109== 
-==12109== For counts of detected and suppressed errors, rerun with: -v
-==12109== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==12101== 
-==12101== HEAP SUMMARY:
-==12101==     in use at exit: 741 bytes in 8 blocks
-==12101==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
-==12101== 
-==12101== LEAK SUMMARY:
-==12101==    definitely lost: 0 bytes in 0 blocks
-==12101==    indirectly lost: 0 bytes in 0 blocks
-==12101==      possibly lost: 0 bytes in 0 blocks
-==12101==    still reachable: 741 bytes in 8 blocks
-==12101==         suppressed: 0 bytes in 0 blocks
-==12101== Reachable blocks (those to which a pointer was found) are not shown.
-==12101== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==12101== 
-==12101== For counts of detected and suppressed errors, rerun with: -v
-==12101== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-IMPLEMENT ME: src/execute.c(line 175): run_export()
-==12164== 
-==12164== HEAP SUMMARY:
-==12164==     in use at exit: 741 bytes in 8 blocks
-==12164==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
-==12164== 
-==12164== LEAK SUMMARY:
-==12164==    definitely lost: 0 bytes in 0 blocks
-==12164==    indirectly lost: 0 bytes in 0 blocks
-==12164==      possibly lost: 0 bytes in 0 blocks
-==12164==    still reachable: 741 bytes in 8 blocks
-==12164==         suppressed: 0 bytes in 0 blocks
-==12164== Reachable blocks (those to which a pointer was found) are not shown.
-==12164== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==12164== 
-==12164== For counts of detected and suppressed errors, rerun with: -v
-==12164== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==11546== 
-==11546== HEAP SUMMARY:
-==11546==     in use at exit: 741 bytes in 8 blocks
-==11546==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
-==11546== 
-==11546== LEAK SUMMARY:
-==11546==    definitely lost: 0 bytes in 0 blocks
-==11546==    indirectly lost: 0 bytes in 0 blocks
-==11546==      possibly lost: 0 bytes in 0 blocks
-==11546==    still reachable: 741 bytes in 8 blocks
-==11546==         suppressed: 0 bytes in 0 blocks
-==11546== Reachable blocks (those to which a pointer was found) are not shown.
-==11546== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==11546== 
-==11546== For counts of detected and suppressed errors, rerun with: -v
-==11546== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==13252== Memcheck, a memory error detector
+==13252== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==13252== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==13252== Command: /home/j234g594/EECS_678/quash/quash
+==13252== 
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+==13389== 
+==13389== HEAP SUMMARY:
+==13389==     in use at exit: 741 bytes in 8 blocks
+==13389==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
+==13389== 
+==13389== LEAK SUMMARY:
+==13389==    definitely lost: 0 bytes in 0 blocks
+==13389==    indirectly lost: 0 bytes in 0 blocks
+==13389==      possibly lost: 0 bytes in 0 blocks
+==13389==    still reachable: 741 bytes in 8 blocks
+==13389==         suppressed: 0 bytes in 0 blocks
+==13389== Reachable blocks (those to which a pointer was found) are not shown.
+==13389== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==13389== 
+==13389== For counts of detected and suppressed errors, rerun with: -v
+==13389== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==13384== 
+==13384== HEAP SUMMARY:
+==13384==     in use at exit: 741 bytes in 8 blocks
+==13384==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
+==13384== 
+==13384== LEAK SUMMARY:
+==13384==    definitely lost: 0 bytes in 0 blocks
+==13384==    indirectly lost: 0 bytes in 0 blocks
+==13384==      possibly lost: 0 bytes in 0 blocks
+==13384==    still reachable: 741 bytes in 8 blocks
+==13384==         suppressed: 0 bytes in 0 blocks
+==13384== Reachable blocks (those to which a pointer was found) are not shown.
+==13384== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==13384== 
+==13384== For counts of detected and suppressed errors, rerun with: -v
+==13384== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+==13515== 
+==13515== HEAP SUMMARY:
+==13515==     in use at exit: 741 bytes in 8 blocks
+==13515==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
+==13515== 
+==13515== LEAK SUMMARY:
+==13515==    definitely lost: 0 bytes in 0 blocks
+==13515==    indirectly lost: 0 bytes in 0 blocks
+==13515==      possibly lost: 0 bytes in 0 blocks
+==13515==    still reachable: 741 bytes in 8 blocks
+==13515==         suppressed: 0 bytes in 0 blocks
+==13515== Reachable blocks (those to which a pointer was found) are not shown.
+==13515== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==13515== 
+==13515== For counts of detected and suppressed errors, rerun with: -v
+==13515== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==13358== 
+==13358== HEAP SUMMARY:
+==13358==     in use at exit: 741 bytes in 8 blocks
+==13358==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
+==13358== 
+==13358== LEAK SUMMARY:
+==13358==    definitely lost: 0 bytes in 0 blocks
+==13358==    indirectly lost: 0 bytes in 0 blocks
+==13358==      possibly lost: 0 bytes in 0 blocks
+==13358==    still reachable: 741 bytes in 8 blocks
+==13358==         suppressed: 0 bytes in 0 blocks
+==13358== Reachable blocks (those to which a pointer was found) are not shown.
+==13358== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==13358== 
+==13358== For counts of detected and suppressed errors, rerun with: -v
+==13358== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+==13636== 
+==13636== HEAP SUMMARY:
+==13636==     in use at exit: 741 bytes in 8 blocks
+==13636==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
+==13636== 
+==13636== LEAK SUMMARY:
+==13636==    definitely lost: 0 bytes in 0 blocks
+==13636==    indirectly lost: 0 bytes in 0 blocks
+==13636==      possibly lost: 0 bytes in 0 blocks
+==13636==    still reachable: 741 bytes in 8 blocks
+==13636==         suppressed: 0 bytes in 0 blocks
+==13636== Reachable blocks (those to which a pointer was found) are not shown.
+==13636== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==13636== 
+==13636== For counts of detected and suppressed errors, rerun with: -v
+==13636== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==13630== 
+==13630== HEAP SUMMARY:
+==13630==     in use at exit: 741 bytes in 8 blocks
+==13630==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
+==13630== 
+==13630== LEAK SUMMARY:
+==13630==    definitely lost: 0 bytes in 0 blocks
+==13630==    indirectly lost: 0 bytes in 0 blocks
+==13630==      possibly lost: 0 bytes in 0 blocks
+==13630==    still reachable: 741 bytes in 8 blocks
+==13630==         suppressed: 0 bytes in 0 blocks
+==13630== Reachable blocks (those to which a pointer was found) are not shown.
+==13630== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==13630== 
+==13630== For counts of detected and suppressed errors, rerun with: -v
+==13630== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+IMPLEMENT ME: src/execute.c(line 183): run_export()
+==13673== 
+==13673== HEAP SUMMARY:
+==13673==     in use at exit: 741 bytes in 8 blocks
+==13673==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
+==13673== 
+==13673== LEAK SUMMARY:
+==13673==    definitely lost: 0 bytes in 0 blocks
+==13673==    indirectly lost: 0 bytes in 0 blocks
+==13673==      possibly lost: 0 bytes in 0 blocks
+==13673==    still reachable: 741 bytes in 8 blocks
+==13673==         suppressed: 0 bytes in 0 blocks
+==13673== Reachable blocks (those to which a pointer was found) are not shown.
+==13673== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==13673== 
+==13673== For counts of detected and suppressed errors, rerun with: -v
+==13673== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==13252== 
+==13252== HEAP SUMMARY:
+==13252==     in use at exit: 741 bytes in 8 blocks
+==13252==   total heap usage: 68 allocs, 60 frees, 1,079,357 bytes allocated
+==13252== 
+==13252== LEAK SUMMARY:
+==13252==    definitely lost: 0 bytes in 0 blocks
+==13252==    indirectly lost: 0 bytes in 0 blocks
+==13252==      possibly lost: 0 bytes in 0 blocks
+==13252==    still reachable: 741 bytes in 8 blocks
+==13252==         suppressed: 0 bytes in 0 blocks
+==13252== Reachable blocks (those to which a pointer was found) are not shown.
+==13252== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==13252== 
+==13252== For counts of detected and suppressed errors, rerun with: -v
+==13252== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
