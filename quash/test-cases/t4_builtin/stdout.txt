@@ -1,3 +1,4 @@
-/home/j234g594/EECS_678/quash/test-cases/t4_builtin/sandbox
-hello\\n 
-hello\\n 
+sandbox
+sandbox
+hello
+hello 

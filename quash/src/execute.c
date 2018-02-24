@@ -250,7 +250,7 @@ void run_jobs() {
     jobType current = pop_front_jobQueueStruct(&jobQueue);
     //fprintf(stdout, "%s\n", print_job(current.id, current.pid, current.cmd));
     //print_job(current.id, current.pid, current.cmd);
-    printf("[%d]\t%8d\t%s\n", current.id, current.pid, current.cmd);
+    printf("[%d]\t%8d\t%s\n", current.id, peek_front_pidQueueStruct(&current.myQueue), current.cmd);
     push_back_jobQueueStruct(&jobQueue, current);
     i++;
   }
@@ -360,70 +360,76 @@ void parent_run_command(Command cmd) {
  *
  * @sa Command CommandHolder
  */
-void create_process(CommandHolder holder) {
-  // Read the flags field from the parser *****
-  //printf("CHECK CREATE PROCESS 1\n");
+void create_process(CommandHolder holder, jobType* current) {
+  //read flags from parser
   bool p_in  = holder.flags & PIPE_IN;
   bool p_out = holder.flags & PIPE_OUT;
   bool r_in  = holder.flags & REDIRECT_IN;
   bool r_out = holder.flags & REDIRECT_OUT;
   bool r_app = holder.flags & REDIRECT_APPEND;
+  static int pipesTemp = -1;
 
-  //IMPLEMENT_ME();
-  //printf("CHECK CREATE PROCESS 2\n");
-
-  if(p_out) {
-    pipe(pipes[1]);
-  }
-  //printf("CHECK CREATE PROCESS 3\n");
-
+  //setting up pipes, redirects and processes
+  pipe(pipes);
   pid_t pid = fork();
 
-  //printf("CHECK CREATE PROCESS 4\n");
+  if (pid == 0) {
+    // Is a child
+    if (p_in) {
+      dup2(pipesTemp, STDIN_FILENO);
+      close(pipes[0]);
+    }
 
-  push_back_pidQueueStruct(&pidQueue, pid);
-
-  //printf("CHECK CREATE PROCESS 5\n");
-
-  if(pid != 0) {
-    if(p_out) {
+    if (p_out) {
+      dup2(pipes[1], STDOUT_FILENO);
       close(pipes[1]);
     }
-  }
-  else {
-    if(p_in) {
-      dup2 (pipes[0], STDIN_FILENO);
-      close (pipes[0]);
-    }
-    if(p_out) {
-      dup2 (pipes[1], STDOUT_FILENO);
-      close (pipes[1]);
-    }
-    if(r_in) {
-      FILE* myFile = fopen(holder.redirect_in, "r");
+
+    if (r_in) {
+      //note: not the same as REDIRECT_IN
+      FILE *myFile = fopen(holder.redirect_in, "r");
       dup2(fileno(myFile), STDIN_FILENO);
     }
-    if(r_out) {
-      FILE* myFile;
-      if(r_app) {
+
+    if (r_out) {
+      FILE *myFile;
+
+      if (r_app) {
         myFile = fopen(holder.redirect_out, "a");
       }
       else {
         myFile = fopen(holder.redirect_out, "w");
       }
+
       dup2(fileno(myFile), STDOUT_FILENO);
     }
+
     child_run_command(holder.cmd);
+    exit(0);
   }
-  //printf("CHECK CREATE PROCESS 6\n");
-  parent_run_command(holder.cmd);
+  else {
+    //Is a parent
+    if(p_out) {
+      close(pipesTemp);
+      pipesTemp = pipes[0];
+    }
+    else {
+      close(pipes[0]);
+    }
+
+    push_back_pidQueueStruct(&current->myQueue, pid);
+    parent_run_command(holder.cmd);
+  }
+
+  //close
+  close(pipes[1]);
 }
 
 // Run a list of commands
 void run_script(CommandHolder* holders) {
-  pidQueue = new_pidQueueStruct(1);
-
-  if(!isInitialized) {
+  //first run_script() call only
+  if(!isInitialized)
+  {
     jobQueue = new_jobQueueStruct(1);
     isInitialized = true;
   }
@@ -436,42 +442,42 @@ void run_script(CommandHolder* holders) {
 
   if (get_command_holder_type(holders[0]) == EXIT && get_command_holder_type(holders[1]) == EOC) {
     end_main_loop();
+    destroy_jobQueueStruct(&jobQueue);
     return;
   }
 
-  //printf("CHECK 1\n");
-
   CommandType type;
 
-  struct jobType newJob;
-  newJob.myQueue = pidQueue;
+  //create a new job!
+  jobType newJob;
+
   newJob.id = length_jobQueueStruct(&jobQueue) + 1;
+  newJob.myQueue = new_pidQueueStruct(1);
   newJob.cmd = get_command_string();
-  push_back_jobQueueStruct(&jobQueue, newJob);
 
-  //printf("CHECK 2\n");
+  //run commands in holder array
+  for (int i = 0; (type = get_command_holder_type(holders[i])) != EOC; ++i) {
+    //testing if we need to pass in the new job
+    create_process(holders[i], &newJob);
+    //create_process(holders[i]);
 
-  // Run all commands in the `holder` array
-  for (int i = 0; (type = get_command_holder_type(holders[i])) != EOC; ++i)
-    create_process(holders[i]);
-
-
-  //printf("CHECK 3\n");
+  }
 
   if (!(holders[0].flags & BACKGROUND)) {
-    //printf("CHECK 4\n");
-    while(!is_empty_pidQueueStruct(&pidQueue)) {
-      //printf("CHECK 5\n");
-      int status;
-      pid_t pidCurrent = pop_front_pidQueueStruct(&pidQueue);
-      waitpid(pidCurrent, &status, 0);
-      //printf("CHECK 6\n");
+    // Not a background job.
+    while(!is_empty_pidQueueStruct(&newJob.myQueue))
+    {
+      int statID;
+      //wait for processes completion
+      waitpid(pop_front_pidQueueStruct(&newJob.myQueue), &statID, 0);
     }
-    //printf("CHECK 7\n");
-    destroy_pidQueueStruct(&pidQueue);
-    //IMPLEMENT_ME();
+    free(newJob.cmd);
+    destroy_pidQueueStruct(&newJob.myQueue);
   }
   else {
-    print_job_bg_start(newJob.id, newJob.pid, newJob.cmd);
+    // A background job.
+    // Push the new job to the job queue
+    push_back_jobQueueStruct(&jobQueue, newJob);
+    print_job_bg_start(newJob.id, peek_front_pidQueueStruct(&newJob.myQueue), newJob.cmd);
   }
 }
