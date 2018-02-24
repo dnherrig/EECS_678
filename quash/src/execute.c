@@ -28,6 +28,9 @@ static int n = 0;
 static int p = -1;
 static int pipes[2][2];
 
+//number of jobs
+int numJob = 1;
+
 //bool for if jobQueue is isInitialized
 bool isInitialized = false;
 
@@ -61,10 +64,10 @@ jobQueueStruct jobQueue;
 
 // Return a string containing the current working directory. *****
 char* get_current_directory(bool* should_free) {
-  char* cwd[1024];
+  //char* cwd[1024];
   // Change this to true if necessary
   *should_free = false;
-  return getcwd(cwd, sizeof(cwd));
+  return getcwd(NULL, 0);
   //IMPLEMENT_ME();
 }
 
@@ -96,26 +99,12 @@ void check_jobs_bg_status() {
     //printf("hello\n");
     //printf("%d\n", x);
       while(j < x) {
-
-        /*pid_t pid = peek_front_pidQueueStruct(&current.myQueue);
-        pid_t check = waitpid(pid, &status, 0);
-        if(check == -1) {
-          exit(EXIT_FAILURE);
-          //error
-        }
-        else if( pid == check ) {
-          //done
-          pop_front_pidQueueStruct(&current.myQueue);
-        }
-        else {
-          //leave alone
-        }*/
         pid_t myPID = pop_front_pidQueueStruct(&current.myQueue);
         int statID;
         //pid_t check = waitpid(myPID, &statID, 0);
         if(waitpid(myPID, &statID, 0) == -1) {
           //printf("error\n");
-          exit(EXIT_FAILURE);
+          //exit(EXIT_FAILURE);
         }
         else if(waitpid(myPID, &statID, 0) > 0) {
           //printf("done\n");
@@ -131,8 +120,8 @@ void check_jobs_bg_status() {
       }
       if(is_empty_pidQueueStruct(&current.myQueue)) {
         print_job_bg_complete(current.id, tempPID, current.cmd);
-        free(current.cmd);
-        destroy_pidQueueStruct(&current.myQueue);
+        //free(current.cmd);
+        //destroy_pidQueueStruct(&current.myQueue);
       }
       else {
         //pop_front_jobQueueStruct(&jobQueue);
@@ -190,7 +179,7 @@ void run_echo(EchoCommand cmd) {
     ++str;
   }
   printf("\n");
-  //IMPLEMENT_ME();
+  IMPLEMENT_ME();
   fflush(stdout);
 }
 
@@ -271,9 +260,10 @@ void run_jobs() {
   //printf("%d\n", x);
   while(i < x) {
     jobType current = pop_front_jobQueueStruct(&jobQueue);
+    pid_t myPid = peek_front_pidQueueStruct(&current.myQueue);
     //fprintf(stdout, "%s\n", print_job(current.id, current.pid, current.cmd));
-    //print_job(current.id, current.pid, current.cmd);
-    printf("[%d]\t%8d\t%s\n", current.id, peek_front_pidQueueStruct(&current.myQueue), current.cmd);
+    print_job(current.id, myPid, current.cmd);
+    //printf("[%d]\t%8d\t%s\n", current.id, peek_front_pidQueueStruct(&current.myQueue), current.cmd);
     push_back_jobQueueStruct(&jobQueue, current);
     i++;
   }
@@ -442,7 +432,7 @@ void create_process(CommandHolder holder, jobType* current) {
 
     n = (n + 1) % 2;
     p = (p + 1) % 2;
-    
+
     push_back_pidQueueStruct(&(current->myQueue), pid);
     parent_run_command(holder.cmd);
   }
@@ -474,7 +464,9 @@ void run_script(CommandHolder* holders) {
   //create a new job!
   jobType newJob;
 
-  newJob.id = length_jobQueueStruct(&jobQueue) + 1;
+  newJob.id = numJob;
+  numJob++;
+  //newJob.id = length_jobQueueStruct(&jobQueue) + 1;
   newJob.myQueue = new_pidQueueStruct(1);
   newJob.cmd = get_command_string();
 

@@ -1,5 +1,2 @@
-2c2,3
+2d1
 < Hello World!
----
-> Completed: 	[1]	#PID#	delayed_echo Hello World! 1 & 
-> This should be the last line
