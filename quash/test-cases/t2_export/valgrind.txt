@@ -1,709 +1,716 @@
-==21574== Memcheck, a memory error detector
-==21574== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==21574== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==21574== Command: /home/d643h874/EECS678/EECS_678/quash/quash
-==21574== 
-==21741== 
-==21741== HEAP SUMMARY:
-==21741==     in use at exit: 328 bytes in 6 blocks
-==21741==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==21741== 
-==21741== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==21741==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21741==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21741==    by 0x40425F: run_script (execute.c:419)
-==21741==    by 0x401520: main (quash.c:132)
-==21741== 
-==21741== LEAK SUMMARY:
-==21741==    definitely lost: 256 bytes in 4 blocks
-==21741==    indirectly lost: 0 bytes in 0 blocks
-==21741==      possibly lost: 0 bytes in 0 blocks
-==21741==    still reachable: 72 bytes in 2 blocks
-==21741==         suppressed: 0 bytes in 0 blocks
-==21741== Reachable blocks (those to which a pointer was found) are not shown.
-==21741== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21741== 
-==21741== For counts of detected and suppressed errors, rerun with: -v
-==21741== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21724== 
-==21724== HEAP SUMMARY:
-==21724==     in use at exit: 320 bytes in 5 blocks
-==21724==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==21724== 
-==21724== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==21724==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21724==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21724==    by 0x40425F: run_script (execute.c:419)
-==21724==    by 0x401520: main (quash.c:132)
-==21724== 
-==21724== LEAK SUMMARY:
-==21724==    definitely lost: 256 bytes in 4 blocks
-==21724==    indirectly lost: 0 bytes in 0 blocks
-==21724==      possibly lost: 0 bytes in 0 blocks
-==21724==    still reachable: 64 bytes in 1 blocks
-==21724==         suppressed: 0 bytes in 0 blocks
-==21724== Reachable blocks (those to which a pointer was found) are not shown.
-==21724== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21724== 
-==21724== For counts of detected and suppressed errors, rerun with: -v
-==21724== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21840== 
-==21840== HEAP SUMMARY:
-==21840==     in use at exit: 328 bytes in 6 blocks
-==21840==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==21840== 
-==21840== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==21840==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21840==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21840==    by 0x40425F: run_script (execute.c:419)
-==21840==    by 0x401520: main (quash.c:132)
-==21840== 
-==21840== LEAK SUMMARY:
-==21840==    definitely lost: 256 bytes in 4 blocks
-==21840==    indirectly lost: 0 bytes in 0 blocks
-==21840==      possibly lost: 0 bytes in 0 blocks
-==21840==    still reachable: 72 bytes in 2 blocks
-==21840==         suppressed: 0 bytes in 0 blocks
-==21840== Reachable blocks (those to which a pointer was found) are not shown.
-==21840== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21840== 
-==21840== For counts of detected and suppressed errors, rerun with: -v
-==21840== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21720== 
-==21720== HEAP SUMMARY:
-==21720==     in use at exit: 320 bytes in 5 blocks
-==21720==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==21720== 
-==21720== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==21720==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21720==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21720==    by 0x40425F: run_script (execute.c:419)
-==21720==    by 0x401520: main (quash.c:132)
-==21720== 
-==21720== LEAK SUMMARY:
-==21720==    definitely lost: 256 bytes in 4 blocks
-==21720==    indirectly lost: 0 bytes in 0 blocks
-==21720==      possibly lost: 0 bytes in 0 blocks
-==21720==    still reachable: 64 bytes in 1 blocks
-==21720==         suppressed: 0 bytes in 0 blocks
-==21720== Reachable blocks (those to which a pointer was found) are not shown.
-==21720== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21720== 
-==21720== For counts of detected and suppressed errors, rerun with: -v
-==21720== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21892== 
-==21892== HEAP SUMMARY:
-==21892==     in use at exit: 328 bytes in 6 blocks
-==21892==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==21892== 
-==21892== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==21892==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21892==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21892==    by 0x40425F: run_script (execute.c:419)
-==21892==    by 0x401520: main (quash.c:132)
-==21892== 
-==21892== LEAK SUMMARY:
-==21892==    definitely lost: 256 bytes in 4 blocks
-==21892==    indirectly lost: 0 bytes in 0 blocks
-==21892==      possibly lost: 0 bytes in 0 blocks
-==21892==    still reachable: 72 bytes in 2 blocks
-==21892==         suppressed: 0 bytes in 0 blocks
-==21892== Reachable blocks (those to which a pointer was found) are not shown.
-==21892== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21892== 
-==21892== For counts of detected and suppressed errors, rerun with: -v
-==21892== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21878== 
-==21878== HEAP SUMMARY:
-==21878==     in use at exit: 320 bytes in 5 blocks
-==21878==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==21878== 
-==21878== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==21878==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21878==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21878==    by 0x40425F: run_script (execute.c:419)
-==21878==    by 0x401520: main (quash.c:132)
-==21878== 
-==21878== LEAK SUMMARY:
-==21878==    definitely lost: 256 bytes in 4 blocks
-==21878==    indirectly lost: 0 bytes in 0 blocks
-==21878==      possibly lost: 0 bytes in 0 blocks
-==21878==    still reachable: 64 bytes in 1 blocks
-==21878==         suppressed: 0 bytes in 0 blocks
-==21878== Reachable blocks (those to which a pointer was found) are not shown.
-==21878== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21878== 
-==21878== For counts of detected and suppressed errors, rerun with: -v
-==21878== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21915== 
-==21915== HEAP SUMMARY:
-==21915==     in use at exit: 328 bytes in 6 blocks
-==21915==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==21915== 
-==21915== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==21915==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21915==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21915==    by 0x40425F: run_script (execute.c:419)
-==21915==    by 0x401520: main (quash.c:132)
-==21915== 
-==21915== LEAK SUMMARY:
-==21915==    definitely lost: 256 bytes in 4 blocks
-==21915==    indirectly lost: 0 bytes in 0 blocks
-==21915==      possibly lost: 0 bytes in 0 blocks
-==21915==    still reachable: 72 bytes in 2 blocks
-==21915==         suppressed: 0 bytes in 0 blocks
-==21915== Reachable blocks (those to which a pointer was found) are not shown.
-==21915== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21915== 
-==21915== For counts of detected and suppressed errors, rerun with: -v
-==21915== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21706== 
-==21706== HEAP SUMMARY:
-==21706==     in use at exit: 320 bytes in 5 blocks
-==21706==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==21706== 
-==21706== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==21706==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21706==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21706==    by 0x40425F: run_script (execute.c:419)
-==21706==    by 0x401520: main (quash.c:132)
-==21706== 
-==21706== LEAK SUMMARY:
-==21706==    definitely lost: 256 bytes in 4 blocks
-==21706==    indirectly lost: 0 bytes in 0 blocks
-==21706==      possibly lost: 0 bytes in 0 blocks
-==21706==    still reachable: 64 bytes in 1 blocks
-==21706==         suppressed: 0 bytes in 0 blocks
-==21706== Reachable blocks (those to which a pointer was found) are not shown.
-==21706== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21706== 
-==21706== For counts of detected and suppressed errors, rerun with: -v
-==21706== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21929== 
-==21929== HEAP SUMMARY:
-==21929==     in use at exit: 328 bytes in 6 blocks
-==21929==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==21929== 
-==21929== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==21929==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21929==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21929==    by 0x40425F: run_script (execute.c:419)
-==21929==    by 0x401520: main (quash.c:132)
-==21929== 
-==21929== LEAK SUMMARY:
-==21929==    definitely lost: 256 bytes in 4 blocks
-==21929==    indirectly lost: 0 bytes in 0 blocks
-==21929==      possibly lost: 0 bytes in 0 blocks
-==21929==    still reachable: 72 bytes in 2 blocks
-==21929==         suppressed: 0 bytes in 0 blocks
-==21929== Reachable blocks (those to which a pointer was found) are not shown.
-==21929== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21929== 
-==21929== For counts of detected and suppressed errors, rerun with: -v
-==21929== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21925== 
-==21925== HEAP SUMMARY:
-==21925==     in use at exit: 320 bytes in 5 blocks
-==21925==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==21925== 
-==21925== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==21925==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21925==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21925==    by 0x40425F: run_script (execute.c:419)
-==21925==    by 0x401520: main (quash.c:132)
-==21925== 
-==21925== LEAK SUMMARY:
-==21925==    definitely lost: 256 bytes in 4 blocks
-==21925==    indirectly lost: 0 bytes in 0 blocks
-==21925==      possibly lost: 0 bytes in 0 blocks
-==21925==    still reachable: 64 bytes in 1 blocks
-==21925==         suppressed: 0 bytes in 0 blocks
-==21925== Reachable blocks (those to which a pointer was found) are not shown.
-==21925== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21925== 
-==21925== For counts of detected and suppressed errors, rerun with: -v
-==21925== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21952== 
-==21952== HEAP SUMMARY:
-==21952==     in use at exit: 328 bytes in 6 blocks
-==21952==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==21952== 
-==21952== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==21952==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21952==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21952==    by 0x40425F: run_script (execute.c:419)
-==21952==    by 0x401520: main (quash.c:132)
-==21952== 
-==21952== LEAK SUMMARY:
-==21952==    definitely lost: 256 bytes in 4 blocks
-==21952==    indirectly lost: 0 bytes in 0 blocks
-==21952==      possibly lost: 0 bytes in 0 blocks
-==21952==    still reachable: 72 bytes in 2 blocks
-==21952==         suppressed: 0 bytes in 0 blocks
-==21952== Reachable blocks (those to which a pointer was found) are not shown.
-==21952== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21952== 
-==21952== For counts of detected and suppressed errors, rerun with: -v
-==21952== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21922== 
-==21922== HEAP SUMMARY:
-==21922==     in use at exit: 320 bytes in 5 blocks
-==21922==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==21922== 
-==21922== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==21922==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21922==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21922==    by 0x40425F: run_script (execute.c:419)
-==21922==    by 0x401520: main (quash.c:132)
-==21922== 
-==21922== LEAK SUMMARY:
-==21922==    definitely lost: 256 bytes in 4 blocks
-==21922==    indirectly lost: 0 bytes in 0 blocks
-==21922==      possibly lost: 0 bytes in 0 blocks
-==21922==    still reachable: 64 bytes in 1 blocks
-==21922==         suppressed: 0 bytes in 0 blocks
-==21922== Reachable blocks (those to which a pointer was found) are not shown.
-==21922== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21922== 
-==21922== For counts of detected and suppressed errors, rerun with: -v
-==21922== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21967== 
-==21967== HEAP SUMMARY:
-==21967==     in use at exit: 328 bytes in 6 blocks
-==21967==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==21967== 
-==21967== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==21967==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21967==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21967==    by 0x40425F: run_script (execute.c:419)
-==21967==    by 0x401520: main (quash.c:132)
-==21967== 
-==21967== LEAK SUMMARY:
-==21967==    definitely lost: 256 bytes in 4 blocks
-==21967==    indirectly lost: 0 bytes in 0 blocks
-==21967==      possibly lost: 0 bytes in 0 blocks
-==21967==    still reachable: 72 bytes in 2 blocks
-==21967==         suppressed: 0 bytes in 0 blocks
-==21967== Reachable blocks (those to which a pointer was found) are not shown.
-==21967== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21967== 
-==21967== For counts of detected and suppressed errors, rerun with: -v
-==21967== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21964== 
-==21964== HEAP SUMMARY:
-==21964==     in use at exit: 320 bytes in 5 blocks
-==21964==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==21964== 
-==21964== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==21964==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21964==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21964==    by 0x40425F: run_script (execute.c:419)
-==21964==    by 0x401520: main (quash.c:132)
-==21964== 
-==21964== LEAK SUMMARY:
-==21964==    definitely lost: 256 bytes in 4 blocks
-==21964==    indirectly lost: 0 bytes in 0 blocks
-==21964==      possibly lost: 0 bytes in 0 blocks
-==21964==    still reachable: 64 bytes in 1 blocks
-==21964==         suppressed: 0 bytes in 0 blocks
-==21964== Reachable blocks (those to which a pointer was found) are not shown.
-==21964== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21964== 
-==21964== For counts of detected and suppressed errors, rerun with: -v
-==21964== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21970== 
-==21970== HEAP SUMMARY:
-==21970==     in use at exit: 328 bytes in 6 blocks
-==21970==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==21970== 
-==21970== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==21970==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21970==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21970==    by 0x40425F: run_script (execute.c:419)
-==21970==    by 0x401520: main (quash.c:132)
-==21970== 
-==21970== LEAK SUMMARY:
-==21970==    definitely lost: 256 bytes in 4 blocks
-==21970==    indirectly lost: 0 bytes in 0 blocks
-==21970==      possibly lost: 0 bytes in 0 blocks
-==21970==    still reachable: 72 bytes in 2 blocks
-==21970==         suppressed: 0 bytes in 0 blocks
-==21970== Reachable blocks (those to which a pointer was found) are not shown.
-==21970== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21970== 
-==21970== For counts of detected and suppressed errors, rerun with: -v
-==21970== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21679== 
-==21679== HEAP SUMMARY:
-==21679==     in use at exit: 320 bytes in 5 blocks
-==21679==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==21679== 
-==21679== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==21679==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21679==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21679==    by 0x40425F: run_script (execute.c:419)
-==21679==    by 0x401520: main (quash.c:132)
-==21679== 
-==21679== LEAK SUMMARY:
-==21679==    definitely lost: 256 bytes in 4 blocks
-==21679==    indirectly lost: 0 bytes in 0 blocks
-==21679==      possibly lost: 0 bytes in 0 blocks
-==21679==    still reachable: 64 bytes in 1 blocks
-==21679==         suppressed: 0 bytes in 0 blocks
-==21679== Reachable blocks (those to which a pointer was found) are not shown.
-==21679== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21679== 
-==21679== For counts of detected and suppressed errors, rerun with: -v
-==21679== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21988== 
-==21988== HEAP SUMMARY:
-==21988==     in use at exit: 328 bytes in 6 blocks
-==21988==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==21988== 
-==21988== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==21988==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21988==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21988==    by 0x40425F: run_script (execute.c:419)
-==21988==    by 0x401520: main (quash.c:132)
-==21988== 
-==21988== LEAK SUMMARY:
-==21988==    definitely lost: 256 bytes in 4 blocks
-==21988==    indirectly lost: 0 bytes in 0 blocks
-==21988==      possibly lost: 0 bytes in 0 blocks
-==21988==    still reachable: 72 bytes in 2 blocks
-==21988==         suppressed: 0 bytes in 0 blocks
-==21988== Reachable blocks (those to which a pointer was found) are not shown.
-==21988== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21988== 
-==21988== For counts of detected and suppressed errors, rerun with: -v
-==21988== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21984== 
-==21984== HEAP SUMMARY:
-==21984==     in use at exit: 320 bytes in 5 blocks
-==21984==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==21984== 
-==21984== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==21984==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21984==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21984==    by 0x40425F: run_script (execute.c:419)
-==21984==    by 0x401520: main (quash.c:132)
-==21984== 
-==21984== LEAK SUMMARY:
-==21984==    definitely lost: 256 bytes in 4 blocks
-==21984==    indirectly lost: 0 bytes in 0 blocks
-==21984==      possibly lost: 0 bytes in 0 blocks
-==21984==    still reachable: 64 bytes in 1 blocks
-==21984==         suppressed: 0 bytes in 0 blocks
-==21984== Reachable blocks (those to which a pointer was found) are not shown.
-==21984== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21984== 
-==21984== For counts of detected and suppressed errors, rerun with: -v
-==21984== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21996== 
-==21996== HEAP SUMMARY:
-==21996==     in use at exit: 328 bytes in 6 blocks
-==21996==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==21996== 
-==21996== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==21996==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21996==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21996==    by 0x40425F: run_script (execute.c:419)
-==21996==    by 0x401520: main (quash.c:132)
-==21996== 
-==21996== LEAK SUMMARY:
-==21996==    definitely lost: 256 bytes in 4 blocks
-==21996==    indirectly lost: 0 bytes in 0 blocks
-==21996==      possibly lost: 0 bytes in 0 blocks
-==21996==    still reachable: 72 bytes in 2 blocks
-==21996==         suppressed: 0 bytes in 0 blocks
-==21996== Reachable blocks (those to which a pointer was found) are not shown.
-==21996== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21996== 
-==21996== For counts of detected and suppressed errors, rerun with: -v
-==21996== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21980== 
-==21980== HEAP SUMMARY:
-==21980==     in use at exit: 320 bytes in 5 blocks
-==21980==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==21980== 
-==21980== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==21980==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21980==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21980==    by 0x40425F: run_script (execute.c:419)
-==21980==    by 0x401520: main (quash.c:132)
-==21980== 
-==21980== LEAK SUMMARY:
-==21980==    definitely lost: 256 bytes in 4 blocks
-==21980==    indirectly lost: 0 bytes in 0 blocks
-==21980==      possibly lost: 0 bytes in 0 blocks
-==21980==    still reachable: 64 bytes in 1 blocks
-==21980==         suppressed: 0 bytes in 0 blocks
-==21980== Reachable blocks (those to which a pointer was found) are not shown.
-==21980== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21980== 
-==21980== For counts of detected and suppressed errors, rerun with: -v
-==21980== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==22003== 
-==22003== HEAP SUMMARY:
-==22003==     in use at exit: 328 bytes in 6 blocks
-==22003==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==22003== 
-==22003== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==22003==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22003==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==22003==    by 0x40425F: run_script (execute.c:419)
-==22003==    by 0x401520: main (quash.c:132)
-==22003== 
-==22003== LEAK SUMMARY:
-==22003==    definitely lost: 256 bytes in 4 blocks
-==22003==    indirectly lost: 0 bytes in 0 blocks
-==22003==      possibly lost: 0 bytes in 0 blocks
-==22003==    still reachable: 72 bytes in 2 blocks
-==22003==         suppressed: 0 bytes in 0 blocks
-==22003== Reachable blocks (those to which a pointer was found) are not shown.
-==22003== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==22003== 
-==22003== For counts of detected and suppressed errors, rerun with: -v
-==22003== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==22001== 
-==22001== HEAP SUMMARY:
-==22001==     in use at exit: 320 bytes in 5 blocks
-==22001==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==22001== 
-==22001== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==22001==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22001==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==22001==    by 0x40425F: run_script (execute.c:419)
-==22001==    by 0x401520: main (quash.c:132)
-==22001== 
-==22001== LEAK SUMMARY:
-==22001==    definitely lost: 256 bytes in 4 blocks
-==22001==    indirectly lost: 0 bytes in 0 blocks
-==22001==      possibly lost: 0 bytes in 0 blocks
-==22001==    still reachable: 64 bytes in 1 blocks
-==22001==         suppressed: 0 bytes in 0 blocks
-==22001== Reachable blocks (those to which a pointer was found) are not shown.
-==22001== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==22001== 
-==22001== For counts of detected and suppressed errors, rerun with: -v
-==22001== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==22010== 
-==22010== HEAP SUMMARY:
-==22010==     in use at exit: 328 bytes in 6 blocks
-==22010==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==22010== 
-==22010== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==22010==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22010==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==22010==    by 0x40425F: run_script (execute.c:419)
-==22010==    by 0x401520: main (quash.c:132)
-==22010== 
-==22010== LEAK SUMMARY:
-==22010==    definitely lost: 256 bytes in 4 blocks
-==22010==    indirectly lost: 0 bytes in 0 blocks
-==22010==      possibly lost: 0 bytes in 0 blocks
-==22010==    still reachable: 72 bytes in 2 blocks
-==22010==         suppressed: 0 bytes in 0 blocks
-==22010== Reachable blocks (those to which a pointer was found) are not shown.
-==22010== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==22010== 
-==22010== For counts of detected and suppressed errors, rerun with: -v
-==22010== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21977== 
-==21977== HEAP SUMMARY:
-==21977==     in use at exit: 320 bytes in 5 blocks
-==21977==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==21977== 
-==21977== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==21977==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21977==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21977==    by 0x40425F: run_script (execute.c:419)
-==21977==    by 0x401520: main (quash.c:132)
-==21977== 
-==21977== LEAK SUMMARY:
-==21977==    definitely lost: 256 bytes in 4 blocks
-==21977==    indirectly lost: 0 bytes in 0 blocks
-==21977==      possibly lost: 0 bytes in 0 blocks
-==21977==    still reachable: 64 bytes in 1 blocks
-==21977==         suppressed: 0 bytes in 0 blocks
-==21977== Reachable blocks (those to which a pointer was found) are not shown.
-==21977== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21977== 
-==21977== For counts of detected and suppressed errors, rerun with: -v
-==21977== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==22028== 
-==22028== HEAP SUMMARY:
-==22028==     in use at exit: 328 bytes in 6 blocks
-==22028==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==22028== 
-==22028== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==22028==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22028==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==22028==    by 0x40425F: run_script (execute.c:419)
-==22028==    by 0x401520: main (quash.c:132)
-==22028== 
-==22028== LEAK SUMMARY:
-==22028==    definitely lost: 256 bytes in 4 blocks
-==22028==    indirectly lost: 0 bytes in 0 blocks
-==22028==      possibly lost: 0 bytes in 0 blocks
-==22028==    still reachable: 72 bytes in 2 blocks
-==22028==         suppressed: 0 bytes in 0 blocks
-==22028== Reachable blocks (those to which a pointer was found) are not shown.
-==22028== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==22028== 
-==22028== For counts of detected and suppressed errors, rerun with: -v
-==22028== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==22027== 
-==22027== HEAP SUMMARY:
-==22027==     in use at exit: 320 bytes in 5 blocks
-==22027==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==22027== 
-==22027== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==22027==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22027==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==22027==    by 0x40425F: run_script (execute.c:419)
-==22027==    by 0x401520: main (quash.c:132)
-==22027== 
-==22027== LEAK SUMMARY:
-==22027==    definitely lost: 256 bytes in 4 blocks
-==22027==    indirectly lost: 0 bytes in 0 blocks
-==22027==      possibly lost: 0 bytes in 0 blocks
-==22027==    still reachable: 64 bytes in 1 blocks
-==22027==         suppressed: 0 bytes in 0 blocks
-==22027== Reachable blocks (those to which a pointer was found) are not shown.
-==22027== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==22027== 
-==22027== For counts of detected and suppressed errors, rerun with: -v
-==22027== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==22034== 
-==22034== HEAP SUMMARY:
-==22034==     in use at exit: 328 bytes in 6 blocks
-==22034==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==22034== 
-==22034== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==22034==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22034==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==22034==    by 0x40425F: run_script (execute.c:419)
-==22034==    by 0x401520: main (quash.c:132)
-==22034== 
-==22034== LEAK SUMMARY:
-==22034==    definitely lost: 256 bytes in 4 blocks
-==22034==    indirectly lost: 0 bytes in 0 blocks
-==22034==      possibly lost: 0 bytes in 0 blocks
-==22034==    still reachable: 72 bytes in 2 blocks
-==22034==         suppressed: 0 bytes in 0 blocks
-==22034== Reachable blocks (those to which a pointer was found) are not shown.
-==22034== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==22034== 
-==22034== For counts of detected and suppressed errors, rerun with: -v
-==22034== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==22025== 
-==22025== HEAP SUMMARY:
-==22025==     in use at exit: 320 bytes in 5 blocks
-==22025==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==22025== 
-==22025== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==22025==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22025==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==22025==    by 0x40425F: run_script (execute.c:419)
-==22025==    by 0x401520: main (quash.c:132)
-==22025== 
-==22025== LEAK SUMMARY:
-==22025==    definitely lost: 256 bytes in 4 blocks
-==22025==    indirectly lost: 0 bytes in 0 blocks
-==22025==      possibly lost: 0 bytes in 0 blocks
-==22025==    still reachable: 64 bytes in 1 blocks
-==22025==         suppressed: 0 bytes in 0 blocks
-==22025== Reachable blocks (those to which a pointer was found) are not shown.
-==22025== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==22025== 
-==22025== For counts of detected and suppressed errors, rerun with: -v
-==22025== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==22049== 
-==22049== HEAP SUMMARY:
-==22049==     in use at exit: 328 bytes in 6 blocks
-==22049==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==22049== 
-==22049== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==22049==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22049==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==22049==    by 0x40425F: run_script (execute.c:419)
-==22049==    by 0x401520: main (quash.c:132)
-==22049== 
-==22049== LEAK SUMMARY:
-==22049==    definitely lost: 256 bytes in 4 blocks
-==22049==    indirectly lost: 0 bytes in 0 blocks
-==22049==      possibly lost: 0 bytes in 0 blocks
-==22049==    still reachable: 72 bytes in 2 blocks
-==22049==         suppressed: 0 bytes in 0 blocks
-==22049== Reachable blocks (those to which a pointer was found) are not shown.
-==22049== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==22049== 
-==22049== For counts of detected and suppressed errors, rerun with: -v
-==22049== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==22042== 
-==22042== HEAP SUMMARY:
-==22042==     in use at exit: 320 bytes in 5 blocks
-==22042==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==22042== 
-==22042== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==22042==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22042==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==22042==    by 0x40425F: run_script (execute.c:419)
-==22042==    by 0x401520: main (quash.c:132)
-==22042== 
-==22042== LEAK SUMMARY:
-==22042==    definitely lost: 256 bytes in 4 blocks
-==22042==    indirectly lost: 0 bytes in 0 blocks
-==22042==      possibly lost: 0 bytes in 0 blocks
-==22042==    still reachable: 64 bytes in 1 blocks
-==22042==         suppressed: 0 bytes in 0 blocks
-==22042== Reachable blocks (those to which a pointer was found) are not shown.
-==22042== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==22042== 
-==22042== For counts of detected and suppressed errors, rerun with: -v
-==22042== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==22066== 
-==22066== HEAP SUMMARY:
-==22066==     in use at exit: 328 bytes in 6 blocks
-==22066==   total heap usage: 57 allocs, 51 frees, 1,083,624 bytes allocated
-==22066== 
-==22066== 256 bytes in 4 blocks are definitely lost in loss record 3 of 3
-==22066==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22066==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==22066==    by 0x40425F: run_script (execute.c:419)
-==22066==    by 0x401520: main (quash.c:132)
-==22066== 
-==22066== LEAK SUMMARY:
-==22066==    definitely lost: 256 bytes in 4 blocks
-==22066==    indirectly lost: 0 bytes in 0 blocks
-==22066==      possibly lost: 0 bytes in 0 blocks
-==22066==    still reachable: 72 bytes in 2 blocks
-==22066==         suppressed: 0 bytes in 0 blocks
-==22066== Reachable blocks (those to which a pointer was found) are not shown.
-==22066== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==22066== 
-==22066== For counts of detected and suppressed errors, rerun with: -v
-==22066== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==21574== 
-==21574== HEAP SUMMARY:
-==21574==     in use at exit: 320 bytes in 5 blocks
-==21574==   total heap usage: 57 allocs, 52 frees, 1,083,624 bytes allocated
-==21574== 
-==21574== 256 bytes in 4 blocks are definitely lost in loss record 2 of 2
-==21574==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21574==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21574==    by 0x40425F: run_script (execute.c:419)
-==21574==    by 0x401520: main (quash.c:132)
-==21574== 
-==21574== LEAK SUMMARY:
-==21574==    definitely lost: 256 bytes in 4 blocks
-==21574==    indirectly lost: 0 bytes in 0 blocks
-==21574==      possibly lost: 0 bytes in 0 blocks
-==21574==    still reachable: 64 bytes in 1 blocks
-==21574==         suppressed: 0 bytes in 0 blocks
-==21574== Reachable blocks (those to which a pointer was found) are not shown.
-==21574== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21574== 
-==21574== For counts of detected and suppressed errors, rerun with: -v
-==21574== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==11549== Memcheck, a memory error detector
+==11549== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==11549== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==11549== Command: /home/j234g594/EECS_678/quash/quash
+==11549== 
+==11699== Invalid read of size 1
+==11699==    at 0x4E88CC0: vfprintf (vfprintf.c:1632)
+==11699==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==11699==    by 0x403D99: run_pwd (execute.c:221)
+==11699==    by 0x403EDF: child_run_command (execute.c:276)
+==11699==    by 0x404135: create_process (execute.c:403)
+==11699==    by 0x404369: run_script (execute.c:443)
+==11699==    by 0x4014E0: main (quash.c:132)
+==11699==  Address 0xffeffde30 is on thread 1's stack
+==11699==  6592 bytes below stack pointer
+==11699== 
+==11699== Invalid read of size 1
+==11699==    at 0x4C35078: __GI_mempcpy (vg_replace_strmem.c:1508)
+==11699==    by 0x4EB56CD: _IO_default_xsputn (genops.c:438)
+==11699==    by 0x4EB32C6: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1352)
+==11699==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==11699==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==11699==    by 0x403D99: run_pwd (execute.c:221)
+==11699==    by 0x403EDF: child_run_command (execute.c:276)
+==11699==    by 0x404135: create_process (execute.c:403)
+==11699==    by 0x404369: run_script (execute.c:443)
+==11699==    by 0x4014E0: main (quash.c:132)
+==11699==  Address 0xffeffde30 is on thread 1's stack
+==11699==  6464 bytes below stack pointer
+==11699== 
+==11699== Invalid read of size 1
+==11699==    at 0x4C35086: __GI_mempcpy (vg_replace_strmem.c:1508)
+==11699==    by 0x4EB56CD: _IO_default_xsputn (genops.c:438)
+==11699==    by 0x4EB32C6: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1352)
+==11699==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==11699==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==11699==    by 0x403D99: run_pwd (execute.c:221)
+==11699==    by 0x403EDF: child_run_command (execute.c:276)
+==11699==    by 0x404135: create_process (execute.c:403)
+==11699==    by 0x404369: run_script (execute.c:443)
+==11699==    by 0x4014E0: main (quash.c:132)
+==11699==  Address 0xffeffde32 is on thread 1's stack
+==11699==  6462 bytes below stack pointer
+==11699== 
+==11699== Invalid free() / delete / delete[] / realloc()
+==11699==    at 0x4C2EDEB: free (vg_replace_malloc.c:530)
+==11699==    by 0x403DA5: run_pwd (execute.c:223)
+==11699==    by 0x403EDF: child_run_command (execute.c:276)
+==11699==    by 0x404135: create_process (execute.c:403)
+==11699==    by 0x404369: run_script (execute.c:443)
+==11699==    by 0x4014E0: main (quash.c:132)
+==11699==  Address 0xffeffde30 is on thread 1's stack
+==11699==  8144 bytes below stack pointer
+==11699== 
+==11778== Invalid read of size 1
+==11778==    at 0x4C35078: __GI_mempcpy (vg_replace_strmem.c:1508)
+==11778==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==11778==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==11778==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==11778==    by 0x403D99: run_pwd (execute.c:221)
+==11778==    by 0x403EDF: child_run_command (execute.c:276)
+==11778==    by 0x404135: create_process (execute.c:403)
+==11778==    by 0x404369: run_script (execute.c:443)
+==11778==    by 0x4014E0: main (quash.c:132)
+==11778==  Address 0xffeffde30 is on thread 1's stack
+==11778==  6512 bytes below stack pointer
+==11778== 
+==11778== Invalid read of size 1
+==11778==    at 0x4C35086: __GI_mempcpy (vg_replace_strmem.c:1508)
+==11778==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==11778==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==11778==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==11778==    by 0x403D99: run_pwd (execute.c:221)
+==11778==    by 0x403EDF: child_run_command (execute.c:276)
+==11778==    by 0x404135: create_process (execute.c:403)
+==11778==    by 0x404369: run_script (execute.c:443)
+==11778==    by 0x4014E0: main (quash.c:132)
+==11778==  Address 0xffeffde32 is on thread 1's stack
+==11778==  6510 bytes below stack pointer
+==11778== 
+==11816== 
+==11816== HEAP SUMMARY:
+==11816==     in use at exit: 576 bytes in 7 blocks
+==11816==   total heap usage: 62 allocs, 57 frees, 2,132,888 bytes allocated
+==11816== 
+==11816== LEAK SUMMARY:
+==11816==    definitely lost: 0 bytes in 0 blocks
+==11816==    indirectly lost: 0 bytes in 0 blocks
+==11816==      possibly lost: 0 bytes in 0 blocks
+==11816==    still reachable: 576 bytes in 7 blocks
+==11816==         suppressed: 0 bytes in 0 blocks
+==11816== Reachable blocks (those to which a pointer was found) are not shown.
+==11816== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==11816== 
+==11816== For counts of detected and suppressed errors, rerun with: -v
+==11816== ERROR SUMMARY: 236 errors from 6 contexts (suppressed: 0 from 0)
+==11795== 
+==11795== HEAP SUMMARY:
+==11795==     in use at exit: 568 bytes in 6 blocks
+==11795==   total heap usage: 62 allocs, 58 frees, 2,132,888 bytes allocated
+==11795== 
+==11795== LEAK SUMMARY:
+==11795==    definitely lost: 0 bytes in 0 blocks
+==11795==    indirectly lost: 0 bytes in 0 blocks
+==11795==      possibly lost: 0 bytes in 0 blocks
+==11795==    still reachable: 568 bytes in 6 blocks
+==11795==         suppressed: 0 bytes in 0 blocks
+==11795== Reachable blocks (those to which a pointer was found) are not shown.
+==11795== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==11795== 
+==11795== For counts of detected and suppressed errors, rerun with: -v
+==11795== ERROR SUMMARY: 236 errors from 6 contexts (suppressed: 0 from 0)
+==11932== 
+==11932== HEAP SUMMARY:
+==11932==     in use at exit: 576 bytes in 7 blocks
+==11932==   total heap usage: 62 allocs, 57 frees, 2,132,888 bytes allocated
+==11932== 
+==11932== LEAK SUMMARY:
+==11932==    definitely lost: 0 bytes in 0 blocks
+==11932==    indirectly lost: 0 bytes in 0 blocks
+==11932==      possibly lost: 0 bytes in 0 blocks
+==11932==    still reachable: 576 bytes in 7 blocks
+==11932==         suppressed: 0 bytes in 0 blocks
+==11932== Reachable blocks (those to which a pointer was found) are not shown.
+==11932== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==11932== 
+==11932== For counts of detected and suppressed errors, rerun with: -v
+==11932== ERROR SUMMARY: 236 errors from 6 contexts (suppressed: 0 from 0)
+==11778== 
+==11778== HEAP SUMMARY:
+==11778==     in use at exit: 568 bytes in 6 blocks
+==11778==   total heap usage: 62 allocs, 58 frees, 2,132,888 bytes allocated
+==11778== 
+==11778== LEAK SUMMARY:
+==11778==    definitely lost: 0 bytes in 0 blocks
+==11778==    indirectly lost: 0 bytes in 0 blocks
+==11778==      possibly lost: 0 bytes in 0 blocks
+==11778==    still reachable: 568 bytes in 6 blocks
+==11778==         suppressed: 0 bytes in 0 blocks
+==11778== Reachable blocks (those to which a pointer was found) are not shown.
+==11778== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==11778== 
+==11778== For counts of detected and suppressed errors, rerun with: -v
+==11778== ERROR SUMMARY: 236 errors from 6 contexts (suppressed: 0 from 0)
+==11960== 
+==11960== HEAP SUMMARY:
+==11960==     in use at exit: 576 bytes in 7 blocks
+==11960==   total heap usage: 62 allocs, 56 frees, 2,132,888 bytes allocated
+==11960== 
+==11960== LEAK SUMMARY:
+==11960==    definitely lost: 0 bytes in 0 blocks
+==11960==    indirectly lost: 0 bytes in 0 blocks
+==11960==      possibly lost: 0 bytes in 0 blocks
+==11960==    still reachable: 576 bytes in 7 blocks
+==11960==         suppressed: 0 bytes in 0 blocks
+==11960== Reachable blocks (those to which a pointer was found) are not shown.
+==11960== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==11960== 
+==11960== For counts of detected and suppressed errors, rerun with: -v
+==11960== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==11955== 
+==11955== HEAP SUMMARY:
+==11955==     in use at exit: 568 bytes in 6 blocks
+==11955==   total heap usage: 62 allocs, 57 frees, 2,132,888 bytes allocated
+==11955== 
+==11955== LEAK SUMMARY:
+==11955==    definitely lost: 0 bytes in 0 blocks
+==11955==    indirectly lost: 0 bytes in 0 blocks
+==11955==      possibly lost: 0 bytes in 0 blocks
+==11955==    still reachable: 568 bytes in 6 blocks
+==11955==         suppressed: 0 bytes in 0 blocks
+==11955== Reachable blocks (those to which a pointer was found) are not shown.
+==11955== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==11955== 
+==11955== For counts of detected and suppressed errors, rerun with: -v
+==11955== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12025== 
+==12025== HEAP SUMMARY:
+==12025==     in use at exit: 576 bytes in 7 blocks
+==12025==   total heap usage: 62 allocs, 56 frees, 2,132,888 bytes allocated
+==12025== 
+==12025== LEAK SUMMARY:
+==12025==    definitely lost: 0 bytes in 0 blocks
+==12025==    indirectly lost: 0 bytes in 0 blocks
+==12025==      possibly lost: 0 bytes in 0 blocks
+==12025==    still reachable: 576 bytes in 7 blocks
+==12025==         suppressed: 0 bytes in 0 blocks
+==12025== Reachable blocks (those to which a pointer was found) are not shown.
+==12025== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12025== 
+==12025== For counts of detected and suppressed errors, rerun with: -v
+==12025== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==11746== 
+==11746== HEAP SUMMARY:
+==11746==     in use at exit: 568 bytes in 6 blocks
+==11746==   total heap usage: 62 allocs, 57 frees, 2,132,888 bytes allocated
+==11746== 
+==11746== LEAK SUMMARY:
+==11746==    definitely lost: 0 bytes in 0 blocks
+==11746==    indirectly lost: 0 bytes in 0 blocks
+==11746==      possibly lost: 0 bytes in 0 blocks
+==11746==    still reachable: 568 bytes in 6 blocks
+==11746==         suppressed: 0 bytes in 0 blocks
+==11746== Reachable blocks (those to which a pointer was found) are not shown.
+==11746== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==11746== 
+==11746== For counts of detected and suppressed errors, rerun with: -v
+==11746== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12071== Invalid read of size 1
+==12071==    at 0x4C35078: __GI_mempcpy (vg_replace_strmem.c:1508)
+==12071==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==12071==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==12071==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==12071==    by 0x403D99: run_pwd (execute.c:221)
+==12071==    by 0x403EDF: child_run_command (execute.c:276)
+==12071==    by 0x404135: create_process (execute.c:403)
+==12071==    by 0x404369: run_script (execute.c:443)
+==12071==    by 0x4014E0: main (quash.c:132)
+==12071==  Address 0xffeffde30 is on thread 1's stack
+==12071==  6512 bytes below stack pointer
+==12071== 
+==12071== Invalid read of size 1
+==12071==    at 0x4C35086: __GI_mempcpy (vg_replace_strmem.c:1508)
+==12071==    by 0x4EB3241: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1319)
+==12071==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==12071==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==12071==    by 0x403D99: run_pwd (execute.c:221)
+==12071==    by 0x403EDF: child_run_command (execute.c:276)
+==12071==    by 0x404135: create_process (execute.c:403)
+==12071==    by 0x404369: run_script (execute.c:443)
+==12071==    by 0x4014E0: main (quash.c:132)
+==12071==  Address 0xffeffde32 is on thread 1's stack
+==12071==  6510 bytes below stack pointer
+==12071== 
+==12086== 
+==12086== HEAP SUMMARY:
+==12086==     in use at exit: 576 bytes in 7 blocks
+==12086==   total heap usage: 62 allocs, 57 frees, 2,132,888 bytes allocated
+==12086== 
+==12086== LEAK SUMMARY:
+==12086==    definitely lost: 0 bytes in 0 blocks
+==12086==    indirectly lost: 0 bytes in 0 blocks
+==12086==      possibly lost: 0 bytes in 0 blocks
+==12086==    still reachable: 576 bytes in 7 blocks
+==12086==         suppressed: 0 bytes in 0 blocks
+==12086== Reachable blocks (those to which a pointer was found) are not shown.
+==12086== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12086== 
+==12086== For counts of detected and suppressed errors, rerun with: -v
+==12086== ERROR SUMMARY: 236 errors from 6 contexts (suppressed: 0 from 0)
+==12074== 
+==12074== HEAP SUMMARY:
+==12074==     in use at exit: 568 bytes in 6 blocks
+==12074==   total heap usage: 62 allocs, 58 frees, 2,132,888 bytes allocated
+==12074== 
+==12074== LEAK SUMMARY:
+==12074==    definitely lost: 0 bytes in 0 blocks
+==12074==    indirectly lost: 0 bytes in 0 blocks
+==12074==      possibly lost: 0 bytes in 0 blocks
+==12074==    still reachable: 568 bytes in 6 blocks
+==12074==         suppressed: 0 bytes in 0 blocks
+==12074== Reachable blocks (those to which a pointer was found) are not shown.
+==12074== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12074== 
+==12074== For counts of detected and suppressed errors, rerun with: -v
+==12074== ERROR SUMMARY: 236 errors from 6 contexts (suppressed: 0 from 0)
+==12111== 
+==12111== HEAP SUMMARY:
+==12111==     in use at exit: 576 bytes in 7 blocks
+==12111==   total heap usage: 62 allocs, 57 frees, 2,132,888 bytes allocated
+==12111== 
+==12111== LEAK SUMMARY:
+==12111==    definitely lost: 0 bytes in 0 blocks
+==12111==    indirectly lost: 0 bytes in 0 blocks
+==12111==      possibly lost: 0 bytes in 0 blocks
+==12111==    still reachable: 576 bytes in 7 blocks
+==12111==         suppressed: 0 bytes in 0 blocks
+==12111== Reachable blocks (those to which a pointer was found) are not shown.
+==12111== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12111== 
+==12111== For counts of detected and suppressed errors, rerun with: -v
+==12111== ERROR SUMMARY: 236 errors from 6 contexts (suppressed: 0 from 0)
+==12071== 
+==12071== HEAP SUMMARY:
+==12071==     in use at exit: 568 bytes in 6 blocks
+==12071==   total heap usage: 62 allocs, 58 frees, 2,132,888 bytes allocated
+==12071== 
+==12071== LEAK SUMMARY:
+==12071==    definitely lost: 0 bytes in 0 blocks
+==12071==    indirectly lost: 0 bytes in 0 blocks
+==12071==      possibly lost: 0 bytes in 0 blocks
+==12071==    still reachable: 568 bytes in 6 blocks
+==12071==         suppressed: 0 bytes in 0 blocks
+==12071== Reachable blocks (those to which a pointer was found) are not shown.
+==12071== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12071== 
+==12071== For counts of detected and suppressed errors, rerun with: -v
+==12071== ERROR SUMMARY: 236 errors from 6 contexts (suppressed: 0 from 0)
+==12156== 
+==12156== HEAP SUMMARY:
+==12156==     in use at exit: 576 bytes in 7 blocks
+==12156==   total heap usage: 62 allocs, 56 frees, 2,132,888 bytes allocated
+==12156== 
+==12156== LEAK SUMMARY:
+==12156==    definitely lost: 0 bytes in 0 blocks
+==12156==    indirectly lost: 0 bytes in 0 blocks
+==12156==      possibly lost: 0 bytes in 0 blocks
+==12156==    still reachable: 576 bytes in 7 blocks
+==12156==         suppressed: 0 bytes in 0 blocks
+==12156== Reachable blocks (those to which a pointer was found) are not shown.
+==12156== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12156== 
+==12156== For counts of detected and suppressed errors, rerun with: -v
+==12156== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12151== 
+==12151== HEAP SUMMARY:
+==12151==     in use at exit: 568 bytes in 6 blocks
+==12151==   total heap usage: 62 allocs, 57 frees, 2,132,888 bytes allocated
+==12151== 
+==12151== LEAK SUMMARY:
+==12151==    definitely lost: 0 bytes in 0 blocks
+==12151==    indirectly lost: 0 bytes in 0 blocks
+==12151==      possibly lost: 0 bytes in 0 blocks
+==12151==    still reachable: 568 bytes in 6 blocks
+==12151==         suppressed: 0 bytes in 0 blocks
+==12151== Reachable blocks (those to which a pointer was found) are not shown.
+==12151== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12151== 
+==12151== For counts of detected and suppressed errors, rerun with: -v
+==12151== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12163== 
+==12163== HEAP SUMMARY:
+==12163==     in use at exit: 576 bytes in 7 blocks
+==12163==   total heap usage: 62 allocs, 56 frees, 2,132,888 bytes allocated
+==12163== 
+==12163== LEAK SUMMARY:
+==12163==    definitely lost: 0 bytes in 0 blocks
+==12163==    indirectly lost: 0 bytes in 0 blocks
+==12163==      possibly lost: 0 bytes in 0 blocks
+==12163==    still reachable: 576 bytes in 7 blocks
+==12163==         suppressed: 0 bytes in 0 blocks
+==12163== Reachable blocks (those to which a pointer was found) are not shown.
+==12163== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12163== 
+==12163== For counts of detected and suppressed errors, rerun with: -v
+==12163== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==11699== 
+==11699== HEAP SUMMARY:
+==11699==     in use at exit: 568 bytes in 6 blocks
+==11699==   total heap usage: 62 allocs, 57 frees, 2,132,888 bytes allocated
+==11699== 
+==11699== LEAK SUMMARY:
+==11699==    definitely lost: 0 bytes in 0 blocks
+==11699==    indirectly lost: 0 bytes in 0 blocks
+==11699==      possibly lost: 0 bytes in 0 blocks
+==11699==    still reachable: 568 bytes in 6 blocks
+==11699==         suppressed: 0 bytes in 0 blocks
+==11699== Reachable blocks (those to which a pointer was found) are not shown.
+==11699== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==11699== 
+==11699== For counts of detected and suppressed errors, rerun with: -v
+==11699== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12177== Invalid read of size 1
+==12177==    at 0x4E88CC0: vfprintf (vfprintf.c:1632)
+==12177==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==12177==    by 0x403D99: run_pwd (execute.c:221)
+==12177==    by 0x403EDF: child_run_command (execute.c:276)
+==12177==    by 0x404135: create_process (execute.c:403)
+==12177==    by 0x404369: run_script (execute.c:443)
+==12177==    by 0x4014E0: main (quash.c:132)
+==12177==  Address 0xffeffde30 is on thread 1's stack
+==12177==  6592 bytes below stack pointer
+==12177== 
+==12177== Invalid read of size 1
+==12177==    at 0x4C35078: __GI_mempcpy (vg_replace_strmem.c:1508)
+==12177==    by 0x4EB56CD: _IO_default_xsputn (genops.c:438)
+==12177==    by 0x4EB32C6: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1352)
+==12177==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==12177==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==12177==    by 0x403D99: run_pwd (execute.c:221)
+==12177==    by 0x403EDF: child_run_command (execute.c:276)
+==12177==    by 0x404135: create_process (execute.c:403)
+==12177==    by 0x404369: run_script (execute.c:443)
+==12177==    by 0x4014E0: main (quash.c:132)
+==12177==  Address 0xffeffde30 is on thread 1's stack
+==12177==  6464 bytes below stack pointer
+==12177== 
+==12177== Invalid read of size 1
+==12177==    at 0x4C35086: __GI_mempcpy (vg_replace_strmem.c:1508)
+==12177==    by 0x4EB56CD: _IO_default_xsputn (genops.c:438)
+==12177==    by 0x4EB32C6: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1352)
+==12177==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==12177==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==12177==    by 0x403D99: run_pwd (execute.c:221)
+==12177==    by 0x403EDF: child_run_command (execute.c:276)
+==12177==    by 0x404135: create_process (execute.c:403)
+==12177==    by 0x404369: run_script (execute.c:443)
+==12177==    by 0x4014E0: main (quash.c:132)
+==12177==  Address 0xffeffde32 is on thread 1's stack
+==12177==  6462 bytes below stack pointer
+==12177== 
+==12177== Invalid free() / delete / delete[] / realloc()
+==12177==    at 0x4C2EDEB: free (vg_replace_malloc.c:530)
+==12177==    by 0x403DA5: run_pwd (execute.c:223)
+==12177==    by 0x403EDF: child_run_command (execute.c:276)
+==12177==    by 0x404135: create_process (execute.c:403)
+==12177==    by 0x404369: run_script (execute.c:443)
+==12177==    by 0x4014E0: main (quash.c:132)
+==12177==  Address 0xffeffde30 is on thread 1's stack
+==12177==  8144 bytes below stack pointer
+==12177== 
+==12182== 
+==12182== HEAP SUMMARY:
+==12182==     in use at exit: 576 bytes in 7 blocks
+==12182==   total heap usage: 62 allocs, 56 frees, 2,132,888 bytes allocated
+==12182== 
+==12182== LEAK SUMMARY:
+==12182==    definitely lost: 0 bytes in 0 blocks
+==12182==    indirectly lost: 0 bytes in 0 blocks
+==12182==      possibly lost: 0 bytes in 0 blocks
+==12182==    still reachable: 576 bytes in 7 blocks
+==12182==         suppressed: 0 bytes in 0 blocks
+==12182== Reachable blocks (those to which a pointer was found) are not shown.
+==12182== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12182== 
+==12182== For counts of detected and suppressed errors, rerun with: -v
+==12182== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12181== 
+==12181== HEAP SUMMARY:
+==12181==     in use at exit: 568 bytes in 6 blocks
+==12181==   total heap usage: 62 allocs, 57 frees, 2,132,888 bytes allocated
+==12181== 
+==12181== LEAK SUMMARY:
+==12181==    definitely lost: 0 bytes in 0 blocks
+==12181==    indirectly lost: 0 bytes in 0 blocks
+==12181==      possibly lost: 0 bytes in 0 blocks
+==12181==    still reachable: 568 bytes in 6 blocks
+==12181==         suppressed: 0 bytes in 0 blocks
+==12181== Reachable blocks (those to which a pointer was found) are not shown.
+==12181== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12181== 
+==12181== For counts of detected and suppressed errors, rerun with: -v
+==12181== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12187== 
+==12187== HEAP SUMMARY:
+==12187==     in use at exit: 576 bytes in 7 blocks
+==12187==   total heap usage: 62 allocs, 56 frees, 2,132,888 bytes allocated
+==12187== 
+==12187== LEAK SUMMARY:
+==12187==    definitely lost: 0 bytes in 0 blocks
+==12187==    indirectly lost: 0 bytes in 0 blocks
+==12187==      possibly lost: 0 bytes in 0 blocks
+==12187==    still reachable: 576 bytes in 7 blocks
+==12187==         suppressed: 0 bytes in 0 blocks
+==12187== Reachable blocks (those to which a pointer was found) are not shown.
+==12187== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12187== 
+==12187== For counts of detected and suppressed errors, rerun with: -v
+==12187== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12177== 
+==12177== HEAP SUMMARY:
+==12177==     in use at exit: 568 bytes in 6 blocks
+==12177==   total heap usage: 62 allocs, 57 frees, 2,132,888 bytes allocated
+==12177== 
+==12177== LEAK SUMMARY:
+==12177==    definitely lost: 0 bytes in 0 blocks
+==12177==    indirectly lost: 0 bytes in 0 blocks
+==12177==      possibly lost: 0 bytes in 0 blocks
+==12177==    still reachable: 568 bytes in 6 blocks
+==12177==         suppressed: 0 bytes in 0 blocks
+==12177== Reachable blocks (those to which a pointer was found) are not shown.
+==12177== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12177== 
+==12177== For counts of detected and suppressed errors, rerun with: -v
+==12177== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12202== 
+==12202== HEAP SUMMARY:
+==12202==     in use at exit: 576 bytes in 7 blocks
+==12202==   total heap usage: 61 allocs, 54 frees, 1,084,312 bytes allocated
+==12202== 
+==12202== LEAK SUMMARY:
+==12202==    definitely lost: 0 bytes in 0 blocks
+==12202==    indirectly lost: 0 bytes in 0 blocks
+==12202==      possibly lost: 0 bytes in 0 blocks
+==12202==    still reachable: 576 bytes in 7 blocks
+==12202==         suppressed: 0 bytes in 0 blocks
+==12202== Reachable blocks (those to which a pointer was found) are not shown.
+==12202== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12202== 
+==12202== For counts of detected and suppressed errors, rerun with: -v
+==12202== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==12193== 
+==12193== HEAP SUMMARY:
+==12193==     in use at exit: 568 bytes in 6 blocks
+==12193==   total heap usage: 61 allocs, 55 frees, 1,084,312 bytes allocated
+==12193== 
+==12193== LEAK SUMMARY:
+==12193==    definitely lost: 0 bytes in 0 blocks
+==12193==    indirectly lost: 0 bytes in 0 blocks
+==12193==      possibly lost: 0 bytes in 0 blocks
+==12193==    still reachable: 568 bytes in 6 blocks
+==12193==         suppressed: 0 bytes in 0 blocks
+==12193== Reachable blocks (those to which a pointer was found) are not shown.
+==12193== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12193== 
+==12193== For counts of detected and suppressed errors, rerun with: -v
+==12193== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==12228== 
+==12228== HEAP SUMMARY:
+==12228==     in use at exit: 576 bytes in 7 blocks
+==12228==   total heap usage: 61 allocs, 54 frees, 1,084,312 bytes allocated
+==12228== 
+==12228== LEAK SUMMARY:
+==12228==    definitely lost: 0 bytes in 0 blocks
+==12228==    indirectly lost: 0 bytes in 0 blocks
+==12228==      possibly lost: 0 bytes in 0 blocks
+==12228==    still reachable: 576 bytes in 7 blocks
+==12228==         suppressed: 0 bytes in 0 blocks
+==12228== Reachable blocks (those to which a pointer was found) are not shown.
+==12228== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12228== 
+==12228== For counts of detected and suppressed errors, rerun with: -v
+==12228== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==12172== 
+==12172== HEAP SUMMARY:
+==12172==     in use at exit: 568 bytes in 6 blocks
+==12172==   total heap usage: 61 allocs, 55 frees, 1,084,312 bytes allocated
+==12172== 
+==12172== LEAK SUMMARY:
+==12172==    definitely lost: 0 bytes in 0 blocks
+==12172==    indirectly lost: 0 bytes in 0 blocks
+==12172==      possibly lost: 0 bytes in 0 blocks
+==12172==    still reachable: 568 bytes in 6 blocks
+==12172==         suppressed: 0 bytes in 0 blocks
+==12172== Reachable blocks (those to which a pointer was found) are not shown.
+==12172== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12172== 
+==12172== For counts of detected and suppressed errors, rerun with: -v
+==12172== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==12229== Invalid read of size 1
+==12229==    at 0x4E88CC0: vfprintf (vfprintf.c:1632)
+==12229==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==12229==    by 0x403D99: run_pwd (execute.c:221)
+==12229==    by 0x403EDF: child_run_command (execute.c:276)
+==12229==    by 0x404135: create_process (execute.c:403)
+==12229==    by 0x404369: run_script (execute.c:443)
+==12229==    by 0x4014E0: main (quash.c:132)
+==12229==  Address 0xffeffde30 is on thread 1's stack
+==12229==  6592 bytes below stack pointer
+==12229== 
+==12229== Invalid read of size 1
+==12229==    at 0x4C35078: __GI_mempcpy (vg_replace_strmem.c:1508)
+==12229==    by 0x4EB56CD: _IO_default_xsputn (genops.c:438)
+==12229==    by 0x4EB32C6: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1352)
+==12229==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==12229==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==12229==    by 0x403D99: run_pwd (execute.c:221)
+==12229==    by 0x403EDF: child_run_command (execute.c:276)
+==12229==    by 0x404135: create_process (execute.c:403)
+==12229==    by 0x404369: run_script (execute.c:443)
+==12229==    by 0x4014E0: main (quash.c:132)
+==12229==  Address 0xffeffde30 is on thread 1's stack
+==12229==  6464 bytes below stack pointer
+==12229== 
+==12229== Invalid read of size 1
+==12229==    at 0x4C35086: __GI_mempcpy (vg_replace_strmem.c:1508)
+==12229==    by 0x4EB56CD: _IO_default_xsputn (genops.c:438)
+==12229==    by 0x4EB32C6: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1352)
+==12229==    by 0x4E8850A: vfprintf (vfprintf.c:1632)
+==12229==    by 0x4E8F7F6: fprintf (fprintf.c:32)
+==12229==    by 0x403D99: run_pwd (execute.c:221)
+==12229==    by 0x403EDF: child_run_command (execute.c:276)
+==12229==    by 0x404135: create_process (execute.c:403)
+==12229==    by 0x404369: run_script (execute.c:443)
+==12229==    by 0x4014E0: main (quash.c:132)
+==12229==  Address 0xffeffde32 is on thread 1's stack
+==12229==  6462 bytes below stack pointer
+==12229== 
+==12229== Invalid free() / delete / delete[] / realloc()
+==12229==    at 0x4C2EDEB: free (vg_replace_malloc.c:530)
+==12229==    by 0x403DA5: run_pwd (execute.c:223)
+==12229==    by 0x403EDF: child_run_command (execute.c:276)
+==12229==    by 0x404135: create_process (execute.c:403)
+==12229==    by 0x404369: run_script (execute.c:443)
+==12229==    by 0x4014E0: main (quash.c:132)
+==12229==  Address 0xffeffde30 is on thread 1's stack
+==12229==  8144 bytes below stack pointer
+==12229== 
+==12231== 
+==12231== HEAP SUMMARY:
+==12231==     in use at exit: 576 bytes in 7 blocks
+==12231==   total heap usage: 62 allocs, 56 frees, 2,132,888 bytes allocated
+==12231== 
+==12231== LEAK SUMMARY:
+==12231==    definitely lost: 0 bytes in 0 blocks
+==12231==    indirectly lost: 0 bytes in 0 blocks
+==12231==      possibly lost: 0 bytes in 0 blocks
+==12231==    still reachable: 576 bytes in 7 blocks
+==12231==         suppressed: 0 bytes in 0 blocks
+==12231== Reachable blocks (those to which a pointer was found) are not shown.
+==12231== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12231== 
+==12231== For counts of detected and suppressed errors, rerun with: -v
+==12231== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12230== 
+==12230== HEAP SUMMARY:
+==12230==     in use at exit: 568 bytes in 6 blocks
+==12230==   total heap usage: 62 allocs, 57 frees, 2,132,888 bytes allocated
+==12230== 
+==12230== LEAK SUMMARY:
+==12230==    definitely lost: 0 bytes in 0 blocks
+==12230==    indirectly lost: 0 bytes in 0 blocks
+==12230==      possibly lost: 0 bytes in 0 blocks
+==12230==    still reachable: 568 bytes in 6 blocks
+==12230==         suppressed: 0 bytes in 0 blocks
+==12230== Reachable blocks (those to which a pointer was found) are not shown.
+==12230== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12230== 
+==12230== For counts of detected and suppressed errors, rerun with: -v
+==12230== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12232== 
+==12232== HEAP SUMMARY:
+==12232==     in use at exit: 576 bytes in 7 blocks
+==12232==   total heap usage: 62 allocs, 56 frees, 2,132,888 bytes allocated
+==12232== 
+==12232== LEAK SUMMARY:
+==12232==    definitely lost: 0 bytes in 0 blocks
+==12232==    indirectly lost: 0 bytes in 0 blocks
+==12232==      possibly lost: 0 bytes in 0 blocks
+==12232==    still reachable: 576 bytes in 7 blocks
+==12232==         suppressed: 0 bytes in 0 blocks
+==12232== Reachable blocks (those to which a pointer was found) are not shown.
+==12232== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12232== 
+==12232== For counts of detected and suppressed errors, rerun with: -v
+==12232== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12229== 
+==12229== HEAP SUMMARY:
+==12229==     in use at exit: 568 bytes in 6 blocks
+==12229==   total heap usage: 62 allocs, 57 frees, 2,132,888 bytes allocated
+==12229== 
+==12229== LEAK SUMMARY:
+==12229==    definitely lost: 0 bytes in 0 blocks
+==12229==    indirectly lost: 0 bytes in 0 blocks
+==12229==      possibly lost: 0 bytes in 0 blocks
+==12229==    still reachable: 568 bytes in 6 blocks
+==12229==         suppressed: 0 bytes in 0 blocks
+==12229== Reachable blocks (those to which a pointer was found) are not shown.
+==12229== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12229== 
+==12229== For counts of detected and suppressed errors, rerun with: -v
+==12229== ERROR SUMMARY: 118 errors from 4 contexts (suppressed: 0 from 0)
+==12250== 
+==12250== HEAP SUMMARY:
+==12250==     in use at exit: 576 bytes in 7 blocks
+==12250==   total heap usage: 61 allocs, 54 frees, 1,084,312 bytes allocated
+==12250== 
+==12250== LEAK SUMMARY:
+==12250==    definitely lost: 0 bytes in 0 blocks
+==12250==    indirectly lost: 0 bytes in 0 blocks
+==12250==      possibly lost: 0 bytes in 0 blocks
+==12250==    still reachable: 576 bytes in 7 blocks
+==12250==         suppressed: 0 bytes in 0 blocks
+==12250== Reachable blocks (those to which a pointer was found) are not shown.
+==12250== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12250== 
+==12250== For counts of detected and suppressed errors, rerun with: -v
+==12250== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==12248== 
+==12248== HEAP SUMMARY:
+==12248==     in use at exit: 568 bytes in 6 blocks
+==12248==   total heap usage: 61 allocs, 55 frees, 1,084,312 bytes allocated
+==12248== 
+==12248== LEAK SUMMARY:
+==12248==    definitely lost: 0 bytes in 0 blocks
+==12248==    indirectly lost: 0 bytes in 0 blocks
+==12248==      possibly lost: 0 bytes in 0 blocks
+==12248==    still reachable: 568 bytes in 6 blocks
+==12248==         suppressed: 0 bytes in 0 blocks
+==12248== Reachable blocks (those to which a pointer was found) are not shown.
+==12248== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12248== 
+==12248== For counts of detected and suppressed errors, rerun with: -v
+==12248== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==12251== 
+==12251== HEAP SUMMARY:
+==12251==     in use at exit: 576 bytes in 7 blocks
+==12251==   total heap usage: 61 allocs, 54 frees, 1,084,312 bytes allocated
+==12251== 
+==12251== LEAK SUMMARY:
+==12251==    definitely lost: 0 bytes in 0 blocks
+==12251==    indirectly lost: 0 bytes in 0 blocks
+==12251==      possibly lost: 0 bytes in 0 blocks
+==12251==    still reachable: 576 bytes in 7 blocks
+==12251==         suppressed: 0 bytes in 0 blocks
+==12251== Reachable blocks (those to which a pointer was found) are not shown.
+==12251== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==12251== 
+==12251== For counts of detected and suppressed errors, rerun with: -v
+==12251== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==11549== 
+==11549== HEAP SUMMARY:
+==11549==     in use at exit: 568 bytes in 6 blocks
+==11549==   total heap usage: 61 allocs, 55 frees, 1,084,312 bytes allocated
+==11549== 
+==11549== LEAK SUMMARY:
+==11549==    definitely lost: 0 bytes in 0 blocks
+==11549==    indirectly lost: 0 bytes in 0 blocks
+==11549==      possibly lost: 0 bytes in 0 blocks
+==11549==    still reachable: 568 bytes in 6 blocks
+==11549==         suppressed: 0 bytes in 0 blocks
+==11549== Reachable blocks (those to which a pointer was found) are not shown.
+==11549== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==11549== 
+==11549== For counts of detected and suppressed errors, rerun with: -v
+==11549== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
