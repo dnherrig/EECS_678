@@ -1,184 +1,176 @@
-==21616== Memcheck, a memory error detector
-==21616== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==21616== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==21616== Command: /home/d643h874/EECS678/EECS_678/quash/quash
-==21616== 
-IMPLEMENT ME: src/execute.c(line 128): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 364): create_process()
-IMPLEMENT ME: src/execute.c(line 467): run_script()
-IMPLEMENT ME: src/execute.c(line 128): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 364): create_process()
-IMPLEMENT ME: src/execute.c(line 229): run_kill()
-IMPLEMENT ME: src/execute.c(line 229): run_kill()
-IMPLEMENT ME: src/execute.c(line 457): run_script()
-IMPLEMENT ME: src/execute.c(line 128): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 364): create_process()
-IMPLEMENT ME: src/execute.c(line 178): run_echo()
-IMPLEMENT ME: src/execute.c(line 457): run_script()
-IMPLEMENT ME: src/execute.c(line 128): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 364): create_process()
-IMPLEMENT ME: src/execute.c(line 457): run_script()
-==21725== 
-==21725== HEAP SUMMARY:
-==21725==     in use at exit: 359 bytes in 6 blocks
-==21725==   total heap usage: 45 allocs, 39 frees, 2,128,305 bytes allocated
-==21725== 
-==21725== 8 bytes in 1 blocks are definitely lost in loss record 1 of 5
-==21725==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21725==    by 0x401F21: __on_push_pidQueueStruct (execute.c:33)
-==21725==    by 0x402131: push_back_pidQueueStruct (execute.c:33)
-==21725==    by 0x4040AC: create_process (execute.c:376)
-==21725==    by 0x40435E: run_script (execute.c:441)
-==21725==    by 0x401520: main (quash.c:132)
-==21725== 
-==21725== 128 bytes in 2 blocks are definitely lost in loss record 4 of 5
-==21725==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21725==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21725==    by 0x40425F: run_script (execute.c:419)
-==21725==    by 0x401520: main (quash.c:132)
-==21725== 
-==21725== 159 (128 direct, 31 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 5
-==21725==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21725==    by 0x402E61: __on_push_jobQueueStruct (execute.c:45)
-==21725==    by 0x4030E2: push_back_jobQueueStruct (execute.c:45)
-==21725==    by 0x4044AD: run_script (execute.c:469)
-==21725==    by 0x401520: main (quash.c:132)
-==21725== 
-==21725== LEAK SUMMARY:
-==21725==    definitely lost: 264 bytes in 4 blocks
-==21725==    indirectly lost: 31 bytes in 1 blocks
-==21725==      possibly lost: 0 bytes in 0 blocks
-==21725==    still reachable: 64 bytes in 1 blocks
-==21725==         suppressed: 0 bytes in 0 blocks
-==21725== Reachable blocks (those to which a pointer was found) are not shown.
-==21725== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21725== 
-==21725== For counts of detected and suppressed errors, rerun with: -v
-==21725== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
-IMPLEMENT ME: src/execute.c(line 457): run_script()
-IMPLEMENT ME: src/execute.c(line 128): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 364): create_process()
-IMPLEMENT ME: src/execute.c(line 457): run_script()
-==21716== 
-==21716== HEAP SUMMARY:
-==21716==     in use at exit: 359 bytes in 6 blocks
-==21716==   total heap usage: 45 allocs, 39 frees, 2,128,305 bytes allocated
-==21716== 
-==21716== 8 bytes in 1 blocks are definitely lost in loss record 1 of 5
-==21716==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21716==    by 0x401F21: __on_push_pidQueueStruct (execute.c:33)
-==21716==    by 0x402131: push_back_pidQueueStruct (execute.c:33)
-==21716==    by 0x4040AC: create_process (execute.c:376)
-==21716==    by 0x40435E: run_script (execute.c:441)
-==21716==    by 0x401520: main (quash.c:132)
-==21716== 
-==21716== 128 bytes in 2 blocks are definitely lost in loss record 4 of 5
-==21716==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21716==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21716==    by 0x40425F: run_script (execute.c:419)
-==21716==    by 0x401520: main (quash.c:132)
-==21716== 
-==21716== 159 (128 direct, 31 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 5
-==21716==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21716==    by 0x402E61: __on_push_jobQueueStruct (execute.c:45)
-==21716==    by 0x4030E2: push_back_jobQueueStruct (execute.c:45)
-==21716==    by 0x4044AD: run_script (execute.c:469)
-==21716==    by 0x401520: main (quash.c:132)
-==21716== 
-==21716== LEAK SUMMARY:
-==21716==    definitely lost: 264 bytes in 4 blocks
-==21716==    indirectly lost: 31 bytes in 1 blocks
-==21716==      possibly lost: 0 bytes in 0 blocks
-==21716==    still reachable: 64 bytes in 1 blocks
-==21716==         suppressed: 0 bytes in 0 blocks
-==21716== Reachable blocks (those to which a pointer was found) are not shown.
-==21716== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21716== 
-==21716== For counts of detected and suppressed errors, rerun with: -v
-==21716== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
-IMPLEMENT ME: src/execute.c(line 457): run_script()
-IMPLEMENT ME: src/execute.c(line 128): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 364): create_process()
-IMPLEMENT ME: src/execute.c(line 178): run_echo()
-IMPLEMENT ME: src/execute.c(line 457): run_script()
-IMPLEMENT ME: src/execute.c(line 128): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 364): create_process()
-IMPLEMENT ME: src/execute.c(line 457): run_script()
-==22122== 
-==22122== HEAP SUMMARY:
-==22122==     in use at exit: 359 bytes in 6 blocks
-==22122==   total heap usage: 45 allocs, 39 frees, 2,128,305 bytes allocated
-==22122== 
-==22122== 8 bytes in 1 blocks are definitely lost in loss record 1 of 5
-==22122==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22122==    by 0x401F21: __on_push_pidQueueStruct (execute.c:33)
-==22122==    by 0x402131: push_back_pidQueueStruct (execute.c:33)
-==22122==    by 0x4040AC: create_process (execute.c:376)
-==22122==    by 0x40435E: run_script (execute.c:441)
-==22122==    by 0x401520: main (quash.c:132)
-==22122== 
-==22122== 128 bytes in 2 blocks are definitely lost in loss record 4 of 5
-==22122==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22122==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==22122==    by 0x40425F: run_script (execute.c:419)
-==22122==    by 0x401520: main (quash.c:132)
-==22122== 
-==22122== 159 (128 direct, 31 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 5
-==22122==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==22122==    by 0x402E61: __on_push_jobQueueStruct (execute.c:45)
-==22122==    by 0x4030E2: push_back_jobQueueStruct (execute.c:45)
-==22122==    by 0x4044AD: run_script (execute.c:469)
-==22122==    by 0x401520: main (quash.c:132)
-==22122== 
-==22122== LEAK SUMMARY:
-==22122==    definitely lost: 264 bytes in 4 blocks
-==22122==    indirectly lost: 31 bytes in 1 blocks
-==22122==      possibly lost: 0 bytes in 0 blocks
-==22122==    still reachable: 64 bytes in 1 blocks
-==22122==         suppressed: 0 bytes in 0 blocks
-==22122== Reachable blocks (those to which a pointer was found) are not shown.
-==22122== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==22122== 
-==22122== For counts of detected and suppressed errors, rerun with: -v
-==22122== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
-IMPLEMENT ME: src/execute.c(line 457): run_script()
-IMPLEMENT ME: src/execute.c(line 128): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 364): create_process()
-IMPLEMENT ME: src/execute.c(line 457): run_script()
-==21616== 
-==21616== HEAP SUMMARY:
-==21616==     in use at exit: 359 bytes in 6 blocks
-==21616==   total heap usage: 45 allocs, 39 frees, 2,128,305 bytes allocated
-==21616== 
-==21616== 8 bytes in 1 blocks are definitely lost in loss record 1 of 5
-==21616==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21616==    by 0x401F21: __on_push_pidQueueStruct (execute.c:33)
-==21616==    by 0x402131: push_back_pidQueueStruct (execute.c:33)
-==21616==    by 0x4040AC: create_process (execute.c:376)
-==21616==    by 0x40435E: run_script (execute.c:441)
-==21616==    by 0x401520: main (quash.c:132)
-==21616== 
-==21616== 128 bytes in 2 blocks are definitely lost in loss record 4 of 5
-==21616==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21616==    by 0x40277B: new_jobQueueStruct (execute.c:45)
-==21616==    by 0x40425F: run_script (execute.c:419)
-==21616==    by 0x401520: main (quash.c:132)
-==21616== 
-==21616== 159 (128 direct, 31 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 5
-==21616==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
-==21616==    by 0x402E61: __on_push_jobQueueStruct (execute.c:45)
-==21616==    by 0x4030E2: push_back_jobQueueStruct (execute.c:45)
-==21616==    by 0x4044AD: run_script (execute.c:469)
-==21616==    by 0x401520: main (quash.c:132)
-==21616== 
-==21616== LEAK SUMMARY:
-==21616==    definitely lost: 264 bytes in 4 blocks
-==21616==    indirectly lost: 31 bytes in 1 blocks
-==21616==      possibly lost: 0 bytes in 0 blocks
-==21616==    still reachable: 64 bytes in 1 blocks
-==21616==         suppressed: 0 bytes in 0 blocks
-==21616== Reachable blocks (those to which a pointer was found) are not shown.
-==21616== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==21616== 
-==21616== For counts of detected and suppressed errors, rerun with: -v
-==21616== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+==14881== Memcheck, a memory error detector
+==14881== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==14881== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==14881== Command: /home/d643h874/EECS678/EECS_678/quash/quash
+==14881== 
+IMPLEMENT ME: src/execute.c(line 404): create_process()
+IMPLEMENT ME: src/execute.c(line 507): run_script()
+IMPLEMENT ME: src/execute.c(line 404): create_process()
+IMPLEMENT ME: src/execute.c(line 256): run_kill()
+IMPLEMENT ME: src/execute.c(line 256): run_kill()
+IMPLEMENT ME: src/execute.c(line 497): run_script()
+IMPLEMENT ME: src/execute.c(line 404): create_process()
+IMPLEMENT ME: src/execute.c(line 179): run_echo()
+IMPLEMENT ME: src/execute.c(line 497): run_script()
+IMPLEMENT ME: src/execute.c(line 404): create_process()
+IMPLEMENT ME: src/execute.c(line 497): run_script()
+==15076== 
+==15076== HEAP SUMMARY:
+==15076==     in use at exit: 359 bytes in 6 blocks
+==15076==   total heap usage: 45 allocs, 39 frees, 2,128,305 bytes allocated
+==15076== 
+==15076== 8 bytes in 1 blocks are definitely lost in loss record 1 of 5
+==15076==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==15076==    by 0x401F21: __on_push_pidQueueStruct (execute.c:33)
+==15076==    by 0x402131: push_back_pidQueueStruct (execute.c:33)
+==15076==    by 0x404090: create_process (execute.c:416)
+==15076==    by 0x404342: run_script (execute.c:481)
+==15076==    by 0x401520: main (quash.c:132)
+==15076== 
+==15076== 128 bytes in 2 blocks are definitely lost in loss record 4 of 5
+==15076==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==15076==    by 0x40277B: new_jobQueueStruct (execute.c:45)
+==15076==    by 0x404243: run_script (execute.c:459)
+==15076==    by 0x401520: main (quash.c:132)
+==15076== 
+==15076== 159 (128 direct, 31 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 5
+==15076==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==15076==    by 0x402E61: __on_push_jobQueueStruct (execute.c:45)
+==15076==    by 0x4030E2: push_back_jobQueueStruct (execute.c:45)
+==15076==    by 0x404491: run_script (execute.c:509)
+==15076==    by 0x401520: main (quash.c:132)
+==15076== 
+==15076== LEAK SUMMARY:
+==15076==    definitely lost: 264 bytes in 4 blocks
+==15076==    indirectly lost: 31 bytes in 1 blocks
+==15076==      possibly lost: 0 bytes in 0 blocks
+==15076==    still reachable: 64 bytes in 1 blocks
+==15076==         suppressed: 0 bytes in 0 blocks
+==15076== Reachable blocks (those to which a pointer was found) are not shown.
+==15076== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==15076== 
+==15076== For counts of detected and suppressed errors, rerun with: -v
+==15076== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+IMPLEMENT ME: src/execute.c(line 497): run_script()
+IMPLEMENT ME: src/execute.c(line 404): create_process()
+IMPLEMENT ME: src/execute.c(line 497): run_script()
+==15058== 
+==15058== HEAP SUMMARY:
+==15058==     in use at exit: 359 bytes in 6 blocks
+==15058==   total heap usage: 45 allocs, 39 frees, 2,128,305 bytes allocated
+==15058== 
+==15058== 8 bytes in 1 blocks are definitely lost in loss record 1 of 5
+==15058==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==15058==    by 0x401F21: __on_push_pidQueueStruct (execute.c:33)
+==15058==    by 0x402131: push_back_pidQueueStruct (execute.c:33)
+==15058==    by 0x404090: create_process (execute.c:416)
+==15058==    by 0x404342: run_script (execute.c:481)
+==15058==    by 0x401520: main (quash.c:132)
+==15058== 
+==15058== 128 bytes in 2 blocks are definitely lost in loss record 4 of 5
+==15058==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==15058==    by 0x40277B: new_jobQueueStruct (execute.c:45)
+==15058==    by 0x404243: run_script (execute.c:459)
+==15058==    by 0x401520: main (quash.c:132)
+==15058== 
+==15058== 159 (128 direct, 31 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 5
+==15058==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==15058==    by 0x402E61: __on_push_jobQueueStruct (execute.c:45)
+==15058==    by 0x4030E2: push_back_jobQueueStruct (execute.c:45)
+==15058==    by 0x404491: run_script (execute.c:509)
+==15058==    by 0x401520: main (quash.c:132)
+==15058== 
+==15058== LEAK SUMMARY:
+==15058==    definitely lost: 264 bytes in 4 blocks
+==15058==    indirectly lost: 31 bytes in 1 blocks
+==15058==      possibly lost: 0 bytes in 0 blocks
+==15058==    still reachable: 64 bytes in 1 blocks
+==15058==         suppressed: 0 bytes in 0 blocks
+==15058== Reachable blocks (those to which a pointer was found) are not shown.
+==15058== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==15058== 
+==15058== For counts of detected and suppressed errors, rerun with: -v
+==15058== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+IMPLEMENT ME: src/execute.c(line 497): run_script()
+IMPLEMENT ME: src/execute.c(line 404): create_process()
+IMPLEMENT ME: src/execute.c(line 179): run_echo()
+IMPLEMENT ME: src/execute.c(line 497): run_script()
+IMPLEMENT ME: src/execute.c(line 404): create_process()
+IMPLEMENT ME: src/execute.c(line 497): run_script()
+==15427== 
+==15427== HEAP SUMMARY:
+==15427==     in use at exit: 359 bytes in 6 blocks
+==15427==   total heap usage: 45 allocs, 39 frees, 2,128,305 bytes allocated
+==15427== 
+==15427== 8 bytes in 1 blocks are definitely lost in loss record 1 of 5
+==15427==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==15427==    by 0x401F21: __on_push_pidQueueStruct (execute.c:33)
+==15427==    by 0x402131: push_back_pidQueueStruct (execute.c:33)
+==15427==    by 0x404090: create_process (execute.c:416)
+==15427==    by 0x404342: run_script (execute.c:481)
+==15427==    by 0x401520: main (quash.c:132)
+==15427== 
+==15427== 128 bytes in 2 blocks are definitely lost in loss record 4 of 5
+==15427==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==15427==    by 0x40277B: new_jobQueueStruct (execute.c:45)
+==15427==    by 0x404243: run_script (execute.c:459)
+==15427==    by 0x401520: main (quash.c:132)
+==15427== 
+==15427== 159 (128 direct, 31 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 5
+==15427==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==15427==    by 0x402E61: __on_push_jobQueueStruct (execute.c:45)
+==15427==    by 0x4030E2: push_back_jobQueueStruct (execute.c:45)
+==15427==    by 0x404491: run_script (execute.c:509)
+==15427==    by 0x401520: main (quash.c:132)
+==15427== 
+==15427== LEAK SUMMARY:
+==15427==    definitely lost: 264 bytes in 4 blocks
+==15427==    indirectly lost: 31 bytes in 1 blocks
+==15427==      possibly lost: 0 bytes in 0 blocks
+==15427==    still reachable: 64 bytes in 1 blocks
+==15427==         suppressed: 0 bytes in 0 blocks
+==15427== Reachable blocks (those to which a pointer was found) are not shown.
+==15427== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==15427== 
+==15427== For counts of detected and suppressed errors, rerun with: -v
+==15427== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+IMPLEMENT ME: src/execute.c(line 497): run_script()
+IMPLEMENT ME: src/execute.c(line 404): create_process()
+IMPLEMENT ME: src/execute.c(line 497): run_script()
+==14881== 
+==14881== HEAP SUMMARY:
+==14881==     in use at exit: 359 bytes in 6 blocks
+==14881==   total heap usage: 45 allocs, 39 frees, 2,128,305 bytes allocated
+==14881== 
+==14881== 8 bytes in 1 blocks are definitely lost in loss record 1 of 5
+==14881==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==14881==    by 0x401F21: __on_push_pidQueueStruct (execute.c:33)
+==14881==    by 0x402131: push_back_pidQueueStruct (execute.c:33)
+==14881==    by 0x404090: create_process (execute.c:416)
+==14881==    by 0x404342: run_script (execute.c:481)
+==14881==    by 0x401520: main (quash.c:132)
+==14881== 
+==14881== 128 bytes in 2 blocks are definitely lost in loss record 4 of 5
+==14881==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==14881==    by 0x40277B: new_jobQueueStruct (execute.c:45)
+==14881==    by 0x404243: run_script (execute.c:459)
+==14881==    by 0x401520: main (quash.c:132)
+==14881== 
+==14881== 159 (128 direct, 31 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 5
+==14881==    at 0x4C2DB8F: malloc (vg_replace_malloc.c:299)
+==14881==    by 0x402E61: __on_push_jobQueueStruct (execute.c:45)
+==14881==    by 0x4030E2: push_back_jobQueueStruct (execute.c:45)
+==14881==    by 0x404491: run_script (execute.c:509)
+==14881==    by 0x401520: main (quash.c:132)
+==14881== 
+==14881== LEAK SUMMARY:
+==14881==    definitely lost: 264 bytes in 4 blocks
+==14881==    indirectly lost: 31 bytes in 1 blocks
+==14881==      possibly lost: 0 bytes in 0 blocks
+==14881==    still reachable: 64 bytes in 1 blocks
+==14881==         suppressed: 0 bytes in 0 blocks
+==14881== Reachable blocks (those to which a pointer was found) are not shown.
+==14881== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==14881== 
+==14881== For counts of detected and suppressed errors, rerun with: -v
+==14881== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)

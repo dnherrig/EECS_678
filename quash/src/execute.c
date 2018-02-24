@@ -98,6 +98,7 @@ void check_jobs_bg_status() {
         pid_t check = waitpid(current2, &status, 0);
         if(check == -1)
         {
+          exit(EXIT_FAILURE);
           //error
         }
         else if( current2 == check )
@@ -125,7 +126,7 @@ void check_jobs_bg_status() {
 
 
 
-  IMPLEMENT_ME();
+  //IMPLEMENT_ME();
 
   // TODO: Once jobs are implemented, uncomment and fill the following line
   // print_job_bg_complete(job_id, pid, cmd);
@@ -185,8 +186,15 @@ void run_export(ExportCommand cmd) {
   const char* env_var = cmd.env_var;
   const char* val = cmd.val;
 
-  if(setenv(env_var, val, 1) == -1) {
-    //fprintf(stderr, "ERROR: Failed to update environment variable, %s, to value, %s\n", env_var, val);
+  // TODO: Remove warning silencers
+  // (void) env_var; // Silence unused variable warning
+  // (void) val;     // Silence unused variable warning
+
+  // TODO: Implement export.
+  // HINT: This should be quite simple.
+
+  if(setenv(env_var, val, 1)) {
+    fprintf(stderr, "ERROR: Failed to update environment variable, %s, to value, %s\n", env_var, val);
     exit(EXIT_FAILURE);
   }
   IMPLEMENT_ME();
@@ -201,20 +209,38 @@ void run_cd(CDCommand cmd) {
     exit(EXIT_FAILURE);
   }
 
-  char* cwd = get_current_directory(NULL);
-  setenv("PREV_PWD", cwd, 1);
-  if(chdir(dir) == -1) {
-  //  fprintf("ERROR: Failed to go to directory, %s\n", dir);
-    exit(EXIT_FAILURE);
-  }
-  free(cwd);
-  cwd = get_current_directory(NULL);
-  if(setenv("PWD", cwd, 1) == -1) {
-    //fprintf("ERROR: Failed to update PWD variable, %s\n", cwd);
-    exit(EXIT_FAILURE);
-  }
+//printf("test\n");
+
+
+
+  // TODO: Change directory
+
+  chdir(cmd.dir);
+
+
+  // TODO: Update the PWD environment variable to be the new current working
+  // directory and optionally update OLD_PWD environment variable to be the old
+  // working directory.
+
+  setenv("OLD_PWD", dir, 1);
+
+  //lookup_env(dir);
+
+
+  // char* cwd = get_current_directory(NULL);
+  // setenv("PREV_PWD", cwd, 1);
+  // if(chdir(dir) == -1) {
+  //   //fprintf("ERROR: Failed to go to directory, %s\n", dir);
+  //   exit(EXIT_FAILURE);
+  // }
+  // free(cwd);
+  // cwd = get_current_directory(NULL);
+  // if(setenv("PWD", cwd, 1) == -1) {
+  //   //fprintf("ERROR: Failed to update PWD variable, %s\n", cwd);
+  //   exit(EXIT_FAILURE);
+  // }
   IMPLEMENT_ME();
-  free(cwd);
+  //free(cwd);
 }
 
 // Sends a signal to all processes contained in a job *****
@@ -222,11 +248,17 @@ void run_kill(KillCommand cmd) {
   int signal = cmd.sig;
   int job_id = cmd.job;
 
-  struct jobType myJob;
-  /*for(int i = 0; i < length; i++) {
+  // TODO: Remove warning silencers
+  (void) signal; // Silence unused variable warning
+  (void) job_id; // Silence unused variable warning
 
-  }*/
+  // TODO: Kill all processes associated with a background job
   IMPLEMENT_ME();
+
+  // struct jobType myJob;
+  // /*for(int i = 0; i < length; i++) {
+  //
+  // }*/
 
 }
 
@@ -234,7 +266,15 @@ void run_kill(KillCommand cmd) {
 // Prints the current working directory to stdout
 void run_pwd() {
   // TODO: Print the current working directory
-  IMPLEMENT_ME();
+
+  //printf("check\n" );
+    char currentWorkingDirectory[1024];
+     if (getcwd(currentWorkingDirectory, sizeof(currentWorkingDirectory)) != NULL)
+         fprintf(stdout, "%s\n", currentWorkingDirectory);
+     else
+         printf("pwd error");
+
+  // IMPLEMENT_ME();
 
 
   // Flush the buffer before returning
@@ -457,7 +497,7 @@ void run_script(CommandHolder* holders) {
     IMPLEMENT_ME();
   }
   else {
-  //  printf("CHECK 8\n");
+    //printf("CHECK 8\n");
     struct jobType newJob;
     newJob.id = numJob;
     numJob++;
