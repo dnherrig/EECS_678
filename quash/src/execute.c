@@ -23,11 +23,13 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
+//used for pipes
+static int n = 0;
+static int p = -1;
+static int pipes[2][2];
 
-
-int numJob = 0;
+//bool for if jobQueue is isInitialized
 bool isInitialized = false;
-static int pipes[2];
 
 IMPLEMENT_DEQUE_STRUCT(pidQueueStruct, pid_t);
 IMPLEMENT_DEQUE(pidQueueStruct, pid_t);
@@ -80,32 +82,61 @@ void check_jobs_bg_status() {
   //IMPLEMENT_ME();
   int i =0;
   int j =0;
-  int status;
+  //int status;
 
   //printf("%s\n", length_jobQueueStruct(&jobQueue));
   while(i < length_jobQueueStruct(&jobQueue)) {
 
     jobType current;
-    current = peek_front_jobQueueStruct(&jobQueue);
+    current = pop_front_jobQueueStruct(&jobQueue);
+    //current = peek_front_jobQueueStruct(&jobQueue);
+    //pid_t current2 = peek_front_pidQueueStruct(&current.myQueue);
+    pid_t tempPID = peek_front_pidQueueStruct(&current.myQueue);
+    int x = length_pidQueueStruct(&current.myQueue);
+    //printf("hello\n");
+    //printf("%d\n", x);
+      while(j < x) {
 
-      while(j < length_pidQueueStruct(&current.myQueue)) {
-
-        pid_t current2 = peek_front_pidQueueStruct(&current.myQueue);
-        pid_t check = waitpid(current2, &status, 0);
-        if(check == -1)
-        {
+        /*pid_t pid = peek_front_pidQueueStruct(&current.myQueue);
+        pid_t check = waitpid(pid, &status, 0);
+        if(check == -1) {
           exit(EXIT_FAILURE);
           //error
         }
-        else if( current2 == check ) {
+        else if( pid == check ) {
           //done
           pop_front_pidQueueStruct(&current.myQueue);
         }
         else {
           //leave alone
-
+        }*/
+        pid_t myPID = pop_front_pidQueueStruct(&current.myQueue);
+        int statID;
+        //pid_t check = waitpid(myPID, &statID, 0);
+        if(waitpid(myPID, &statID, 0) == -1) {
+          //printf("error\n");
+          exit(EXIT_FAILURE);
         }
+        else if(waitpid(myPID, &statID, 0) > 0) {
+          //printf("done\n");
+          //pop_front_pidQueueStruct(&current.myQueue);
+          //done
+        }
+        else {
+          //printf("keep waiting\n");
+          push_back_pidQueueStruct(&current.myQueue, myPID);
+        }
+
         j++;
+      }
+      if(is_empty_pidQueueStruct(&current.myQueue)) {
+        print_job_bg_complete(current.id, tempPID, current.cmd);
+        free(current.cmd);
+        destroy_pidQueueStruct(&current.myQueue);
+      }
+      else {
+        //pop_front_jobQueueStruct(&jobQueue);
+        push_back_jobQueueStruct(&jobQueue, current);
       }
     i++;
   }
@@ -169,13 +200,6 @@ void run_export(ExportCommand cmd) {
   const char* env_var = cmd.env_var;
   const char* val = cmd.val;
 
-  // TODO: Remove warning silencers
-  // (void) env_var; // Silence unused variable warning
-  // (void) val;     // Silence unused variable warning
-
-  // TODO: Implement export.
-  // HINT: This should be quite simple.
-
   if(setenv(env_var, val, 1)) {
     fprintf(stderr, "ERROR: Failed to update environment variable, %s, to value, %s\n", env_var, val);
     exit(EXIT_FAILURE);
@@ -227,8 +251,6 @@ void run_kill(KillCommand cmd) {
 
 // Prints the current working directory to stdout
 void run_pwd() {
-  // TODO: Print the current working directory
-  //printf("check\n" );
     char currentWorkingDirectory[1024];
      if (getcwd(currentWorkingDirectory, sizeof(currentWorkingDirectory)) != NULL)
          fprintf(stdout, "%s\n", currentWorkingDirectory);
@@ -245,6 +267,7 @@ void run_jobs() {
   //IMPLEMENT_ME();
   int i = 0;
   int x = length_jobQueueStruct(&jobQueue);
+  //printf("hello\n");
   //printf("%d\n", x);
   while(i < x) {
     jobType current = pop_front_jobQueueStruct(&jobQueue);
@@ -367,22 +390,23 @@ void create_process(CommandHolder holder, jobType* current) {
   bool r_in  = holder.flags & REDIRECT_IN;
   bool r_out = holder.flags & REDIRECT_OUT;
   bool r_app = holder.flags & REDIRECT_APPEND;
-  static int pipesTemp = -1;
 
   //setting up pipes, redirects and processes
-  pipe(pipes);
+  if(p_out) {
+    pipe(pipes[n]);
+  }
   pid_t pid = fork();
 
   if (pid == 0) {
     // Is a child
     if (p_in) {
-      dup2(pipesTemp, STDIN_FILENO);
-      close(pipes[0]);
+      dup2(pipes[p][0], STDIN_FILENO);
+      close(pipes[p][0]);
     }
 
     if (p_out) {
-      dup2(pipes[1], STDOUT_FILENO);
-      close(pipes[1]);
+      dup2(pipes[n][1], STDOUT_FILENO);
+      close(pipes[n][1]);
     }
 
     if (r_in) {
@@ -410,19 +434,18 @@ void create_process(CommandHolder holder, jobType* current) {
   else {
     //Is a parent
     if(p_out) {
-      close(pipesTemp);
-      pipesTemp = pipes[0];
+      close(pipes[n][1]);
     }
-    else {
-      close(pipes[0]);
+    if(p_in) {
+      close(pipes[p][0]);
     }
 
-    push_back_pidQueueStruct(&current->myQueue, pid);
+    n = (n + 1) % 2;
+    p = (p + 1) % 2;
+    
+    push_back_pidQueueStruct(&(current->myQueue), pid);
     parent_run_command(holder.cmd);
   }
-
-  //close
-  close(pipes[1]);
 }
 
 // Run a list of commands
