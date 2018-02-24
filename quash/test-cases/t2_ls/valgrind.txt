@@ -1,21 +1,21 @@
-==1857== Memcheck, a memory error detector
-==1857== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==1857== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==1857== Command: /home/j234g594/EECS_678/quash/quash
-==1857== 
-==1857== 
-==1857== HEAP SUMMARY:
-==1857==     in use at exit: 64 bytes in 1 blocks
-==1857==   total heap usage: 15 allocs, 14 frees, 1,068,989 bytes allocated
-==1857== 
-==1857== LEAK SUMMARY:
-==1857==    definitely lost: 0 bytes in 0 blocks
-==1857==    indirectly lost: 0 bytes in 0 blocks
-==1857==      possibly lost: 0 bytes in 0 blocks
-==1857==    still reachable: 64 bytes in 1 blocks
-==1857==         suppressed: 0 bytes in 0 blocks
-==1857== Reachable blocks (those to which a pointer was found) are not shown.
-==1857== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==1857== 
-==1857== For counts of detected and suppressed errors, rerun with: -v
-==1857== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==11095== Memcheck, a memory error detector
+==11095== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==11095== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==11095== Command: /home/d643h874/EECS678/EECS_678/quash/quash
+==11095== 
+==11095== 
+==11095== HEAP SUMMARY:
+==11095==     in use at exit: 64 bytes in 1 blocks
+==11095==   total heap usage: 15 allocs, 14 frees, 1,068,989 bytes allocated
+==11095== 
+==11095== LEAK SUMMARY:
+==11095==    definitely lost: 0 bytes in 0 blocks
+==11095==    indirectly lost: 0 bytes in 0 blocks
+==11095==      possibly lost: 0 bytes in 0 blocks
+==11095==    still reachable: 64 bytes in 1 blocks
+==11095==         suppressed: 0 bytes in 0 blocks
+==11095== Reachable blocks (those to which a pointer was found) are not shown.
+==11095== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==11095== 
+==11095== For counts of detected and suppressed errors, rerun with: -v
+==11095== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
