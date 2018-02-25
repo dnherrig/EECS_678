@@ -95,7 +95,6 @@ void check_jobs_bg_status() {
       j = 0;
       int y = length_pidQueueStruct(&current.myQueue);
       while(j < y) {
-
         pid_t myPid = pop_front_pidQueueStruct(&current.myQueue);
         int statID;
 
@@ -225,50 +224,48 @@ void run_kill(KillCommand cmd) {
   int i = 0;
   int j = 0;
 
-//  printf("CHECK 0\n");
-
+  //printf("CHECK 0\n");
   while(i < length_jobQueueStruct(&jobQueue)) {
+    jobType current;
+    current = peek_front_jobQueueStruct(&jobQueue);
+    //printf("CHECK 1\n");
+    //printf("%s\n", current.id);
 
-      jobType current;
-      current = peek_front_jobQueueStruct(&jobQueue);
-      //printf("CHECK 1\n");
-      //printf("%s\n", current.id);
-
-      if(current.id == job_id)
-      {
-        //printf("CHECK 2\n");
-        int check = length_pidQueueStruct(&current.myQueue);
-        while(j < check)
-          {
-            //printf("CHECK 3\n");
-            pid_t current2 = peek_front_pidQueueStruct(&current.myQueue);
-            kill(current2, signal);
-            pop_front_pidQueueStruct(&current.myQueue);
-            j++;
-          }
-      }
-      else
-      {
-        //printf("CHECK 4\n");
-        push_back_jobQueueStruct(&jobQueue, pop_front_jobQueueStruct(&jobQueue));
-        //pop
-      }
-      i++;
+    if(current.id == job_id)
+    {
+      //printf("CHECK 2\n");
+      int check = length_pidQueueStruct(&current.myQueue);
+      while(j < check)
+        {
+          //printf("CHECK 3\n");
+          pid_t current2 = peek_front_pidQueueStruct(&current.myQueue);
+          kill(current2, signal);
+          pop_front_pidQueueStruct(&current.myQueue);
+          j++;
+        }
     }
-    //IMPLEMENT_ME();
+    else
+    {
+      //printf("CHECK 4\n");
+      push_back_jobQueueStruct(&jobQueue, pop_front_jobQueueStruct(&jobQueue));
+      //pop
+    }
+    i++;
+  }
+  //IMPLEMENT_ME();
 }
 
 // Prints the current working directory to stdout
 void run_pwd() {
-    char currentWorkingDirectory[1024];
-     if (getcwd(currentWorkingDirectory, sizeof(currentWorkingDirectory)) != NULL)
-     {
-       fprintf(stdout, "%s\n", currentWorkingDirectory);
-     }
-     else
-     {
-       printf("ERROR");
-     }
+  char currentWorkingDirectory[1024];
+   if (getcwd(currentWorkingDirectory, sizeof(currentWorkingDirectory)) != NULL)
+   {
+     fprintf(stdout, "%s\n", currentWorkingDirectory);
+   }
+   else
+   {
+     printf("ERROR");
+   }
   // IMPLEMENT_ME();
   // Flush the buffer before returning
   fflush(stdout);
