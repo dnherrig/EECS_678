@@ -1,9 +1,0 @@
-2d1
-< Hello World
-4c3
-< Completed: 	[1]	#PID#	delayed_echo Hello World 1 & 
----
-> [1]	#PID#	delayed_echo Hello World 1 & 
-5a5,6
-> Hello World
-> Completed: 	[1]	#PID#	delayed_echo Hello World 1 & 

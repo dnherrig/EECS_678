@@ -1,7 +1,0 @@
-2d1
-< hello
-4d2
-< Completed: 	[1]	#PID#	delayed_echo hello 2 & 
-6a5,6
-> hello
-> Completed: 	[1]	#PID#	delayed_echo hello 2 & 
