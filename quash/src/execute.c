@@ -62,6 +62,8 @@ jobQueueStruct jobQueue;
 
 // Return a string containing the current working directory. *****
 char* get_current_directory(bool* should_free) {
+  // COMPLETED: Get the current working directory. This will fix the prompt path.
+  // HINT: This should be pretty simple
   // Change this to true if necessary
   *should_free = false;
   return getcwd(NULL, 0);
@@ -70,15 +72,26 @@ char* get_current_directory(bool* should_free) {
 
 // Returns the value of an environment variable env_var *****
 const char* lookup_env(const char* env_var) {
-  return getenv(env_var);
+  // COMPLETED: Lookup environment variables. This is required for parser to be able
+  // to interpret variables from the command line and display the prompt
+  // correctly
+  // HINT: This should be pretty simple
   //IMPLEMENT_ME();
+  // COMPLETED: Remove warning silencers
+  //(void) env_var; // Silence unused variable warning
+
+  return getenv(env_var);
+
 }
 
 // Check the status of background jobs
 void check_jobs_bg_status() {
-  // Check on the statuses of all processes belonging to all background
+  // COMPLETED: Check on the statuses of all processes belonging to all background
   // jobs. This function should remove jobs from the jobs queue once all
   // processes belonging to a job have completed.
+  //IMPLEMENT_ME();
+  // COMPLETED: Once jobs are implemented, uncomment and fill the following line
+  // print_job_bg_complete(job_id, pid, cmd);
   int i = 0;
   int j = 0;
 
@@ -152,18 +165,35 @@ void print_job_bg_complete(int job_id, pid_t pid, const char* cmd) {
 // Run a program reachable by the path environment variable, relative path, or
 // absolute path *****
 void run_generic(GenericCommand cmd) {
+  // Execute a program with a list of arguments. The `args` array is a NULL
+  // terminated (last string is always NULL) list of strings. The first element
+  // in the array is the executable
   char* exec = cmd.args[0];
   char** args = cmd.args;
+
+  // COMPLETED: Remove warning silencers
+  //(void) exec; // Silence unused variable warning
+  //(void) args; // Silence unused variable warning
+
+  // COMPLETED: Implement run generic
+  //IMPLEMENT_ME();
+
   execvp(exec, args);
+
   //fprintf(stderr, "ERROR: Failed to execute the program: %s", exec);
   //exit(EXIT_FAILURE);
   //perror("ERROR: Failed to execute program");
-  //IMPLEMENT_ME();
 }
 
 // Print strings *****
 void run_echo(EchoCommand cmd) {
   char** str = cmd.args;
+
+  // COMPLETED: Remove warning silencers
+  //(void) str; // Silence unused variable warning
+
+  // COMPLETED: Implement echo
+  //IMPLEMENT_ME();
 
   //printf("ECHO CHECK\n");
   while(str != NULL) {
@@ -176,7 +206,6 @@ void run_echo(EchoCommand cmd) {
     }
   }
   printf("\n");
-  //IMPLEMENT_ME();
   fflush(stdout);
 }
 
@@ -186,11 +215,16 @@ void run_export(ExportCommand cmd) {
   const char* env_var = cmd.env_var;
   const char* val = cmd.val;
 
+  // COMPLETED: Remove warning silencers
+  //(void) str; // Silence unused variable warning
+
+  // COMPLETED: Implement echo
+  //IMPLEMENT_ME();
+
   if(setenv(env_var, val, 1)) {
     fprintf(stderr, "ERROR: Failed to update environment variable, %s, to value, %s\n", env_var, val);
     //exit(EXIT_FAILURE);
   }
-  //IMPLEMENT_ME();
 }
 
 // Changes the current working directory *****
@@ -201,13 +235,19 @@ void run_cd(CDCommand cmd) {
     return;
   }
 
+  // COMPLETED: Change directory
+
+  // COMPLETED: Update the PWD environment variable to be the new current working
+  // directory and optionally update OLD_PWD environment variable to be the old
+  // working directory.
+
   if(chdir(dir) != 0) {
     return;
   }
 
   const char* temp = getenv("PWD");
 
-  if(setenv("PREV_PWD", temp, 1) != 0) {
+  if(setenv("OLD_PWD", temp, 1) != 0) {
     return;
   }
   if(setenv("PWD", dir, 1) != 0) {
@@ -220,6 +260,12 @@ void run_cd(CDCommand cmd) {
 void run_kill(KillCommand cmd) {
   int signal = cmd.sig;
   int job_id = cmd.job;
+
+  // COMPLETED: Remove warning silencers
+  //(void) signal; // Silence unused variable warning
+  //(void) job_id; // Silence unused variable warning
+
+  // COMPLETED: Kill all processes associated with a background job
 
   int i = 0;
   int j = 0;
@@ -257,6 +303,7 @@ void run_kill(KillCommand cmd) {
 
 // Prints the current working directory to stdout
 void run_pwd() {
+  // COMPLETED: Kill all processes associated with a background job
   char currentWorkingDirectory[1024];
    if (getcwd(currentWorkingDirectory, sizeof(currentWorkingDirectory)) != NULL)
    {
@@ -273,6 +320,7 @@ void run_pwd() {
 
 // Prints all background jobs currently in the job list to stdout
 void run_jobs() {
+  // COMPLETED: Print background jobs
   int i = 0;
   int x = length_jobQueueStruct(&jobQueue);
   while(i < x) {
@@ -396,7 +444,14 @@ void create_process(CommandHolder holder) {
   bool r_out = holder.flags & REDIRECT_OUT;
   bool r_app = holder.flags & REDIRECT_APPEND;
 
-  //setting up pipes, redirects and processes
+  // COMPLETED: Remove warning silencers
+  // (void) p_in;  // Silence unused variable warning
+  // (void) p_out; // Silence unused variable warning
+  // (void) r_in;  // Silence unused variable warning
+  // (void) r_out; // Silence unused variable warning
+  // (void) r_app; // Silence unused variable warning
+  //COMPLETED: setting up pipes, redirects and processes
+  //IMPLEMENT_ME()
   if(p_out) {
     pipe(pipes[pipeWhere % 2]);
   }
@@ -481,6 +536,8 @@ void run_script(CommandHolder* holders) {
 
   if (!(holders[0].flags & BACKGROUND)) {
     // Not a background job.
+    // COMPLETED: Wait for all processes under the job to complete
+    //IMPLEMENT_ME();
     while(!is_empty_pidQueueStruct(&pidQueue))
     {
       int statID;
@@ -491,14 +548,18 @@ void run_script(CommandHolder* holders) {
   }
   else {
     // A background job.
-    // Push the new job to the job queue
+    // COMPLETED: Push the new job to the job queue
     //create new job!
+    //IMPLEMENT_ME();
+
     struct jobType newJob;
 
     newJob.id = numJob;
     numJob = numJob + 1;
     newJob.cmd = get_command_string();
     newJob.myQueue = pidQueue;
+
+    // COMPLETED: Once jobs are implemented, uncomment and fill the following line
 
     push_back_jobQueueStruct(&jobQueue, newJob);
     print_job_bg_start(newJob.id, peek_front_pidQueueStruct(&newJob.myQueue), newJob.cmd);
