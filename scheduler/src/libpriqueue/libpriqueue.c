@@ -136,7 +136,27 @@ void *priqueue_peek(priqueue_t *q)
  */
 void *priqueue_poll(priqueue_t *q)
 {
-	return NULL;
+	if(q->size != 0) {
+		//priqueue_remove(q, q->front->ptr);
+		node_t *temp = q->front;
+		void* ptr = temp->ptr;
+		q->front = q->front->next;
+		free(temp);
+
+		q->size--;
+		return ptr;
+	}
+	else if(q->size == 1) {
+		//priqueue_remove(q, q->front->ptr);
+		free(q->front);
+		q->front = NULL;
+
+		q->size = 0;
+		return NULL;
+	}
+	else {
+		return NULL;
+	}
 }
 
 
