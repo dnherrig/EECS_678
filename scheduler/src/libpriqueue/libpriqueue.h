@@ -5,11 +5,24 @@
 #define LIBPRIQUEUE_H_
 
 /**
+  Node Data Structure
+*/
+// struct _node_t;
+
+typedef struct node_t
+{
+  void *ptr;
+  struct node_t *next;
+} node_t;
+
+/**
   Priqueue Data Structure
 */
 typedef struct _priqueue_t
 {
-
+  node_t *front;
+  int(*comparer)(const void *, const void *);
+  size_t size;
 } priqueue_t;
 
 
