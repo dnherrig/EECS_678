@@ -19,6 +19,7 @@
  */
 void priqueue_init(priqueue_t *q, int(*comparer)(const void *, const void *))
 {
+	//initialize queue members
 	q->front = NULL;
 	q->comparer = comparer;
 	q->size = 0;
@@ -34,120 +35,103 @@ void priqueue_init(priqueue_t *q, int(*comparer)(const void *, const void *))
  */
 int priqueue_offer(priqueue_t *q, void *ptr)
 {
-	if(q->front == NULL) {
+	//empty
+	if(q->size == 0) {
+		//initialize new node
 		node_t *temp = malloc(sizeof(node_t));
 		temp->ptr = ptr;
 		temp->next = NULL;
 
+		//front of the queue is the new node
 		q->front = temp;
 
-		q->size++;
-		return 0;
-	}
-	else {
-		node_t *current = q->front;
-		node_t *temp = malloc(sizeof(node_t));
-		temp->ptr = ptr;
-		temp->next = NULL;
-
-		int index = 0;
-
-		for(int i = 0; i < q->size; i++) {
-			if(current->next != NULL) {
-				current = current->next;
-				index++;
-			}
-		}
-
-		current->next = temp;
-
-		q->size++;
-		return index;
-	}
-
-	/*if(q->size == 0) {
-		node_t *temp = malloc(sizeof(node_t));
-		temp->ptr = ptr;
-		temp->next = NULL;
-
-		q->front = temp;
-
+		//adjust queue size and return
 		q->size = 1;
 		return 0;
 	}
+	//only one node
 	else if(q->size == 1) {
+		//initialize new node
 		node_t *temp = malloc(sizeof(node_t));
 		temp->ptr = ptr;
 		temp->next = NULL;
 
+		//check for swap cases
 		if(q->comparer(q->front->ptr, temp->ptr) == -1) {
+			//swap not needed
 			q->front->next = temp;
 
+			//adjust queue size and return
 			q->size = 2;
 			return 1;
 		}
 		else {
+			//swap needed
 			temp->next = q->front;
 			q->front->next = NULL;
 			q->front = temp;
 
+			//adjust queue size and return
 			q->size = 2;
 			return 0;
 		}
 	}
+	//every other case
 	else {
-		node_t *current = q->front;
-		void* value;
+		//initialize new node
 		node_t *temp = malloc(sizeof(node_t));
 		temp->ptr = ptr;
 		temp->next = NULL;
 
-		int index = 1;
+		//changing pointer values is a lot easier than moving pointers
+		void *value;
+		//set a traversal node at the front
+		node_t *current = q->front;
 
+		//return value. where the new value is placed
+		int index = 0;
+
+		//begin sorting alg
 		for(int i = 0; i < q->size; i++) {
-			if(current->next != NULL) {
-				if(q->comparer(current->ptr, temp->ptr) == 1) {
-					value = current->ptr;
-					current->ptr = temp->ptr;
-					temp->ptr = value;
-					//current->next = temp;
+			if(q->comparer(temp->ptr, current->ptr) < 0) {
+				while(current != NULL) {
+					//store temp ptr value
+					value = temp->ptr;
+					//reassign temp ptr value to curr ptr value
+					temp->ptr = current->ptr;
+					//reassign curr ptr value with the saved temp ptr value
+					current->ptr = value;
+
+					//check prevents segfault, also sets the back of queue to temp
+					if(current->next == NULL) {
+						current->next = temp;
+						break;
+					}
+
+					//iterate for traversal
+					current = current->next;
 				}
-				current = current->next;
+
+				//iterate index for return
 				index++;
+				break;
 			}
+
+			//puts the new node on back of queue
+			//originally placed new value but changed
+			if(current->next == NULL) {
+				current->next = temp;
+				break;
+			}
+
+			//iterate for traversal if condition not met
+			current = current->next;
 		}
 
-		current->next = temp;
+		//adjust queue size and return
 		q->size++;
-		/*for(int i = 0; i < q->size; i++) {
-		//while(q->comparer(current->ptr, temp->ptr) == -1) {
-			if(current->next != NULL) {
-				current = current->next;
-
-				index++;
-			}
-		}
-
-		if(q->comparer(current->ptr, temp->ptr) == -1) {
-			current->next = temp;
-
-			q->size++;
-			return index + 1;
-		}
-		else {
-			for(int i = 0; i < index; i++) {
-				if(previous->next != current) {
-					previous = previous->next;
-				}
-			}
-			previous->next = temp;
-			temp->next = current;
-			current->next = NULL;
-
-			q->size++;
-			return index;
-		}*/
-	//}
+		return index;
+	}
 }
 
 
@@ -161,9 +145,11 @@ int priqueue_offer(priqueue_t *q, void *ptr)
  */
 void *priqueue_peek(priqueue_t *q)
 {
+	//queue is not empty
 	if(q->size != 0) {
 		return q->front->ptr;
 	}
+	//queue is empty
 	else {
 		return NULL;
 	}
@@ -180,24 +166,30 @@ void *priqueue_peek(priqueue_t *q)
  */
 void *priqueue_poll(priqueue_t *q)
 {
+	//if the queue is not empty
 	if(q->size != 0) {
 		//priqueue_remove(q, q->front->ptr);
+		//remove front and adjust queue
 		node_t *temp = q->front;
 		void* ptr = temp->ptr;
 		q->front = q->front->next;
 		free(temp);
 
+		//adjust size and return
 		q->size--;
 		return ptr;
 	}
+	//if the queue is just one node
 	else if(q->size == 1) {
 		//priqueue_remove(q, q->front->ptr);
 		free(q->front);
 		q->front = NULL;
 
+		//adjust size and return
 		q->size = 0;
 		return NULL;
 	}
+	//the queue is empty
 	else {
 		return NULL;
 	}
@@ -215,18 +207,23 @@ void *priqueue_poll(priqueue_t *q)
  */
 void *priqueue_at(priqueue_t *q, int index)
 {
+	//create node for traversal
 	node_t *current = q->front;
 
+	//traverse through the queue and look for value at index
 	for(int i = 0; i < q->size; i++) {
+		//i and index line up
 		if(i == index) {
 			return current->ptr;
 		}
 
+		//safely traverse through the queue
 		if(current->next != NULL) {
 			current = current->next;
 		}
 	}
 
+	//return null if queue does not contain index'th element
 	return NULL;
 }
 
@@ -234,7 +231,7 @@ void *priqueue_at(priqueue_t *q, int index)
 /**
   Removes all instances of ptr from the queue.
 
-  This function should not use the comparer function, but check if the data contained in each element of the queue is equal (==) to ptr.
+  This function should not use the comparer functio//adjust queue size and returnn, but check if the data contained in each element of the queue is equal (==) to ptr.
 
   @param q a pointer to an instance of the priqueue_t data structure
   @param ptr address of element to be removed
