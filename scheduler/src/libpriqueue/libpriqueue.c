@@ -73,7 +73,7 @@ int priqueue_offer(priqueue_t *q, void *ptr)
 
 		int index = 1;
 
-		for(int i = 0; i < q->size; i++) {
+		while(q->comparer(current->ptr, temp->ptr) == -1) {
 			if(current->next != NULL) {
 				current = current->next;
 
@@ -81,18 +81,17 @@ int priqueue_offer(priqueue_t *q, void *ptr)
 			}
 		}
 
-		if(q->comparer(current->ptr, temp->ptr) == -1) {
+		
+
+		/*if(q->comparer(current->ptr, temp->ptr) == -1) {
 			current->next = temp;
 
 			q->size++;
 			return index + 1;
 		}
 		else {
-			/*while(previous->next->ptr != current->ptr) {
-				previous = previous->next;
-			}*/
 			for(int i = 0; i < index; i++) {
-				if(previous->next != NULL) {
+				if(previous->next != current) {
 					previous = previous->next;
 				}
 			}
@@ -102,7 +101,7 @@ int priqueue_offer(priqueue_t *q, void *ptr)
 
 			q->size++;
 			return index;
-		}
+		}*/
 	}
 }
 
@@ -171,6 +170,18 @@ void *priqueue_poll(priqueue_t *q)
  */
 void *priqueue_at(priqueue_t *q, int index)
 {
+	node_t *current = q->front;
+
+	for(int i = 0; i < q->size; i++) {
+		if(i == index) {
+			return current->ptr;
+		}
+
+		if(current->next != NULL) {
+			current = current->next;
+		}
+	}
+
 	return NULL;
 }
 
