@@ -34,7 +34,38 @@ void priqueue_init(priqueue_t *q, int(*comparer)(const void *, const void *))
  */
 int priqueue_offer(priqueue_t *q, void *ptr)
 {
-	if(q->size == 0) {
+	if(q->front == NULL) {
+		node_t *temp = malloc(sizeof(node_t));
+		temp->ptr = ptr;
+		temp->next = NULL;
+
+		q->front = temp;
+
+		q->size++;
+		return 0;
+	}
+	else {
+		node_t *current = q->front;
+		node_t *temp = malloc(sizeof(node_t));
+		temp->ptr = ptr;
+		temp->next = NULL;
+
+		int index = 0;
+
+		for(int i = 0; i < q->size; i++) {
+			if(current->next != NULL) {
+				current = current->next;
+				index++;
+			}
+		}
+
+		current->next = temp;
+
+		q->size++;
+		return index;
+	}
+
+	/*if(q->size == 0) {
 		node_t *temp = malloc(sizeof(node_t));
 		temp->ptr = ptr;
 		temp->next = NULL;
@@ -66,14 +97,30 @@ int priqueue_offer(priqueue_t *q, void *ptr)
 	}
 	else {
 		node_t *current = q->front;
-		node_t *previous = q->front;
+		void* value;
 		node_t *temp = malloc(sizeof(node_t));
 		temp->ptr = ptr;
 		temp->next = NULL;
 
 		int index = 1;
 
-		while(q->comparer(current->ptr, temp->ptr) == -1) {
+		for(int i = 0; i < q->size; i++) {
+			if(current->next != NULL) {
+				if(q->comparer(current->ptr, temp->ptr) == 1) {
+					value = current->ptr;
+					current->ptr = temp->ptr;
+					temp->ptr = value;
+					//current->next = temp;
+				}
+				current = current->next;
+				index++;
+			}
+		}
+
+		current->next = temp;
+		q->size++;
+		/*for(int i = 0; i < q->size; i++) {
+		//while(q->comparer(current->ptr, temp->ptr) == -1) {
 			if(current->next != NULL) {
 				current = current->next;
 
@@ -81,9 +128,7 @@ int priqueue_offer(priqueue_t *q, void *ptr)
 			}
 		}
 
-		
-
-		/*if(q->comparer(current->ptr, temp->ptr) == -1) {
+		if(q->comparer(current->ptr, temp->ptr) == -1) {
 			current->next = temp;
 
 			q->size++;
@@ -102,7 +147,7 @@ int priqueue_offer(priqueue_t *q, void *ptr)
 			q->size++;
 			return index;
 		}*/
-	}
+	//}
 }
 
 
