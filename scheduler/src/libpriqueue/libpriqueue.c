@@ -229,53 +229,238 @@ void *priqueue_at(priqueue_t *q, int index)
 
 
 /**
+  Returns the index of the first occurance of the element
+
+  @param q a pointer to an instance of the priqueue_t data structure
+  @param ptr address of element to be removed
+  @return the index of the first occurance of the element
+  @return NULL if the queue does not contain the element
+ */
+int indexFinderHelper(priqueue_t *q, void *ptr)
+{
+	node_t *current = q->front;
+
+	for(int i = 0; i < q->size; i++)
+	{
+		//printf("Am I stuck here?\n" );
+ 		if(current -> ptr == ptr)
+		{
+			//printf("this element exists at index %d\n", i);
+ 			return i;
+ 		}
+
+ 		if(current->next != NULL)
+		{
+ 			current = current->next;
+ 		}
+ 	}
+
+	return NULL;
+}
+
+/**
   Removes all instances of ptr from the queue.
 
-  This function should not use the comparer functio//adjust queue size and returnn, but check if the data contained in each element of the queue is equal (==) to ptr.
+  This function should not use the comparer function, but check if the data contained in each element of the queue is equal (==) to ptr.
 
   @param q a pointer to an instance of the priqueue_t data structure
   @param ptr address of element to be removed
   @return the number of entries removed
  */
-int priqueue_remove(priqueue_t *q, void *ptr)
-{
-	return 0;
-}
+ int priqueue_remove(priqueue_t *q, void *ptr)
+ {
+ 	node_t *tempPtr = q->front;
+ 	int numRemoved = 0;
+	//int i = 0;
+	//int check = 0;
+
+	//printf("Hello?\n" );
+
+	size_t tempInt = q->size;
+	//size_t tempInt = 3;
+
+	//printf("Hello2?\n" );
+	int numberOfOccurances = 0;
+	//printf("Hello3?\n" );
+
+	//printf("%d\n", tempInt );
+
+	while(tempInt != 0)
+	{
+		//printf("Hello4?\n" );
+		 	//printf("This is the current index: %d\n",i );
+		 	//printf("This is the value we are looking at%d\n",*((int *)tempPtr -> ptr) );
+			//printf("What we are looking for %d\n",*((int *)ptr));
+		 if(tempPtr -> ptr == ptr)
+		 	{
+				//printf("increment occurances\n" );
+		 		numberOfOccurances ++;
+		 	}
+		 	tempPtr = tempPtr -> next;
+			tempInt --;
+	}
+
+	//printf("%d\n",numberOfOccurances);
+
+	while (numberOfOccurances != 0)
+	{
+		//indexFinderHelper(q, ptr);
+		priqueue_remove_at(q, indexFinderHelper(q, ptr));
+		numRemoved++;
+		numberOfOccurances--;
+	}
+
+	//printf("%d\n",numberOfOccurances);
 
 
-/**
-  Removes the specified index from the queue, moving later elements up
-  a spot in the queue to fill the gap.
+	// printf("%d\n", *((int *)(q-> size)) );
+	// while(check < q->size)
+	// {
+	// 	if(tempPtr -> ptr == ptr)
+	// 	{
+	// 		numberOfOccurances ++;
+	// 	}
+	// 	tempPtr = tempPtr -> next;
+	// 	check ++;
+	// }
 
-  @param q a pointer to an instance of the priqueue_t data structure
-  @param index position of element to be removed
-  @return the element removed from the queue
-  @return NULL if the specified index does not exist
- */
-void *priqueue_remove_at(priqueue_t *q, int index)
-{
-	return 0;
-}
+	// printf("HELLO?\n");
+	//
+ // 	while(tempPtr != NULL)
+ // 	{
+	// 	printf("CHECK 2?\n");
+	// 	printf("This is the current index: %d\n",i );
+	// 	printf("%d\n",*((int *)tempPtr -> ptr) );
+	// 	printf("%d\n",*((int *)ptr));
+ // 		if (tempPtr -> ptr == ptr)
+ // 		{
+	// 		printf("Check 2.5\n");
+	// 		printf("This is the current index: %d\n",i );
+	// 		//printf("Match at %d\n", i);
+ // 			priqueue_remove_at(q, i);
+ // 			numRemoved ++;
+ // 			i--;
+ // 		}
+	// 	else(tempPtr -> ptr != ptr)
+ // 	 	{
+ // 			tempPtr = tempPtr->next;
+ // 			i++;
+ // 		}
+	// 	printf("CHECK 3?\n");
+	//
+ // 	}
 
 
-/**
-  Returns the number of elements in the queue.
-
-  @param q a pointer to an instance of the priqueue_t data structure
-  @return the number of elements in the queue
- */
-int priqueue_size(priqueue_t *q)
-{
-	return q->size;
-}
+ 	return numRemoved;
+ }
 
 
-/**
-  Destroys and frees all the memory associated with q.
+ /**
+   Removes the specified index from the queue, moving later elements up
+   a spot in the queue to fill the gap.
 
-  @param q a pointer to an instance of the priqueue_t data structure
- */
-void priqueue_destroy(priqueue_t *q)
-{
+   @param q a pointer to an instance of the priqueue_t data structure
+   @param index position of element to be removed
+   @return the element removed from the queue
+   @return NULL if the specified index does not exist
+  */
+ void *priqueue_remove_at(priqueue_t *q, int index)
+ {
+	 //printf("MADE IT TO REMOVE AT\n");
+	 //printf("%d\n", q->size );
+	 //printf("%d\n", index );
+ 	if(index <= q->size)
+ 	{
+ 		node_t *pointerBefore = q->front;
+ 		node_t *pointerAfter = q ->front;
 
-}
+ 		if(index == 0)
+ 		{
+
+			priqueue_poll(q);
+			// printf("CHECK 3.1\n");
+ 		// 	q->front = q->front->next;
+			// printf("CHECK 3.2\n");
+ 		// 	//delete pointerBefore;
+			// free(pointerBefore);
+ 		// 	//priqueue_peek(q);
+ 		}
+ 		else if(index == (q->size)-1)
+ 		{
+			//printf("CHECK 4\n");
+ 			int i = 0;
+ 			while(i+1 < index)
+ 			{
+ 				pointerBefore = pointerBefore->next;
+ 				i++;
+ 			}
+ 			//delete pointerBefore->next;
+			free(pointerBefore ->next);
+			pointerBefore -> next = NULL;
+			q->size --;
+ 		}
+ 		else
+ 		{
+ 			int i = 0;
+			//printf("THIS IS THE INDEX%d\n",index);
+
+			//printf("THIS SHOULD SAY  THE FIRST VALUE %d\n",*((int *)pointerBefore -> ptr) );
+			//printf("THIS SHOULD SAY  THE SECOND  %d\n",*((int *)pointerBefore ->next ->ptr) );
+			//printf("THIS SHOULD SAY  THE FIRST VALUE %d\n",*((int *)pointerAfter -> ptr) );
+
+ 			while(i+1 < index)
+ 			{
+ 				pointerBefore = pointerBefore->next;
+ 				i++;
+ 			}
+			//printf("THIS IS THE VALUE OF i: %d\n", i);
+ 			pointerAfter = pointerBefore ->next->next;
+
+			//printf("This is the value before what we are looking for %d\n",*((int *)pointerBefore -> ptr) );
+			//printf("This is the value that we are looking for %d\n",*((int *)pointerBefore->next -> ptr) );
+			//printf("This is the value after what we are looking for %d\n",*((int *)pointerAfter -> ptr) );
+
+ 			//delete pointerBefore->next;
+			free(pointerBefore->next);
+ 			pointerBefore->next = pointerAfter;
+
+			q->size --;
+ 		}
+ 	}
+ 	else
+ 	{
+		//printf("Index does not exist\n");
+ 		return NULL;
+ 	}
+
+ 	return 0;
+ }
+
+
+ /**
+   Returns the number of elements in the queue.
+
+   @param q a pointer to an instance of the priqueue_t data structure
+   @return the number of elements in the queue
+  */
+ int priqueue_size(priqueue_t *q)
+ {
+ 	return q->size;
+ }
+
+
+ /**
+   Destroys and frees all the memory associated with q.
+
+   @param q a pointer to an instance of the priqueue_t data structure
+  */
+ void priqueue_destroy(priqueue_t *q)
+ {
+	 //printf("THIS IS IN DESTROY\n");
+ 	//size_t tempInt = ;
+ 	while(q->size != 0)
+ 	{
+ 		priqueue_remove_at(q, 0);
+ 	}
+
+ }
