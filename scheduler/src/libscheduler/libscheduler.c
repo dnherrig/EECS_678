@@ -8,6 +8,14 @@
 #include "libscheduler.h"
 #include "../libpriqueue/libpriqueue.h"
 
+priqueue_t *job_queue;
+scheme_t current_scheme;
+
+int *core_array;
+int core_array_size = 0;
+
+int number_of_jobs = 0;
+int total_jobs = 0;
 
 /**
   Stores information making up a job to be scheduled including any statistics.
@@ -16,75 +24,63 @@
 */
 typedef struct _job_t
 {
-	int job_id;
+	//baseline job variables. given by input
 	int arrival_time;
 	int run_time;
 	int priority;
+
+	//calculated job variables
+	int job_id;
+	int time_remaining;
+	int wait_time;
+	int wait_start;
+	int response_time;
+
+	//core number job is running on
+	int executing_core_id;
 } job_t;
 
-
-
-
-
-
-
-
-int compareFCFS(const void * a, const void * b)
-{
-	//first come first serve first
-	//first job is exicuted, then the second, then the third and so on . if a job arrives it is queued to go next
-
-	//if()
-
-	//more important
-	//return (-1);
-	//same importance
-	//return (0);
-	//least importance
-	return (1);
+int compare1(const void * a, const void * b) {
+	int id1 = ((job_t*)a)->job_id;
+	int id2 = ((job_t*)b)->job_id;
+	if(id1 > id2) {
+		return 1;
+	}
+	else if(id1 < id2) {
+		return -1;
+	}
+	else {
+		return 0;
+	}
 }
 
-int compareSJF(const void * a, const void * b)
-{
-	//looks at the runtime lenght of all jobs that arive at a time and pick the one with the smallest runtime size
-	//compare size, put shortest left
-	//let jobs running continue to run
-
-	return ( (*(job_t*)a -> runtime) - (*(job_t*)b -> run_time ));
+int compare2(const void * a, const void * b) {
+	int rt1 = ((job_t*)a)->time_remaining;
+	int rt2 = ((job_t*)b)->time_remaining;
+	if(rt1 > rt2) {
+		return 1;
+	}
+	else if(rt1 < rt2) {
+		return -1;
+	}
+	else {
+		return 0;
+	}
 }
 
-int comparePSJF(const void * a, const void * b)
-{
-	//looks at the runtime length of all the jobs that arive at a time and picks the one with the smallest runtime size. if a job arives with a smaller size it will interupt and start a new
-	//interupt then compare compare job length
-
-
-	return ( *(int*)b - *(int*)a );
+int compare3(const void * a, const void * b) {
+	int p1 = ((job_t*)a)->priority;
+	int p2 = ((job_t*)b)->priority;
+	if(p1 > p2) {
+		return 1;
+	}
+	else if(p1 < p2) {
+		return -1;
+	}
+	else {
+		return 0;
+	}
 }
-
-int comparePRI(const void * a, const void * b)
-{
-	//takes in the the job and runs it until completion, if a process completes, then the process with the highest priority will run
-	//simmilar to SJF
-	//compare priority put highest left
-
-	return ( *(int*)b - *(int*)a );
-}
-
-int comparePPRI(const void * a, const void * b)
-{
-	//takes in the the job and runs it, if a job arrives of higher priority then priortize that one
-	//simmilar to PSJF
-
-	return ( *(int*)b - *(int*)a );
-}
-
-int compareRR(const void * a, const void * b)
-{
-	//uses quantum size and only runs programs for that long or until they expire, rotates through all of the jobs
-	return ( *(int*)b - *(int*)a );
-}
-
 
 /**
   Initalizes the scheduler.
@@ -100,87 +96,38 @@ int compareRR(const void * a, const void * b)
 */
 void scheduler_start_up(int cores, scheme_t scheme)
 {
-	priqueue_t = q;
+	//allocate array for given amount of cores
+	core_array = malloc(sizeof(int) * cores);
+	core_array_size = cores;
+	//initialize each array index to be 0 (not used / false);
+	for(int i = 0; i < cores; i++) {
+		core_array[i] = 0;
+	}
 
+	job_queue = malloc(sizeof(priqueue_t));
+	current_scheme = scheme;
 
-	if((scheme == FCFS))
-	{
-		//first come first serve first
-		//first job is exicuted, then the second, then the third and so on . if a job arrives it is queued to go next
-
-		//enqueue once completed dequeue
-
-		priqueue_init(&q, compareFCFS);
-
-		// for(int i = 0; i < cores; i++)
-		// {
+	if(scheme == FCFS) {
+		priqueue_init(job_queue, compare1);
+	}
+	else if(scheme == SJF) {
+		priqueue_init(job_queue, compare1);//?
+	}
+	else if(scheme == PSJF) {
+		priqueue_init(job_queue, compare2);
+	}
+	else if(scheme == PRI) {
+		priqueue_init(job_queue, compare3);//?
+	}
+	else if(scheme == PPRI) {
+		priqueue_init(job_queue, compare3);
+	}
+	else if(scheme == RR) {
+		priqueue_init(job_queue, compare1);//?
+	}
+	else {
 		//
-		//
-		//
-		// }
-
-
-
-
-		//printf("FCFS\n");
 	}
-	else if((scheme == SJF))
-	{
-		//looks at the runtime lenght of all jobs that arive at a time and pick the one with the smallest runtime size
-
-
-
-		priqueue_init(&q, compareSJF);
-
-
-
-
-		//printf("SJF\n");
-	}
-	else if((scheme == PSJF))
-	{
-		//looks at the runtime length of all the jobs that arive at a time and picks the one with the smallest runtime size. if a job arives with a smaller size it will interupt and start a new
-
-		priqueue_init(&q, comparePSJF);
-
-
-
-
-
-		//printf("PSJF\n");
-	}
-	else if((scheme == PRI))
-	{
-		//takes in the the job and runs it until completion, if a process completes, then the process with the highest priority will run
-		//simmilar to SJF
-		priqueue_init(&q, comparePRI);
-		//printf("PRI\n");
-	}
-	else if((scheme == PPRI))
-	{
-		//takes in the the job and runs it, if a job arrives of higher priority then priortize that one
-		//simmilar to PSJF
-
-		priqueue_init(&q, comparePPRI);
-
-
-
-		//printf("PPRI\n");
-	}
-	else if((scheme == RR))
-	{
-		//uses quantum size and only runs programs for that long or until they expire, rotates through all of the jobs
-
-		priqueue_init(&q, compareRR);
-
-
-		printf("RR\n");
-	}
-	else
-	{
-		printf("Invalid scheme\n");
-	}
-
 }
 
 
@@ -206,7 +153,118 @@ void scheduler_start_up(int cores, scheme_t scheme)
  */
 int scheduler_new_job(int job_number, int time, int running_time, int priority)
 {
-	return -1;
+	//return -1;
+
+	//run through queue and update times
+	for(int i = 0; i < priqueue_size(job_queue); i++) {
+		//grab the job at i
+		job_t *current_job = (job_t*)priqueue_at(job_queue , i);
+		//if the job is currently being executed
+		if(current_job->executing_core_id != -1) {
+			current_job->time_remaining = current_job->run_time - (time -  current_job->wait_time - current_job->arrival_time);
+		}
+	}
+
+	//set scheduler variables
+	int has_scheduled_bool = 0;
+	int scheduler_core = -1;
+
+	//create new job
+	job_t *new_job = malloc(sizeof(job_t));
+
+	//basic job assignments
+	//new_job->job_id = total_jobs;
+	new_job->job_id = job_number;
+	new_job->arrival_time = time;
+	new_job->run_time = running_time;
+	new_job->priority = priority;
+
+	new_job->time_remaining = running_time;
+	new_job->wait_time = time;//?
+	new_job->wait_start = time;
+	new_job->response_time = -1;//?
+
+	//new_job->is_executing = 1;
+	new_job->executing_core_id = -1;//?
+
+	for(int i = 0; i < core_array_size; i++) {
+		//if core i is idle
+		if(core_array[i] == 0) {
+			//update new job values
+			new_job->executing_core_id = scheduler_core;
+			new_job->wait_time = 0;
+			new_job->response_time = 0;
+
+			//add new job to the queue
+			priqueue_offer(job_queue, new_job);
+
+			//update scheduling variable values
+			has_scheduled_bool = 1;
+			core_array[i] = 1;
+			scheduler_core = i;
+
+			//break loop in this case
+			break;
+		}
+	}
+
+	//job hasn't been added yet and the current scheme is preemptive
+	if(has_scheduled_bool == 0 && (current_scheme == PSJF || current_scheme == PPRI)) {
+		//insert job into job queue and grab index where it is located
+		int index = priqueue_offer(job_queue, new_job);
+
+		//if the index is less than the amount of cores available
+		if(index < core_array_size) {
+			//traverse through the queue
+			for(int i = (priqueue_size(job_queue)-1); i >= 0; i--) {
+				//get current job
+				job_t *current_job = (job_t*)priqueue_at(job_queue,i);
+
+				//if the current job is being executed
+				if(current_job->executing_core_id != -1) {
+
+					//update scheduler variables
+					scheduler_core = current_job->executing_core_id;
+					core_array[scheduler_core] = 1;
+
+					//update current job values
+					current_job->executing_core_id = -1;
+					current_job->wait_start = time;
+					current_job->time_remaining = current_job->run_time - (time -  current_job->wait_time - current_job->arrival_time);
+
+					//if the current job has executed during any cycles
+					if(current_job->time_remaining == current_job->run_time) {
+						current_job->response_time = -1;
+						current_job->wait_start = -1;
+						current_job->wait_time = -1;
+					}
+
+					//break loop on this case
+					break;
+				}
+			}
+
+			//update new job variables
+			new_job->executing_core_id = scheduler_core;
+			new_job->wait_time = 0;
+			new_job->response_time = 0;
+
+			//update scheduler variables
+			has_scheduled_bool = 1;
+		}
+	}
+
+	//cannot be scheduled right now
+	if(has_scheduled_bool == 0) {
+		priqueue_offer(job_queue, new_job);
+	}
+
+	//update global job variables
+	number_of_jobs++;
+	total_jobs++;
+
+	//return core that new job should run on, otherwise -1
+	return scheduler_core;
 }
 
 
@@ -313,5 +371,11 @@ void scheduler_clean_up()
  */
 void scheduler_show_queue()
 {
-
+	//run through queue and print job_id and priority
+	for(int i = 0; i < priqueue_size(job_queue); i++) {
+		//grab the job at i
+		job_t *current_job = (job_t*)priqueue_at(job_queue , i);
+		//print job_id and priority
+		printf("%d(%d) ", current_job->job_id, current_job->priority);
+	}
 }

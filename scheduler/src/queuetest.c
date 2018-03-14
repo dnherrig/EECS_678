@@ -36,7 +36,6 @@ int main()
 	priqueue_offer(&q, &values[14]);
 	priqueue_offer(&q, &values[12]);
 	priqueue_offer(&q, &values[12]);
-
 	printf("Total elements: %d (expected 5).\n", priqueue_size(&q));
 
 	int val = *((int *)priqueue_poll(&q));
