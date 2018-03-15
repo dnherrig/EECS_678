@@ -1,5 +1,5 @@
 # Change this line before submission
-STUDENTLASTNAMES = Student1-Student2
+STUDENTLASTNAMES = Herrig-Glass
 PROGNAME = simulator
 
 CC = gcc --std=gnu11
