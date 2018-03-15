@@ -40,10 +40,16 @@ typedef struct _job_t
 	int executing_core_id;
 } job_t;
 
-int compare1(const void * a, const void * b) {
+int FCFScompare(const void * a, const void * b) {
+
+	//first come first serve first
+	//first job is exicuted, then the second, then the third and so on . if a job arrives it is queued to go next
+
 	int id1 = ((job_t*)a)->job_id;
 	int id2 = ((job_t*)b)->job_id;
 	if(id1 > id2) {
+		//return 1 because it allways sets a newly arived job to the back
+		//should always go here
 		return 1;
 	}
 	else if(id1 < id2) {
@@ -54,9 +60,11 @@ int compare1(const void * a, const void * b) {
 	}
 }
 
-int compare2(const void * a, const void * b) {
-	int rt1 = ((job_t*)a)->time_remaining;
-	int rt2 = ((job_t*)b)->time_remaining;
+int SJFcompare(const void * a, const void * b) {
+	//looks at the runtime length of all jobs that arive at a time and pick the one with the smallest runtime size
+	//compare runtime put highest right
+	int rt1 = ((job_t*)a)->run_time;
+	int rt2 = ((job_t*)b)->run_time;
 	if(rt1 > rt2) {
 		return 1;
 	}
@@ -68,13 +76,74 @@ int compare2(const void * a, const void * b) {
 	}
 }
 
-int compare3(const void * a, const void * b) {
+int PSJFcompare(const void * a, const void * b) {
+	//looks at the runtime length of all jobs that arive at a time and pick the one with the smallest runtime size
+	//compare runtime put highest right
+	//should work the same as SFJcompare
+	int rt1 = ((job_t*)a)->run_time;
+	int rt2 = ((job_t*)b)->run_time;
+	if(rt1 > rt2) {
+		return 1;
+	}
+	else if(rt1 < rt2) {
+		return -1;
+	}
+	else {
+		return 0;
+	}
+}
+
+
+
+
+
+int PRIcompare(const void * a, const void * b) {
+	//takes in the the job and runs it until completion, if a process completes, then the process with the highest priority will run
+	//simmilar to SJF
+	//compare priority put highest left
 	int p1 = ((job_t*)a)->priority;
 	int p2 = ((job_t*)b)->priority;
 	if(p1 > p2) {
 		return 1;
 	}
 	else if(p1 < p2) {
+		return -1;
+	}
+	else {
+		return 0;
+	}
+}
+
+int PPRIcompare(const void * a, const void * b) {
+	//takes in the the job and runs it, if a job arrives of higher priority then priortize that one
+	//simmilar to PSJF
+	//compare priority put highest left
+	int p1 = ((job_t*)a)->priority;
+	int p2 = ((job_t*)b)->priority;
+	if(p1 > p2) {
+		return 1;
+	}
+	else if(p1 < p2) {
+		return -1;
+	}
+	else {
+		return 0;
+	}
+}
+
+int RRcompare(const void * a, const void * b) {
+
+	//uses quantum size and only runs programs for that long or until they expire, rotates through all of the jobs
+	//always places new tasks in the back, scheduler_quantum_expired will handle swithing tasks at quantum
+
+	int id1 = ((job_t*)a)->job_id;
+	int id2 = ((job_t*)b)->job_id;
+	if(id1 > id2) {
+		//return 1 because it allways sets a newly arived job to the back
+		//should always go here
+		return 1;
+	}
+	else if(id1 < id2) {
 		return -1;
 	}
 	else {
@@ -108,25 +177,25 @@ void scheduler_start_up(int cores, scheme_t scheme)
 	current_scheme = scheme;
 
 	if(scheme == FCFS) {
-		priqueue_init(job_queue, compare1);
+		priqueue_init(job_queue, FCFScompare);
 	}
 	else if(scheme == SJF) {
-		priqueue_init(job_queue, compare1);//?
+		priqueue_init(job_queue, SJFcompare);//?
 	}
 	else if(scheme == PSJF) {
-		priqueue_init(job_queue, compare2);
+		priqueue_init(job_queue, PSJFcompare);
 	}
 	else if(scheme == PRI) {
-		priqueue_init(job_queue, compare3);//?
+		priqueue_init(job_queue, PRIcompare);//?
 	}
 	else if(scheme == PPRI) {
-		priqueue_init(job_queue, compare3);
+		priqueue_init(job_queue, PPRIcompare);
 	}
 	else if(scheme == RR) {
-		priqueue_init(job_queue, compare1);//?
+		priqueue_init(job_queue, RRcompare);//?
 	}
 	else {
-		//
+		printf("Invalid scheme, should never reach here\n");
 	}
 }
 
@@ -191,6 +260,7 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 		//if core i is idle
 		if(core_array[i] == 0) {
 			//update new job values
+			scheduler_core = i;
 			new_job->executing_core_id = scheduler_core;
 			new_job->wait_time = 0;
 			new_job->response_time = 0;
@@ -201,7 +271,7 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 			//update scheduling variable values
 			has_scheduled_bool = 1;
 			core_array[i] = 1;
-			scheduler_core = i;
+
 
 			//break loop in this case
 			break;
@@ -284,7 +354,78 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
  */
 int scheduler_job_finished(int core_id, int job_number, int time)
 {
+	core_array[core_id] = 0;
+
+	for(int i=0; i < number_of_jobs; i++)
+	{
+		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
+		if(current_job -> job_id == job_number)
+		{
+			priqueue_remove(job_queue, current_job);
+			number_of_jobs --;
+			break;
+		}
+	}
+
+
+	for(int i=0; i < number_of_jobs; i++)
+	{
+		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
+		if(current_job -> executing_core_id == -1)
+		{
+			//schedule on this core
+			current_job->executing_core_id = core_id;
+			core_array[core_id] = 1;
+
+			return(current_job -> job_id);
+		}
+	}
+
+
+	// job_t *current_job
+	//
+	// for()  = (job_t*)priqueue_at(job_queue , job_number);
+	//
+	// printf("%d\n", current_job-> job_id );
+	// printf("This is the job number %d\n", job_number);
+	//
+	// //if there is a job in the job queue then dequqe and run it on core core_id
+	//
+	// for(int i=0; ((job_t*)priqueue_at(job_queue, i))-> job_id != job_number; i++  )
+	// {
+	// 	printf("Hello\n");
+	// 	if(job_number == current_job -> job_id)
+	// 	{
+	// 		printf("Hello2\n");
+	// 		priqueue_remove_at(job_queue, i);
+	// 	}
+	// }
+
 	return -1;
+
+
+	// if
+	// for(int i=0; (priqueue_at(job_queue, i)->job_id) != -1; i++  )
+	// {
+	//
+	//
+	// }
+
+	// bool checkIfRunning = false;
+	// job_t *nextJob =
+	// job_t nextJob  = priqueue_poll(job_queue);
+	//
+	// while()
+	//
+	// if(nextJob == NULL)
+	// {
+	// 	return -1;
+	// }
+	// else
+	// {
+	// 	core_array[core_id] = 1;
+	// 	return(nextJob -> job_id);
+	// }
 }
 
 
@@ -376,6 +517,6 @@ void scheduler_show_queue()
 		//grab the job at i
 		job_t *current_job = (job_t*)priqueue_at(job_queue , i);
 		//print job_id and priority
-		printf("%d(%d) ", current_job->job_id, current_job->priority);
+		printf("%d(%d)(%d) ", current_job->job_id, current_job->priority,current_job->executing_core_id);
 	}
 }
