@@ -368,6 +368,13 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 		{
 			current_job -> turnaround_time =  (float)(time - current_job ->arrival_time);
 			total_turnaround_time = ((current_job -> turnaround_time) + total_turnaround_time);
+
+			//current_job -> wait_time =  (float)(time - current_job ->arrival_time);
+			total_wait_time = ((current_job -> wait_time) + total_wait_time);
+
+			//current_job -> response_time =  (float)(time - current_job ->arrival_time);
+			total_response_time = ((current_job -> response_time) + total_response_time);
+
 			idle = core_id;
 			priqueue_remove(job_queue, current_job);
 			number_of_jobs --;
