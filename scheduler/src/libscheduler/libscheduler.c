@@ -33,7 +33,7 @@ typedef struct _job_t
 	int job_id;
 	int time_remaining;
 	int wait_time;
-	int wait_start;
+	int initial_wait;
 	int response_time;
 
 	//core number job is running on
@@ -80,8 +80,8 @@ int PSJFcompare(const void * a, const void * b) {
 	//looks at the runtime length of all jobs that arive at a time and pick the one with the smallest runtime size
 	//compare runtime put highest right
 	//should work the same as SFJcompare
-	int rt1 = ((job_t*)a)->run_time;
-	int rt2 = ((job_t*)b)->run_time;
+	int rt1 = ((job_t*)a)->time_remaining;//was run time
+	int rt2 = ((job_t*)b)->time_remaining;//was run time
 	if(rt1 > rt2) {
 		return 1;
 	}
@@ -92,10 +92,6 @@ int PSJFcompare(const void * a, const void * b) {
 		return 0;
 	}
 }
-
-
-
-
 
 int PRIcompare(const void * a, const void * b) {
 	//takes in the the job and runs it until completion, if a process completes, then the process with the highest priority will run
@@ -222,15 +218,14 @@ void scheduler_start_up(int cores, scheme_t scheme)
  */
 int scheduler_new_job(int job_number, int time, int running_time, int priority)
 {
-	//return -1;
+	//update time remaining for currently executed jobs
+	for(int i = 0; i < priqueue_size(job_queue); i ++) {
+		//grab a job in the queue
+		job_t *current_job = (job_t*)priqueue_at(job_queue, i);
 
-	//run through queue and update times
-	for(int i = 0; i < priqueue_size(job_queue); i++) {
-		//grab the job at i
-		job_t *current_job = (job_t*)priqueue_at(job_queue , i);
-		//if the job is currently being executed
+		//if the job is being executed
 		if(current_job->executing_core_id != -1) {
-			current_job->time_remaining = current_job->run_time - (time -  current_job->wait_time - current_job->arrival_time);
+			current_job->time_remaining = current_job->run_time - (time - current_job->wait_time - current_job->arrival_time);
 		}
 	}
 
@@ -242,20 +237,20 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 	job_t *new_job = malloc(sizeof(job_t));
 
 	//basic job assignments
-	//new_job->job_id = total_jobs;
 	new_job->job_id = job_number;
 	new_job->arrival_time = time;
 	new_job->run_time = running_time;
 	new_job->priority = priority;
-
+	//used for timing things
 	new_job->time_remaining = running_time;
-	new_job->wait_time = time;//?
-	new_job->wait_start = time;
-	new_job->response_time = -1;//?
+	new_job->wait_time = -1;
+	new_job->initial_wait = -1;
+	new_job->response_time = -1;
 
 	//new_job->is_executing = 1;
 	new_job->executing_core_id = -1;//?
 
+	//check to see if any jobs can be added to a core
 	for(int i = 0; i < core_array_size; i++) {
 		//if core i is idle
 		if(core_array[i] == 0) {
@@ -265,6 +260,7 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 			new_job->wait_time = 0;
 			new_job->response_time = 0;
 
+			//printf("base\n");
 			//add new job to the queue
 			priqueue_offer(job_queue, new_job);
 
@@ -272,60 +268,52 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 			has_scheduled_bool = 1;
 			core_array[i] = 1;
 
-
 			//break loop in this case
 			break;
 		}
 	}
 
-	//job hasn't been added yet and the current scheme is preemptive
+	//if not scheduled by now... check of the current scheme is preemptive
 	if(has_scheduled_bool == 0 && (current_scheme == PSJF || current_scheme == PPRI)) {
-		//insert job into job queue and grab index where it is located
-		int index = priqueue_offer(job_queue, new_job);
+		//printf("%d INDEX \n", index);
+		priqueue_offer(job_queue, new_job);
+		int index = indexFinderHelper(job_queue, new_job);
 
-		//if the index is less than the amount of cores available
 		if(index < core_array_size) {
-			//traverse through the queue
-			for(int i = (priqueue_size(job_queue)-1); i >= 0; i--) {
-				//get current job
-				job_t *current_job = (job_t*)priqueue_at(job_queue,i);
+			for(int i = (priqueue_size(job_queue) - 1); i >= 0; i--) {
+				//grab job at i in the queue
+				job_t *current_job = (job_t*)priqueue_at(job_queue, i);
 
-				//if the current job is being executed
+				//if the job is currently being executed
 				if(current_job->executing_core_id != -1) {
-
-					//update scheduler variables
+					//grab the core id for swap / override
 					scheduler_core = current_job->executing_core_id;
 					core_array[scheduler_core] = 1;
-
-					//update current job values
 					current_job->executing_core_id = -1;
-					current_job->wait_start = time;
-					current_job->time_remaining = current_job->run_time - (time -  current_job->wait_time - current_job->arrival_time);
 
-					//if the current job has executed during any cycles
-					if(current_job->time_remaining == current_job->run_time) {
-						current_job->response_time = -1;
-						current_job->wait_start = -1;
-						current_job->wait_time = -1;
-					}
+					//update the job's time variables
+					current_job->initial_wait = time;
+					current_job->time_remaining = current_job->run_time - (time - current_job->wait_time - current_job->arrival_time);
 
-					//break loop on this case
 					break;
 				}
 			}
 
-			//update new job variables
+			//give the new job its core assignment
 			new_job->executing_core_id = scheduler_core;
+
+			//update new job's times
 			new_job->wait_time = 0;
 			new_job->response_time = 0;
-
-			//update scheduler variables
-			has_scheduled_bool = 1;
 		}
+
+		//the new job has been scheduled
+		has_scheduled_bool = 1;
 	}
 
 	//cannot be scheduled right now
 	if(has_scheduled_bool == 0) {
+		//printf("last\n");
 		priqueue_offer(job_queue, new_job);
 	}
 
@@ -354,21 +342,67 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
  */
 int scheduler_job_finished(int core_id, int job_number, int time)
 {
+	//set core with core_id to open
 	core_array[core_id] = 0;
+	//used for determining idle core
+	int idle = -1;
 
+	//remove finished job
 	for(int i=0; i < number_of_jobs; i++)
 	{
 		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
 		if(current_job -> job_id == job_number)
 		{
+			idle = core_id;
 			priqueue_remove(job_queue, current_job);
 			number_of_jobs --;
+
 			break;
 		}
 	}
 
+	//peek at the front of the queue
+	job_t *front_job = (job_t*)priqueue_peek(job_queue);
 
-	for(int i=0; i < number_of_jobs; i++)
+	//if the queue isn't empty
+	if(front_job != NULL) {
+
+		//look for next executed job
+		job_t *current_job = (job_t*)priqueue_at(job_queue, 0);
+
+		for(int i = 1; i < number_of_jobs; i++) {
+			if(current_job->executing_core_id != -1) {
+				current_job = (job_t*)priqueue_at(job_queue, i);
+			}
+		}
+
+		//if the current job is currently being executed
+		if(current_job->executing_core_id != -1) {
+			return -1;
+		}
+		else {
+			//check times and update accordingly
+			if(current_job->response_time == -1) {
+				current_job->wait_time = time - current_job->arrival_time;
+				current_job->response_time = time - current_job->arrival_time;
+			}
+
+			if(current_job->initial_wait != -1) {
+				current_job->wait_time = current_job->wait_time + (time - current_job->initial_wait);
+				current_job->initial_wait = -1;
+			}
+		}
+
+		//set the current job up to be executed by the core next
+		current_job->executing_core_id = idle;
+		core_array[core_id] = 1;
+
+		//return job id core should run
+		return current_job->job_id;
+	}
+
+	//old new job finder
+	/*for(int i=0; i < number_of_jobs; i++)
 	{
 		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
 		if(current_job -> executing_core_id == -1)
@@ -376,56 +410,13 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 			//schedule on this core
 			current_job->executing_core_id = core_id;
 			core_array[core_id] = 1;
-
+			//printf("%d JOB ID\n", current_job->job_id);
 			return(current_job -> job_id);
 		}
-	}
+	}*/
 
-
-	// job_t *current_job
-	//
-	// for()  = (job_t*)priqueue_at(job_queue , job_number);
-	//
-	// printf("%d\n", current_job-> job_id );
-	// printf("This is the job number %d\n", job_number);
-	//
-	// //if there is a job in the job queue then dequqe and run it on core core_id
-	//
-	// for(int i=0; ((job_t*)priqueue_at(job_queue, i))-> job_id != job_number; i++  )
-	// {
-	// 	printf("Hello\n");
-	// 	if(job_number == current_job -> job_id)
-	// 	{
-	// 		printf("Hello2\n");
-	// 		priqueue_remove_at(job_queue, i);
-	// 	}
-	// }
-
+	//core shall remain idle
 	return -1;
-
-
-	// if
-	// for(int i=0; (priqueue_at(job_queue, i)->job_id) != -1; i++  )
-	// {
-	//
-	//
-	// }
-
-	// bool checkIfRunning = false;
-	// job_t *nextJob =
-	// job_t nextJob  = priqueue_poll(job_queue);
-	//
-	// while()
-	//
-	// if(nextJob == NULL)
-	// {
-	// 	return -1;
-	// }
-	// else
-	// {
-	// 	core_array[core_id] = 1;
-	// 	return(nextJob -> job_id);
-	// }
 }
 
 
@@ -517,6 +508,7 @@ void scheduler_show_queue()
 		//grab the job at i
 		job_t *current_job = (job_t*)priqueue_at(job_queue , i);
 		//print job_id and priority
-		printf("%d(%d)(%d) ", current_job->job_id, current_job->priority,current_job->executing_core_id);
+		//printf("%d(%d)(%d) ", current_job->job_id, current_job->priority,current_job->executing_core_id);
+		printf("%d(%d) ", current_job->job_id, current_job->time_remaining);
 	}
 }
