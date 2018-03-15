@@ -435,7 +435,127 @@ int scheduler_job_finished(int core_id, int job_number, int time)
  */
 int scheduler_quantum_expired(int core_id, int time)
 {
-	return -1;
+	core_array[core_id] = 0;
+	int otherJobFound = 0;
+	job_t *save_job1;
+	job_t *save_job2;
+	int prevPriority;
+	job_t *job_just_paused;
+	job_t *prev_job;
+	job_t *first_job;
+
+
+	if(number_of_jobs = 1)
+	{
+		printf("TEST\n" );
+		first_job = (job_t*)priqueue_at(job_queue , 0);
+		core_array[core_id] = 1;
+		return(first_job -> job_id);
+	}
+
+
+	for(int i=0; i < number_of_jobs; i++)
+	{
+		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
+
+
+		if(i != 0)
+		{
+			if(i == number_of_jobs-1)
+			{
+				first_job = (job_t*)priqueue_at(job_queue , 0);
+				current_job -> executing_core_id = -1;
+				return(first_job -> job_id);
+			}
+			else
+			{
+				if(prev_job -> executing_core_id == core_id)
+				{
+					prev_job -> executing_core_id = -1;
+				}
+			}
+			return (current_job -> job_id);
+		}
+
+		prev_job = current_job;
+	}
+
+	// if(number_of_jobs = 1)
+	// {
+	// 	core_array[core_id] = 1;
+	// 	return(job_just_paused -> job_id);
+	// }
+
+
+	//job_t *lastJob  = (job_t*)priqueue_at(job_queue , number_of_jobs-1);
+
+	//lastJob -> priority ==
+
+
+
+
+
+
+
+		// for(int i=0; i < number_of_jobs; i++)
+		// {
+		// 	job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
+		//
+		// 	if(current_job -> executing_core_id == core_id)
+		// 	{
+		// 		save_job2 = current_job;
+		// 		// -> executing_core_id = -1;
+		// 	}
+		//
+		// 	if(number_of_jobs == 1)
+		// 	{
+		// 		if(current_job -> executing_core_id == core_id)
+		// 		{
+		// 			current_job -> executing_core_id = -1;
+		// 		}
+		// 	}
+		//
+		// 	if(current_job -> executing_core_id == -1)
+		// 	{
+		// 		//schedule on this core
+		// 		current_job -> executing_core_id = core_id;
+		// 		core_array[core_id] = 1;
+		// 		otherJobFound == 1;
+		// 		save_job1 = current_job;
+		// 		save_job2 -> executing_core_id = -1;
+		// 		return(save_job1 -> job_id);
+		//
+		// 	}
+		// }
+
+
+
+
+
+
+
+		// if(otherJobFound == false)
+		// {
+		// 	for(int i=0; i < number_of_jobs; i++)
+		// 	{
+		// 		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
+		// 		if(current_job -> executing_core_id == -1)
+		// 		{
+		// 			//schedule on this core
+		// 			current_job -> executing_core_id = core_id;
+		// 			core_array[core_id] = 1;
+		// 			otherJobFound == true;
+		// 			save_job = current_job;
+		//
+		// 		}
+		// 	}
+
+		//}
+
+
+
+		printf("Checks1\n" );
+		return -1;
 }
 
 
