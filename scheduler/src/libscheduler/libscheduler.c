@@ -16,6 +16,11 @@ int core_array_size = 0;
 
 int number_of_jobs = 0;
 int total_jobs = 0;
+int quantum_time_count = 0;
+
+float total_wait_time = 0.0;
+float total_response_time = 0.0;
+float total_turnaround_time = 0.0;
 
 /**
   Stores information making up a job to be scheduled including any statistics.
@@ -31,10 +36,14 @@ typedef struct _job_t
 
 	//calculated job variables
 	int job_id;
-	int time_remaining;
-	int wait_time;
-	int wait_start;
+	float time_remaining;
+	float wait_time;
+	float avg_response_time;
+	float turnaround_time;
+	float wait_start;
 	int response_time;
+	int quantum_time;
+	int previously_scheduled;
 
 	//core number job is running on
 	int executing_core_id;
@@ -136,8 +145,8 @@ int RRcompare(const void * a, const void * b) {
 	//uses quantum size and only runs programs for that long or until they expire, rotates through all of the jobs
 	//always places new tasks in the back, scheduler_quantum_expired will handle swithing tasks at quantum
 
-	int id1 = ((job_t*)a)->job_id;
-	int id2 = ((job_t*)b)->job_id;
+	int id1 = ((job_t*)a)->quantum_time;
+	int id2 = ((job_t*)b)->quantum_time;
 	if(id1 > id2) {
 		//return 1 because it allways sets a newly arived job to the back
 		//should always go here
@@ -247,6 +256,9 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 	new_job->arrival_time = time;
 	new_job->run_time = running_time;
 	new_job->priority = priority;
+	new_job->previously_scheduled = 0;
+	new_job->quantum_time = quantum_time_count;
+	quantum_time_count++;
 
 	new_job->time_remaining = running_time;
 	new_job->wait_time = time;//?
@@ -361,6 +373,8 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
 		if(current_job -> job_id == job_number)
 		{
+			current_job -> turnaround_time =  (float)(time - current_job ->arrival_time);
+			total_turnaround_time = ((current_job -> turnaround_time) + total_turnaround_time);
 			priqueue_remove(job_queue, current_job);
 			number_of_jobs --;
 			break;
@@ -375,6 +389,13 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 		{
 			//schedule on this core
 			current_job->executing_core_id = core_id;
+
+			if(current_job-> previously_scheduled == 0)
+			{
+				current_job -> previously_scheduled = 1;
+				current_job -> avg_response_time =  (float)(time - current_job -> arrival_time);
+				total_response_time = ((current_job -> avg_response_time) + total_response_time);
+			}
 			core_array[core_id] = 1;
 
 			return(current_job -> job_id);
@@ -444,127 +465,115 @@ int scheduler_job_finished(int core_id, int job_number, int time)
  */
 int scheduler_quantum_expired(int core_id, int time)
 {
+	//printf("The QUANTUM JUST EXPIRED\n" );
+
 	core_array[core_id] = 0;
-	int otherJobFound = 0;
+	//int otherJobFound = 0;
+	//int pickNext = 0;
 	job_t *save_job1;
-	job_t *save_job2;
-	int prevPriority;
-	job_t *job_just_paused;
-	job_t *prev_job;
-	job_t *first_job;
-
-
-	if(number_of_jobs = 1)
-	{
-		printf("TEST\n" );
-		first_job = (job_t*)priqueue_at(job_queue , 0);
-		core_array[core_id] = 1;
-		return(first_job -> job_id);
-	}
+	//job_t *save_job2;
+	job_t *save_job3;
+	//int prevPriority;
+	//job_t *job_just_paused;
+	//job_t *prev_job;
+	//job_t *first_job;
 
 
 	for(int i=0; i < number_of_jobs; i++)
 	{
 		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
-
-
-		if(i != 0)
+		save_job1 = current_job;
+		if(current_job -> executing_core_id == core_id)
 		{
-			if(i == number_of_jobs-1)
-			{
-				first_job = (job_t*)priqueue_at(job_queue , 0);
-				current_job -> executing_core_id = -1;
-				return(first_job -> job_id);
-			}
-			else
-			{
-				if(prev_job -> executing_core_id == core_id)
-				{
-					prev_job -> executing_core_id = -1;
-				}
-			}
-			return (current_job -> job_id);
+			//save_job1 = current_job;
+			priqueue_remove(job_queue, current_job);
+			save_job1 -> executing_core_id = -1;
+			save_job1 -> quantum_time = quantum_time_count;
+			quantum_time_count++;
+			number_of_jobs --;
+			break;
 		}
-
-		prev_job = current_job;
 	}
 
-	// if(number_of_jobs = 1)
+	printf("Placing Job: %d at the back\n", save_job1->job_id );
+
+	priqueue_offer(job_queue, save_job1);
+	number_of_jobs ++;
+
+	printf("The number of Jobs is %d\n", number_of_jobs );
+	save_job3 = (job_t*)priqueue_at(job_queue , 0);
+	printf("the first job is %d \n", save_job3 -> job_id);
+	save_job3 = (job_t*)priqueue_at(job_queue , number_of_jobs-1);
+	printf("the last job is %d \n", save_job3 -> job_id);
+
+
+	if(number_of_jobs == 0)
+	{
+		return -1;
+	}
+	else
+	{
+		core_array[core_id] = 1;
+		for(int i = 0; i< number_of_jobs; i++)
+		{
+			job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
+			if(current_job -> executing_core_id == -1)
+			{
+				current_job -> executing_core_id = core_id;
+				return(current_job -> job_id);
+			}
+
+		}
+		 return(-1);
+	}
+
+							//try 3, very close
+							// for(int i = 0; i < number_of_jobs; i++)
+							// {
+							// 	job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
+							//
+							//
+							// 	if((pickNext == 1)&&(current_job -> executing_core_id == -1))
+							// 	{
+							// 		core_array[core_id] = 1;
+							// 		current_job -> executing_core_id = core_id;
+							// 		return(current_job -> job_id);
+							// 	}
+							// 	if(current_job -> executing_core_id == core_id)
+							// 	{
+							// 		current_job -> executing_core_id = -1;
+							// 		save_job1 = current_job;
+							// 		pickNext = 1;
+							// 	}
+							//
+							// }
+							//
+							// for(int i = 0; i < number_of_jobs; i++)
+							// {
+							// 	job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
+							//
+							//
+							// 	if((pickNext == 1)&&(current_job -> executing_core_id == -1))
+							// 	{
+							// 		core_array[core_id] = 1;
+							// 		current_job -> executing_core_id = core_id;
+							// 		return(current_job -> job_id);
+							// 	}
+							//
+							// }
+
+
+	// if (pickNext == 1)
 	// {
 	// 	core_array[core_id] = 1;
-	// 	return(job_just_paused -> job_id);
+	// 	save_job1 = (job_t*)priqueue_at(job_queue , 0);
+	// 	save_job1 -> executing_core_id = core_id;
+	// 	return(save_job1 -> job_id);
 	// }
 
 
-	//job_t *lastJob  = (job_t*)priqueue_at(job_queue , number_of_jobs-1);
+//return (-1);
 
-	//lastJob -> priority ==
-
-
-
-
-
-
-
-		// for(int i=0; i < number_of_jobs; i++)
-		// {
-		// 	job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
-		//
-		// 	if(current_job -> executing_core_id == core_id)
-		// 	{
-		// 		save_job2 = current_job;
-		// 		// -> executing_core_id = -1;
-		// 	}
-		//
-		// 	if(number_of_jobs == 1)
-		// 	{
-		// 		if(current_job -> executing_core_id == core_id)
-		// 		{
-		// 			current_job -> executing_core_id = -1;
-		// 		}
-		// 	}
-		//
-		// 	if(current_job -> executing_core_id == -1)
-		// 	{
-		// 		//schedule on this core
-		// 		current_job -> executing_core_id = core_id;
-		// 		core_array[core_id] = 1;
-		// 		otherJobFound == 1;
-		// 		save_job1 = current_job;
-		// 		save_job2 -> executing_core_id = -1;
-		// 		return(save_job1 -> job_id);
-		//
-		// 	}
-		// }
-
-
-
-
-
-
-
-		// if(otherJobFound == false)
-		// {
-		// 	for(int i=0; i < number_of_jobs; i++)
-		// 	{
-		// 		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
-		// 		if(current_job -> executing_core_id == -1)
-		// 		{
-		// 			//schedule on this core
-		// 			current_job -> executing_core_id = core_id;
-		// 			core_array[core_id] = 1;
-		// 			otherJobFound == true;
-		// 			save_job = current_job;
-		//
-		// 		}
-		// 	}
-
-		//}
-
-
-
-		printf("Checks1\n" );
-		return -1;
 }
 
 
@@ -577,7 +586,8 @@ int scheduler_quantum_expired(int core_id, int time)
  */
 float scheduler_average_waiting_time()
 {
-	return 0.0;
+	float totalAvgWaitTime = (total_wait_time/(total_jobs));
+	return totalAvgWaitTime;
 }
 
 
@@ -590,7 +600,8 @@ float scheduler_average_waiting_time()
  */
 float scheduler_average_turnaround_time()
 {
-	return 0.0;
+	float totalAvgTurnAroundTime = (total_turnaround_time/(total_jobs));
+	return totalAvgTurnAroundTime;
 }
 
 
@@ -603,7 +614,8 @@ float scheduler_average_turnaround_time()
  */
 float scheduler_average_response_time()
 {
-	return 0.0;
+	float totalAvgTurnResponseTime = (total_response_time/(total_jobs));
+	return totalAvgTurnResponseTime;
 }
 
 
@@ -632,11 +644,13 @@ void scheduler_clean_up()
  */
 void scheduler_show_queue()
 {
+	//printf("\n" );
 	//run through queue and print job_id and priority
 	for(int i = 0; i < priqueue_size(job_queue); i++) {
 		//grab the job at i
 		job_t *current_job = (job_t*)priqueue_at(job_queue , i);
 		//print job_id and priority
-		printf("%d(%d)(%d) ", current_job->job_id, current_job->priority,current_job->executing_core_id);
+		//printf("Job id:(%d), Quantumtime:(%d), Core id: (%d)\n", current_job->job_id, current_job->quantum_time, current_job-> executing_core_id);
+		printf("%d(%d)", current_job->job_id, current_job->priority);
 	}
 }
