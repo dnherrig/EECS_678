@@ -36,17 +36,11 @@ typedef struct _job_t
 
 	//calculated job variables
 	int job_id;
-<<<<<<< HEAD
-	float time_remaining;
-	float wait_time;
 	float avg_response_time;
 	float turnaround_time;
-	float wait_start;
-=======
 	int time_remaining;
 	int wait_time;
 	int initial_wait;
->>>>>>> e33dbd2292bcae706f3e4f45920167d0c02da66f
 	int response_time;
 	int quantum_time;
 	int previously_scheduled;
@@ -256,14 +250,11 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 	new_job->arrival_time = time;
 	new_job->run_time = running_time;
 	new_job->priority = priority;
-<<<<<<< HEAD
 	new_job->previously_scheduled = 0;
 	new_job->quantum_time = quantum_time_count;
 	quantum_time_count++;
 
-=======
 	//used for timing things
->>>>>>> e33dbd2292bcae706f3e4f45920167d0c02da66f
 	new_job->time_remaining = running_time;
 	new_job->wait_time = -1;
 	new_job->initial_wait = -1;
@@ -375,12 +366,9 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
 		if(current_job -> job_id == job_number)
 		{
-<<<<<<< HEAD
 			current_job -> turnaround_time =  (float)(time - current_job ->arrival_time);
 			total_turnaround_time = ((current_job -> turnaround_time) + total_turnaround_time);
-=======
 			idle = core_id;
->>>>>>> e33dbd2292bcae706f3e4f45920167d0c02da66f
 			priqueue_remove(job_queue, current_job);
 			number_of_jobs --;
 
@@ -654,12 +642,7 @@ void scheduler_show_queue()
 		//grab the job at i
 		job_t *current_job = (job_t*)priqueue_at(job_queue , i);
 		//print job_id and priority
-<<<<<<< HEAD
 		//printf("Job id:(%d), Quantumtime:(%d), Core id: (%d)\n", current_job->job_id, current_job->quantum_time, current_job-> executing_core_id);
 		printf("%d(%d)", current_job->job_id, current_job->priority);
-=======
-		//printf("%d(%d)(%d) ", current_job->job_id, current_job->priority,current_job->executing_core_id);
-		printf("%d(%d) ", current_job->job_id, current_job->time_remaining);
->>>>>>> e33dbd2292bcae706f3e4f45920167d0c02da66f
 	}
 }
