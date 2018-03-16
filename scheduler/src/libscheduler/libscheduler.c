@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include "libscheduler.h"
 #include "../libpriqueue/libpriqueue.h"
@@ -300,9 +301,6 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 	if(has_scheduled_bool == 0 && (current_scheme == PSJF || current_scheme == PPRI)) {
 		//printf("%d INDEX \n", index);
 
-
-
-
 		priqueue_offer(job_queue, new_job);
 		int index = indexFinderHelper(job_queue, new_job);
 
@@ -318,13 +316,6 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 					core_array[scheduler_core] = 1;
 					current_job->executing_core_id = -1;
 
-					if(current_job->previously_scheduled == 0)
-					{
-						current_job->previously_scheduled = 1;
-						current_job->start_time = time;
-					}
-
-
 					//update the job's time variables
 					current_job->initial_wait = time;
 					current_job->time_remaining = current_job->run_time - (time - current_job->wait_time - current_job->arrival_time);
@@ -335,6 +326,12 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 
 			//give the new job its core assignment
 			new_job->executing_core_id = scheduler_core;
+
+			if(new_job->previously_scheduled == 0)
+			{
+				new_job->previously_scheduled = 1;
+				new_job->start_time = time;
+			}
 
 			//update new job's times
 			new_job->wait_time = 0;
@@ -389,14 +386,21 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
 		if(current_job -> job_id == job_number)
 		{
+
 			current_job -> _waiting_time_for_avg =  (float)((time)-(current_job -> arrival_time) - (current_job ->run_time));
 			total_wait_time = ((current_job -> _waiting_time_for_avg) + total_wait_time);
 
 			current_job -> turnaround_time =  (float)(time - current_job ->arrival_time);
 			total_turnaround_time = ((current_job -> turnaround_time) + total_turnaround_time);
 
-			current_job -> _response_time_for_avg =  abs((double)((current_job -> arrival_time) - (current_job->start_time)));
+			current_job -> _response_time_for_avg =  fabs((double)((current_job -> arrival_time) - (current_job->start_time)));
 			total_response_time = ((current_job -> _response_time_for_avg) + total_response_time);
+
+			//printf("JOB %d COMPLETE... RESPONSE TIME = %d\n", current_job->job_id, current_job->_response_time_for_avg);
+			
+			// if(total_wait_time - total_response_time <= 1) {
+			// 	total_response_time = total_wait_time;
+			// }
 
 			//if(current_scheme == RR)
 			//{
@@ -446,6 +450,10 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 		}
 		else {
 			//check times and update accordingly
+			if(current_job->start_time != time && current_job->time_remaining == current_job->run_time && current_scheme != RR) {
+				current_job->start_time = time;
+			}
+
 			if(current_job->response_time == -1) {
 				current_job->wait_time = time - current_job->arrival_time;
 				current_job->response_time = time - current_job->arrival_time;
