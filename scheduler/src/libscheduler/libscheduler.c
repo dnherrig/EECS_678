@@ -190,19 +190,19 @@ void scheduler_start_up(int cores, scheme_t scheme)
 		priqueue_init(job_queue, FCFScompare);
 	}
 	else if(scheme == SJF) {
-		priqueue_init(job_queue, SJFcompare);//?
+		priqueue_init(job_queue, SJFcompare);
 	}
 	else if(scheme == PSJF) {
 		priqueue_init(job_queue, PSJFcompare);
 	}
 	else if(scheme == PRI) {
-		priqueue_init(job_queue, PRIcompare);//?
+		priqueue_init(job_queue, PRIcompare);
 	}
 	else if(scheme == PPRI) {
 		priqueue_init(job_queue, PPRIcompare);
 	}
 	else if(scheme == RR) {
-		priqueue_init(job_queue, RRcompare);//?
+		priqueue_init(job_queue, RRcompare);
 	}
 	else {
 		printf("Invalid scheme, should never reach here\n");
@@ -268,7 +268,7 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 	new_job->response_time = -1;
 
 	//new_job->is_executing = 1;
-	new_job->executing_core_id = -1;//?
+	new_job->executing_core_id = -1;
 
 	//check to see if any jobs can be added to a core
 	for(int i = 0; i < core_array_size; i++) {
@@ -551,13 +551,13 @@ int scheduler_quantum_expired(int core_id, int time)
 	//int pickNext = 0;
 	job_t *save_job1;
 	//job_t *save_job2;
-	job_t *save_job3;
+	//job_t *save_job3;
 	//int prevPriority;
 	//job_t *job_just_paused;
 	//job_t *prev_job;
 	//job_t *first_job;
 
-
+	//increment through the queue until you find the job that is running on the provided core
 	for(int i=0; i < number_of_jobs; i++)
 	{
 		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
@@ -565,7 +565,9 @@ int scheduler_quantum_expired(int core_id, int time)
 		if(current_job -> executing_core_id == core_id)
 		{
 			//save_job1 = current_job;
+			//remove that job from the queue and save it as save_job1
 			priqueue_remove(job_queue, current_job);
+			//change the quantum time of the removed job to the next avaible time and set the core it is exicuting on to none (-1)
 			save_job1 -> executing_core_id = -1;
 			save_job1 -> quantum_time = quantum_time_count;
 			quantum_time_count++;
@@ -575,40 +577,47 @@ int scheduler_quantum_expired(int core_id, int time)
 	}
 
 	//printf("Placing Job: %d at the back\n", save_job1->job_id );
-
+	//offer the old running task back to the queue with a new updated quantum_time so it goes to the back
 	priqueue_offer(job_queue, save_job1);
 	number_of_jobs ++;
 
+	//used to check values
 	//printf("The number of Jobs is %d\n", number_of_jobs );
-	save_job3 = (job_t*)priqueue_at(job_queue , 0);
+	//save_job3 = (job_t*)priqueue_at(job_queue , 0);
 	//printf("the first job is %d \n", save_job3 -> job_id);
-	save_job3 = (job_t*)priqueue_at(job_queue , number_of_jobs-1);
+	//save_job3 = (job_t*)priqueue_at(job_queue , number_of_jobs-1);
 	//printf("the last job is %d \n", save_job3 -> job_id);
 
 
 	if(number_of_jobs == 0)
 	{
+		//if a job wasnt replaced, should never make it here
 		return -1;
 	}
 	else
 	{
+		//set the core to occupied
 		core_array[core_id] = 1;
 		for(int i = 0; i< number_of_jobs; i++)
 		{
+			//find the first job from the front that isnt exicuting in a core currently
 			job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
 			if(current_job -> executing_core_id == -1)
 			{
+				//if the job has never been scheduled before then record the current time as the start time of the current job
+				//used for calculating the wait, response time, and turn around time
 				if(current_job->previously_scheduled == 0)
 				{
 					current_job ->previously_scheduled = 1;
 					current_job-> start_time = time;
 				}
-
+				//set the job that isnt exicutting to the current core and return the job number of that job
 				current_job -> executing_core_id = core_id;
 				return(current_job -> job_id);
 			}
 
 		}
+		//if all jobs are exicuting on a core then return -1
 		 return(-1);
 	}
 
