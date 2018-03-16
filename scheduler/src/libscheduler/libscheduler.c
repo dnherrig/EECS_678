@@ -256,6 +256,8 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 	new_job->run_time = running_time;
 	new_job->priority = priority;
 	new_job->previously_scheduled = 0;
+
+	//used of rr
 	new_job->quantum_time = quantum_time_count;
 	quantum_time_count++;
 
@@ -278,9 +280,12 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 			new_job->wait_time = 0;
 			new_job->response_time = 0;
 
+			//check if job has been previously scheduled
 			if(new_job->previously_scheduled == 0)
 			{
+				//reset previously scheduled
 				new_job->previously_scheduled = 1;
+				//set start time to new time
 				new_job->start_time = time;
 			}
 
@@ -297,14 +302,17 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 		}
 	}
 
-	//if not scheduled by now... check of the current scheme is preemptive
+	//if not scheduled by now... check if the current scheme is preemptive
 	if(has_scheduled_bool == 0 && (current_scheme == PSJF || current_scheme == PPRI)) {
 		//printf("%d INDEX \n", index);
 
+		//add new job to queue and check index
 		priqueue_offer(job_queue, new_job);
 		int index = indexFinderHelper(job_queue, new_job);
 
+		//if the job should be executed by a core
 		if(index < core_array_size) {
+			//find which job to replace
 			for(int i = (priqueue_size(job_queue) - 1); i >= 0; i--) {
 				//grab job at i in the queue
 				job_t *current_job = (job_t*)priqueue_at(job_queue, i);
@@ -327,9 +335,12 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 			//give the new job its core assignment
 			new_job->executing_core_id = scheduler_core;
 
+			//check if job has been previously scheduled
 			if(new_job->previously_scheduled == 0)
 			{
+				//reset previously scheduled
 				new_job->previously_scheduled = 1;
+				//set start time to new time
 				new_job->start_time = time;
 			}
 
@@ -351,8 +362,6 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 	//update global job variables
 	number_of_jobs++;
 	total_jobs++;
-
-
 
 	//return core that new job should run on, otherwise -1
 	return scheduler_core;
@@ -383,28 +392,31 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 	//remove finished job
 	for(int i=0; i < number_of_jobs; i++)
 	{
+		//grab job from queue
 		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
+		//if the job is the correct job
 		if(current_job -> job_id == job_number)
 		{
-
+			//update total waiting time
 			current_job -> _waiting_time_for_avg =  (float)((time)-(current_job -> arrival_time) - (current_job ->run_time));
 			total_wait_time = ((current_job -> _waiting_time_for_avg) + total_wait_time);
 
+			//update total turnaround time
 			current_job -> turnaround_time =  (float)(time - current_job ->arrival_time);
 			total_turnaround_time = ((current_job -> turnaround_time) + total_turnaround_time);
 
+			//update total response time
 			current_job -> _response_time_for_avg =  fabs((double)((current_job -> arrival_time) - (current_job->start_time)));
 			total_response_time = ((current_job -> _response_time_for_avg) + total_response_time);
 
 			//printf("JOB %d COMPLETE... RESPONSE TIME = %d\n", current_job->job_id, current_job->_response_time_for_avg);
-			
+
 			// if(total_wait_time - total_response_time <= 1) {
 			// 	total_response_time = total_wait_time;
 			// }
 
 			//if(current_scheme == RR)
 			//{
-
 
 				// current_job -> roundRobin_waiting_time =  (float)((time)-(current_job -> arrival_time) - (current_job ->run_time));
 				// total_wait_time = ((current_job -> roundRobin_waiting_time) + total_wait_time);
@@ -421,8 +433,11 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 				// total_response_time = ((current_job -> response_time) + total_response_time);
 			//}
 
+			//set idle to the current core id
 			idle = core_id;
+			//remove the finished job
 			priqueue_remove(job_queue, current_job);
+			//decrement number of jobs
 			number_of_jobs --;
 
 			break;
@@ -438,9 +453,12 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 		//look for next executed job
 		job_t *current_job = (job_t*)priqueue_at(job_queue, 0);
 
+		//get correct job if not at position 0
 		for(int i = 1; i < number_of_jobs; i++) {
 			if(current_job->executing_core_id != -1) {
+				//set next executed job
 				current_job = (job_t*)priqueue_at(job_queue, i);
+
 			}
 		}
 
@@ -454,11 +472,13 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 				current_job->start_time = time;
 			}
 
+			//set response time and wait time
 			if(current_job->response_time == -1) {
 				current_job->wait_time = time - current_job->arrival_time;
 				current_job->response_time = time - current_job->arrival_time;
 			}
 
+			//set waiting related times
 			if(current_job->initial_wait != -1) {
 				current_job->wait_time = current_job->wait_time + (time - current_job->initial_wait);
 				current_job->initial_wait = -1;
@@ -468,10 +488,15 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 		//set the current job up to be executed by the core next
 		current_job->executing_core_id = idle;
 		core_array[core_id] = 1;
+
+
+		//check if job has been previously scheduled
 		if(current_job->previously_scheduled == 0)
 		{
-			current_job ->previously_scheduled = 1;
-			current_job-> start_time = time;
+			//reset previously scheduled
+			current_job->previously_scheduled = 1;
+			//set start time to new time
+			current_job->start_time = time;
 		}
 
 		//return job id core should run
@@ -549,16 +574,16 @@ int scheduler_quantum_expired(int core_id, int time)
 		}
 	}
 
-	printf("Placing Job: %d at the back\n", save_job1->job_id );
+	//printf("Placing Job: %d at the back\n", save_job1->job_id );
 
 	priqueue_offer(job_queue, save_job1);
 	number_of_jobs ++;
 
-	printf("The number of Jobs is %d\n", number_of_jobs );
+	//printf("The number of Jobs is %d\n", number_of_jobs );
 	save_job3 = (job_t*)priqueue_at(job_queue , 0);
-	printf("the first job is %d \n", save_job3 -> job_id);
+	//printf("the first job is %d \n", save_job3 -> job_id);
 	save_job3 = (job_t*)priqueue_at(job_queue , number_of_jobs-1);
-	printf("the last job is %d \n", save_job3 -> job_id);
+	//printf("the last job is %d \n", save_job3 -> job_id);
 
 
 	if(number_of_jobs == 0)
@@ -646,6 +671,7 @@ int scheduler_quantum_expired(int core_id, int time)
  */
 float scheduler_average_waiting_time()
 {
+	//average wait time and return
 	float totalAvgWaitTime = (total_wait_time/(total_jobs));
 	return totalAvgWaitTime;
 }
@@ -660,6 +686,7 @@ float scheduler_average_waiting_time()
  */
 float scheduler_average_turnaround_time()
 {
+	//average turnaround time and return
 	float totalAvgTurnAroundTime = (total_turnaround_time/(total_jobs));
 	return totalAvgTurnAroundTime;
 }
@@ -674,6 +701,7 @@ float scheduler_average_turnaround_time()
  */
 float scheduler_average_response_time()
 {
+	//average response time and return
 	float totalAvgTurnResponseTime = (total_response_time/(total_jobs));
 	//totalAvgTurnResponseTime = totalAvgTurnResponseTime * (-1.0);
 	return totalAvgTurnResponseTime;
@@ -688,7 +716,14 @@ float scheduler_average_response_time()
 */
 void scheduler_clean_up()
 {
+	//destroy and free job queue
+	priqueue_destroy(job_queue);
+	free(job_queue);
+	job_queue = NULL;
 
+	//free core array
+	free(core_array);
+	core_array = NULL;
 }
 
 
