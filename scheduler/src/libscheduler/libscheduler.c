@@ -36,14 +36,18 @@ typedef struct _job_t
 
 	//calculated job variables
 	int job_id;
-	float avg_response_time;
+	//float avg_response_time;
 	float turnaround_time;
+	float _waiting_time_for_avg;
+	float _response_time_for_avg;
+	int start_time;
 	int time_remaining;
 	int wait_time;
 	int initial_wait;
 	int response_time;
 	int quantum_time;
 	int previously_scheduled;
+
 
 	//core number job is running on
 	int executing_core_id;
@@ -273,6 +277,12 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 			new_job->wait_time = 0;
 			new_job->response_time = 0;
 
+			if(new_job->previously_scheduled == 0)
+			{
+				new_job->previously_scheduled = 1;
+				new_job->start_time = time;
+			}
+
 			//printf("base\n");
 			//add new job to the queue
 			priqueue_offer(job_queue, new_job);
@@ -289,6 +299,10 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 	//if not scheduled by now... check of the current scheme is preemptive
 	if(has_scheduled_bool == 0 && (current_scheme == PSJF || current_scheme == PPRI)) {
 		//printf("%d INDEX \n", index);
+
+
+
+
 		priqueue_offer(job_queue, new_job);
 		int index = indexFinderHelper(job_queue, new_job);
 
@@ -303,6 +317,13 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 					scheduler_core = current_job->executing_core_id;
 					core_array[scheduler_core] = 1;
 					current_job->executing_core_id = -1;
+
+					if(current_job->previously_scheduled == 0)
+					{
+						current_job->previously_scheduled = 1;
+						current_job->start_time = time;
+					}
+
 
 					//update the job's time variables
 					current_job->initial_wait = time;
@@ -333,6 +354,8 @@ int scheduler_new_job(int job_number, int time, int running_time, int priority)
 	//update global job variables
 	number_of_jobs++;
 	total_jobs++;
+
+
 
 	//return core that new job should run on, otherwise -1
 	return scheduler_core;
@@ -366,14 +389,33 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 		job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
 		if(current_job -> job_id == job_number)
 		{
+			current_job -> _waiting_time_for_avg =  (float)((time)-(current_job -> arrival_time) - (current_job ->run_time));
+			total_wait_time = ((current_job -> _waiting_time_for_avg) + total_wait_time);
+
 			current_job -> turnaround_time =  (float)(time - current_job ->arrival_time);
 			total_turnaround_time = ((current_job -> turnaround_time) + total_turnaround_time);
 
-			//current_job -> wait_time =  (float)(time - current_job ->arrival_time);
-			total_wait_time = ((current_job -> wait_time) + total_wait_time);
+			current_job -> _response_time_for_avg =  abs((double)((current_job -> arrival_time) - (current_job->start_time)));
+			total_response_time = ((current_job -> _response_time_for_avg) + total_response_time);
 
-			//current_job -> response_time =  (float)(time - current_job ->arrival_time);
-			total_response_time = ((current_job -> response_time) + total_response_time);
+			//if(current_scheme == RR)
+			//{
+
+
+				// current_job -> roundRobin_waiting_time =  (float)((time)-(current_job -> arrival_time) - (current_job ->run_time));
+				// total_wait_time = ((current_job -> roundRobin_waiting_time) + total_wait_time);
+
+				// current_job -> roundRobin_response_time =  (float)(time - current_job ->arrival_time);
+				// total_response_time = ((current_job -> roundRobin_response_time) + total_response_time);
+			//}
+			//else
+			//{
+				//current_job -> wait_time =  (float)(time - current_job ->arrival_time);
+				//total_wait_time = ((current_job -> wait_time) + total_wait_time);
+
+				// current_job -> response_time =  (float)(time - current_job ->arrival_time);
+				// total_response_time = ((current_job -> response_time) + total_response_time);
+			//}
 
 			idle = core_id;
 			priqueue_remove(job_queue, current_job);
@@ -418,6 +460,11 @@ int scheduler_job_finished(int core_id, int job_number, int time)
 		//set the current job up to be executed by the core next
 		current_job->executing_core_id = idle;
 		core_array[core_id] = 1;
+		if(current_job->previously_scheduled == 0)
+		{
+			current_job ->previously_scheduled = 1;
+			current_job-> start_time = time;
+		}
 
 		//return job id core should run
 		return current_job->job_id;
@@ -518,6 +565,12 @@ int scheduler_quantum_expired(int core_id, int time)
 			job_t *current_job  = (job_t*)priqueue_at(job_queue , i);
 			if(current_job -> executing_core_id == -1)
 			{
+				if(current_job->previously_scheduled == 0)
+				{
+					current_job ->previously_scheduled = 1;
+					current_job-> start_time = time;
+				}
+
 				current_job -> executing_core_id = core_id;
 				return(current_job -> job_id);
 			}
@@ -614,6 +667,7 @@ float scheduler_average_turnaround_time()
 float scheduler_average_response_time()
 {
 	float totalAvgTurnResponseTime = (total_response_time/(total_jobs));
+	//totalAvgTurnResponseTime = totalAvgTurnResponseTime * (-1.0);
 	return totalAvgTurnResponseTime;
 }
 
